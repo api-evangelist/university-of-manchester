@@ -1,0 +1,19 @@
+{
+  "_comment": "Representative response payload for GET /ws/api/persons/{uuid} on the University of Manchester Pure API. Field structure derived from the live OpenAPI 3.0.1 contract (Pure 5.35.2-2); values are illustrative.",
+  "pureId": 122003344,
+  "uuid": "a0b1c2d3-4455-6677-8899-aabbccddeeff",
+  "createdBy": "pure_sync",
+  "createdDate": "2019-05-02T07:00:00.000Z",
+  "modifiedBy": "pure_sync",
+  "modifiedDate": "2025-02-18T09:33:41.000Z",
+  "portalUrl": "https://research.manchester.ac.uk/en/persons/a0b1c2d3-4455-6677-8899-aabbccddeeff",
+  "version": "1",
+  "name": { "firstName": "Jane", "lastName": "Researcher" },
+  "orcid": "0000-0002-1825-0097",
+  "orcidAuthenticated": true,
+  "nationality": { "uri": "/dk/atira/pure/core/countries/GB", "term": { "en_GB": "United Kingdom" } },
+  "willingToTakePhdStudents": true,
+  "staffOrganizationAssociations": [],
+  "identifiers": [],
+  "visibility": { "key": "FREE", "description": { "en_GB": "Public - No restriction" } }
+}

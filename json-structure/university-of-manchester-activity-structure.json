@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-manchester/main/json-structure/university-of-manchester-activity-structure.json",
+  "name": "Activity",
+  "type": "object",
+  "description": "JSON Structure for the Pure CRIS Activity object (University of Manchester Pure API).",
+  "properties": {
+    "pureId": {
+      "type": "int64",
+      "description": "Pure database ID of the object, prefer using the UUID if it is present on the entity"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID, this is the primary identity of the entity"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Username of creator"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date and time of creation"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "Username of the user that performed a modification"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "description": "Date and time of last modification"
+    },
+    "portalUrl": {
+      "type": "string",
+      "description": "URL of the content on the Pure Portal"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "All pretty URLs"
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "UUIDs of other content items which have been merged into this content item (or similar)"
+    },
+    "version": {
+      "type": "string",
+      "description": "Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a \"dirty write\". A dirty write is performed by not including the property value or setting the property to null"
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of organization associations."
+    },
+    "persons": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of persons."
+    },
+    "period": {
+      "type": "object"
+    },
+    "category": {
+      "type": "object"
+    },
+    "managingOrganization": {
+      "type": "object"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Additional links associated with this activity."
+    },
+    "type": {
+      "type": "object"
+    },
+    "visibility": {
+      "type": "object"
+    },
+    "workflow": {
+      "type": "object"
+    },
+    "externalOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of external organization affiliations."
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Identifiers related to the activity."
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Groups of keywords associated with the research output."
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related activities."
+    },
+    "pressMedia": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related press media."
+    },
+    "studentTheses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related student theses."
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related prizes."
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related projects."
+    },
+    "dataSets": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related data sets."
+    },
+    "researchOutputs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related research outputs."
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related impacts."
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of equipment."
+    },
+    "degreeOfRecognition": {
+      "type": "object"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Associated documents for the activity."
+    },
+    "descriptions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of descriptions."
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Image files with a maximum file size of 1MB."
+    },
+    "customDefinedFields": {
+      "type": "object"
+    },
+    "indicators": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Indicators for the activity."
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The content system name"
+    },
+    "typeDiscriminator": {
+      "type": "string"
+    }
+  }
+}

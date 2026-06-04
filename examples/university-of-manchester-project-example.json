@@ -1,0 +1,17 @@
+{
+  "_comment": "Representative response payload for GET /ws/api/projects/{uuid} on the University of Manchester Pure API. Field structure derived from the live OpenAPI 3.0.1 contract (Pure 5.35.2-2); values are illustrative.",
+  "pureId": 778899001,
+  "uuid": "d4e5f6a7-8899-4aab-9ccd-ddeeff001122",
+  "createdBy": "pure_sync",
+  "createdDate": "2021-01-15T09:00:00.000Z",
+  "modifiedBy": "pure_sync",
+  "modifiedDate": "2025-03-22T16:48:30.000Z",
+  "portalUrl": "https://research.manchester.ac.uk/en/projects/d4e5f6a7-8899-4aab-9ccd-ddeeff001122",
+  "version": "1",
+  "title": { "en_GB": "Advanced Materials for Sustainable Energy Storage" },
+  "acronym": "AMSES",
+  "type": { "uri": "/dk/atira/pure/project/projecttypes/standard/research", "term": { "en_GB": "Research" } },
+  "period": { "startDate": "2021-02-01", "endDate": "2025-01-31" },
+  "totalAcademicOwnership": 100.0,
+  "visibility": { "key": "FREE", "description": { "en_GB": "Public - No restriction" } }
+}

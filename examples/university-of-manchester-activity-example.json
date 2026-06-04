@@ -1,0 +1,15 @@
+{
+  "_comment": "Representative response payload for GET /ws/api/activities/{uuid} on the University of Manchester Pure API. Field structure derived from the live OpenAPI 3.0.1 contract (Pure 5.35.2-2); values are illustrative.",
+  "pureId": 990011223,
+  "uuid": "c3d4e5f6-7788-49aa-8bbc-ccddeeff0011",
+  "createdBy": "pure_sync",
+  "createdDate": "2023-03-04T10:21:00.000Z",
+  "modifiedBy": "pure_sync",
+  "modifiedDate": "2024-11-09T14:05:12.000Z",
+  "portalUrl": "https://research.manchester.ac.uk/en/activities/c3d4e5f6-7788-49aa-8bbc-ccddeeff0011",
+  "version": "1",
+  "type": { "uri": "/dk/atira/pure/activity/activitytypes/talk/invited", "term": { "en_GB": "Invited talk" } },
+  "category": { "uri": "/dk/atira/pure/activity/category/talk", "term": { "en_GB": "Talk or presentation" } },
+  "period": { "startDate": { "year": 2024, "month": 6, "day": 11 } },
+  "visibility": { "key": "FREE", "description": { "en_GB": "Public - No restriction" } }
+}

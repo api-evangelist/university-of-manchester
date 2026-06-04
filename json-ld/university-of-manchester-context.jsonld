@@ -1,0 +1,49 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "uom": "https://research.manchester.ac.uk/ns#",
+    "@vocab": "https://research.manchester.ac.uk/ns#",
+
+    "University": "schema:CollegeOrUniversity",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "identifier": "schema:identifier",
+
+    "ResearchOutput": "schema:ScholarlyArticle",
+    "Person": "schema:Person",
+    "Activity": "schema:Event",
+    "Project": "schema:ResearchProject",
+    "Organization": "schema:Organization",
+
+    "uuid": { "@id": "schema:identifier" },
+    "pureId": { "@id": "uom:pureId" },
+    "title": { "@id": "schema:name" },
+    "subTitle": { "@id": "schema:alternativeHeadline" },
+    "abstract": { "@id": "schema:abstract" },
+    "portalUrl": { "@id": "schema:url", "@type": "@id" },
+    "createdDate": { "@id": "schema:dateCreated", "@type": "schema:DateTime" },
+    "modifiedDate": { "@id": "schema:dateModified", "@type": "schema:DateTime" },
+    "submissionYear": { "@id": "schema:datePublished" },
+    "peerReview": { "@id": "uom:peerReviewed", "@type": "schema:Boolean" },
+    "language": { "@id": "schema:inLanguage" },
+
+    "firstName": { "@id": "schema:givenName" },
+    "lastName": { "@id": "schema:familyName" },
+    "orcid": { "@id": "uom:orcid" },
+    "nationality": { "@id": "schema:nationality" },
+
+    "organizations": { "@id": "schema:affiliation" },
+    "managingOrganization": { "@id": "schema:affiliation" },
+    "contributors": { "@id": "schema:author" },
+    "period": { "@id": "uom:period" },
+    "acronym": { "@id": "schema:alternateName" },
+    "keywordGroups": { "@id": "schema:keywords" },
+    "identifiers": { "@id": "schema:identifier" }
+  },
+  "@type": "University",
+  "name": "University of Manchester",
+  "url": "https://www.manchester.ac.uk/",
+  "description": "Public research university in Manchester, England, exposing research information through a Pure-based CRIS REST API and Research Explorer portal."
+}

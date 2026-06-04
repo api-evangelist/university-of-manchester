@@ -60,6 +60,20 @@ apis:
         url: https://pure.manchester.ac.uk/ws/api/
       - type: Authentication
         url: https://pure.manchester.ac.uk/ws/api/
+      - type: OpenAPI
+        url: openapi/university-of-manchester-pure-rest.yaml
+      - type: x-json-schema
+        url: json-schema/university-of-manchester-researchoutput-schema.json
+      - type: x-json-structure
+        url: json-structure/university-of-manchester-researchoutput-structure.json
+      - type: x-example
+        url: examples/university-of-manchester-research-outputs-list-example.json
+      - type: x-rules
+        url: rules/university-of-manchester-rules.yml
+      - type: x-vocabulary
+        url: vocabulary/university-of-manchester-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/university-of-manchester-context.jsonld
   - aid: university-of-manchester:research-explorer
     name: Research Explorer Portal
     description: >-

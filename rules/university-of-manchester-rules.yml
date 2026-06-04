@@ -1,0 +1,66 @@
+---
+# Spectral ruleset encoding patterns observed in the University of Manchester
+# Pure CRIS REST API (OpenAPI 3.0.1, Pure 5.35.2-2) served from
+# https://pure.manchester.ac.uk/ws/api/openapi.yaml
+# These rules check that new/edited specs stay consistent with the Pure contract.
+formats:
+  - oas3
+rules:
+  pure-info-title-present:
+    description: API must declare an info.title.
+    severity: error
+    given: "$.info"
+    then:
+      field: title
+      function: truthy
+
+  pure-info-version-present:
+    description: API must declare an info.version (Pure uses a build version such as 5.35.2-2).
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  pure-api-key-security-scheme:
+    description: Pure authenticates with an apiKey security scheme named "api-key".
+    severity: warn
+    given: "$.components.securitySchemes"
+    then:
+      field: api-key
+      function: truthy
+
+  pure-server-relative-ws-api:
+    description: Pure serves the API under the /ws/api base path.
+    severity: warn
+    given: "$.servers[*]"
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: "/ws/api"
+
+  pure-operations-have-tags:
+    description: Every operation should be tagged by resource (activities, persons, research-outputs, projects, ...).
+    severity: warn
+    given: "$.paths[*][get,post,put,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  pure-collection-paths-lowercase-hyphen:
+    description: Pure collection paths use lowercase hyphenated resource names (e.g. /research-outputs).
+    severity: info
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^/[a-z0-9-]+(/.*)?$"
+
+  pure-uuid-is-primary-identity:
+    description: Object schemas should expose uuid as the primary identity field.
+    severity: info
+    given: "$.components.schemas[?(@.properties && @.properties.pureId)]"
+    then:
+      field: "properties.uuid"
+      function: truthy

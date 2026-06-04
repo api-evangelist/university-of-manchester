@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-manchester/main/json-structure/university-of-manchester-person-structure.json",
+  "name": "Person",
+  "type": "object",
+  "description": "JSON Structure for the Pure CRIS Person object (University of Manchester Pure API).",
+  "properties": {
+    "pureId": {
+      "type": "int64",
+      "description": "Pure database ID of the object, prefer using the UUID if it is present on the entity"
+    },
+    "uuid": {
+      "type": "string",
+      "description": "UUID, this is the primary identity of the entity"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Username of creator"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "Date and time of creation"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "Username of the user that performed a modification"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "description": "Date and time of last modification"
+    },
+    "portalUrl": {
+      "type": "string",
+      "description": "URL of the content on the Pure Portal"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "All pretty URLs"
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "UUIDs of other content items which have been merged into this content item (or similar)"
+    },
+    "version": {
+      "type": "string",
+      "description": "Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a \"dirty write\". A dirty write is performed by not including the property value or setting the property to null"
+    },
+    "personExpertise": {
+      "type": "object"
+    },
+    "startDateAsResearcher": {
+      "type": "string",
+      "description": "Date that the person entered into the academic profession."
+    },
+    "affiliationNote": {
+      "type": "string",
+      "description": "Notes regarding affiliations of the person."
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "description": "The person's date of birth."
+    },
+    "employeeStartDate": {
+      "type": "string",
+      "description": "Date of the persons first day of the institution."
+    },
+    "employeeEndDate": {
+      "type": "string",
+      "description": "Date of the persons last day of the institution."
+    },
+    "externalPositions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "positions held by the person, that are external to the institution"
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Groups of Keyword associated with the person."
+    },
+    "leavesOfAbsence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Leaves of absence had by the person."
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Links associated with the person."
+    },
+    "name": {
+      "type": "object"
+    },
+    "names": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Variant names of the person, Known aliases, ect."
+    },
+    "nationality": {
+      "type": "object"
+    },
+    "orcid": {
+      "type": "string",
+      "description": "orcid of the person."
+    },
+    "orcidAuthenticated": {
+      "type": "boolean",
+      "description": "Authentication status of the orcid associated with the person."
+    },
+    "cienciaId": {
+      "type": "string",
+      "description": "Ciencia ID of the person."
+    },
+    "cienciaIdAuthenticated": {
+      "type": "boolean",
+      "description": "Authentication status of the Ciencia ID associated with the person."
+    },
+    "honoraryStaffOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Organizations that the person is associated with under the title of 'Honorary Staff'"
+    },
+    "staffOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Organizations that the person is associated with as 'Staff'"
+    },
+    "studentOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Organizations that the person is associated with as a 'Student'"
+    },
+    "visitingScholarOrganizationAssociations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Organizations that the person is associated with as a 'Visiting Scholar"
+    },
+    "academicQualifications": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Levels of academic qualifications that the person has achieved."
+    },
+    "profilePhotos": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Profile photos in the form of Image files. The maximum file size is 1mb"
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Associated documents for the person"
+    },
+    "privateAddress": {
+      "type": "object"
+    },
+    "professionalQualifications": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "The professional qualifications held by the person"
+    },
+    "selectedForProfileRefinementService": {
+      "type": "boolean",
+      "description": "If the person has been profiled."
+    },
+    "profileInformation": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Information objects making up profiles made of the person"
+    },
+    "retirementDate": {
+      "type": "string",
+      "description": "Date of retirement for the person"
+    },
+    "gender": {
+      "type": "object"
+    },
+    "titles": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Titles held by the person"
+    },
+    "visibility": {
+      "type": "object"
+    },
+    "willingToTakePhdStudents": {
+      "type": "boolean",
+      "description": "Boolean to define if the Person is willing to take on Phd Students."
+    },
+    "willingToTakePhdStudentsDescription": {
+      "type": "string",
+      "description": "Field to describe or list phd projects that the person will participate in."
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Identifiers related to the person"
+    },
+    "user": {
+      "type": "object"
+    },
+    "customDefinedFields": {
+      "type": "object"
+    },
+    "workflow": {
+      "type": "object"
+    },
+    "mainResearchArea": {
+      "type": "object"
+    },
+    "profiled": {
+      "type": "boolean"
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The content system name"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "_comment": "Representative response payload for GET /ws/api/research-outputs on the University of Manchester Pure API. Field structure derived from the live OpenAPI 3.0.1 contract (Pure 5.35.2-2); values are illustrative.",
+  "count": 84210,
+  "pageInformation": {
+    "offset": 0,
+    "size": 25
+  },
+  "items": [
+    {
+      "pureId": 351209884,
+      "uuid": "b1e2c3d4-5678-49ab-9cde-0123456789ab",
+      "createdBy": "pure_sync",
+      "createdDate": "2024-09-12T08:14:22.000Z",
+      "modifiedBy": "pure_sync",
+      "modifiedDate": "2025-01-30T11:42:05.000Z",
+      "portalUrl": "https://research.manchester.ac.uk/en/publications/b1e2c3d4-5678-49ab-9cde-0123456789ab",
+      "version": "1",
+      "title": { "value": "Graphene-based membranes for selective ion transport" },
+      "type": { "uri": "/dk/atira/pure/researchoutput/researchoutputtypes/contributiontojournal/article", "term": { "en_GB": "Article" } },
+      "category": { "uri": "/dk/atira/pure/researchoutput/category/academic", "term": { "en_GB": "Research" } },
+      "peerReview": true,
+      "submissionYear": 2024,
+      "language": { "uri": "/dk/atira/pure/core/languages/en_GB", "term": { "en_GB": "English" } },
+      "totalNumberOfContributors": 6,
+      "visibility": { "key": "FREE", "description": { "en_GB": "Public - No restriction" } }
+    }
+  ]
+}

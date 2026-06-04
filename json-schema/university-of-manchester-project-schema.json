@@ -1,0 +1,269 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-manchester/main/json-schema/university-of-manchester-project-schema.json",
+  "title": "Project",
+  "description": "Projects exists in two variations depending on the functionality enabled in the Pure installation.",
+  "type": "object",
+  "properties": {
+    "pureId": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Pure database ID of the object, prefer using the UUID if it is present on the entity"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID, this is the primary identity of the entity"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "Username of creator"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of creation"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "Username of the user that performed a modification"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time of last modification"
+    },
+    "portalUrl": {
+      "type": "string",
+      "description": "URL of the content on the Pure Portal"
+    },
+    "prettyUrlIdentifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "All pretty URLs"
+    },
+    "previousUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "UUIDs of other content items which have been merged into this content item (or similar)"
+    },
+    "version": {
+      "type": "string",
+      "description": "Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a \"dirty write\". A dirty write is performed by not including the property value or setting the property to null"
+    },
+    "acronym": {
+      "type": "string",
+      "description": "The acronym of the project."
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Related participants and their affiliations."
+    },
+    "externalOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of external organization affiliations."
+    },
+    "coManagingOrganizations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of co-managing organizational affiliations."
+    },
+    "collaborators": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of collaborators."
+    },
+    "descriptions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of descriptions for the project. Query the /projects/allowed-description-types endpoint for allowed types."
+    },
+    "period": {
+      "type": "object"
+    },
+    "effectivePeriod": {
+      "type": "object"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Identifiers related to the project."
+    },
+    "natureTypes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Nature of activity types for the project."
+    },
+    "organizations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of organizational unit affiliations."
+    },
+    "managingOrganization": {
+      "type": "object"
+    },
+    "shortTitle": {
+      "type": "object"
+    },
+    "title": {
+      "type": "object"
+    },
+    "totalAcademicOwnership": {
+      "type": "number",
+      "format": "double",
+      "description": "Total academic ownership of the project."
+    },
+    "type": {
+      "type": "object"
+    },
+    "workflow": {
+      "type": "object"
+    },
+    "visibility": {
+      "type": "object"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Links associated with the project."
+    },
+    "keywordGroups": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Groups of keywords associated with the project."
+    },
+    "documents": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of documents related to the project."
+    },
+    "curtailed": {
+      "type": "object"
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related projects."
+    },
+    "applicationClusters": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related application clusters."
+    },
+    "awardClusters": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related grant clusters."
+    },
+    "dataSets": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related datasets."
+    },
+    "prizes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related prizes."
+    },
+    "activities": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related activities."
+    },
+    "pressMedias": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related press/media."
+    },
+    "equipment": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related equipment."
+    },
+    "impacts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related impacts."
+    },
+    "researchOutputs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related research output."
+    },
+    "studentTheses": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "A collection of related student theses."
+    },
+    "customDefinedFields": {
+      "type": "object"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Image files with a maximum file size of 1MB"
+    },
+    "systemName": {
+      "type": "string",
+      "description": "The content system name"
+    },
+    "typeDiscriminator": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "uuid"
+  ]
+}
