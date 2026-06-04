@@ -1,0 +1,125 @@
+---
+aid: university-of-manchester
+name: University of Manchester
+description: >-
+  The University of Manchester is a public research university in Manchester,
+  England, ranked #31 in the QS World University Rankings 2025. Its public
+  developer/API footprint is research-led rather than a centrally branded
+  developer portal: the institution runs an Elsevier Pure CRIS that exposes a
+  live OAI-PMH 2.0 metadata feed and a documented Pure REST API, surfaces its
+  outputs through the public Research Explorer portal, federates identity via
+  Shibboleth/SAML in the UK Access Management Federation, publishes open
+  research data through Figshare, and maintains a small public GitHub
+  organization. No unified, self-service developer portal with general-purpose
+  open data or course/timetable APIs was found to be publicly documented.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/university-of-manchester/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Research
+  - Open Data
+  - United Kingdom
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: university-of-manchester:pure-oai-pmh
+    name: Research Explorer OAI-PMH (Pure)
+    description: >-
+      Live OAI-PMH 2.0 metadata harvesting endpoint for the University of
+      Manchester's Pure-based institutional repository / Current Research
+      Information System (CRIS). The Identify response confirms a "Pure OAI
+      Repository" running protocol version 2.0, exposing research output
+      metadata for harvesting via standard verbs (Identify, ListRecords,
+      ListMetadataFormats, etc.).
+    humanURL: https://research.manchester.ac.uk/
+    baseURL: https://pure.manchester.ac.uk/ws/oai
+    tags: [ Research, OAI-PMH, Repository, Metadata, Open Access ]
+    properties:
+      - type: Documentation
+        url: https://research.manchester.ac.uk/
+  - aid: university-of-manchester:pure-rest
+    name: Pure CRIS REST API
+    description: >-
+      The University of Manchester runs Elsevier Pure, which provides a
+      documented REST (CRUD) API for extracting from and writing data into the
+      research information system. A Material-for-MkDocs documentation site is
+      served from the institution's Pure host, covering API keys, authorization,
+      users/roles and file management, and references an OpenAPI 3 contract.
+      Access requires a Pure-issued API key, so it is institution-gated rather
+      than openly self-service.
+    humanURL: https://pure.manchester.ac.uk/ws/api/
+    tags: [ Research, CRIS, REST, OpenAPI, Authenticated ]
+    properties:
+      - type: Documentation
+        url: https://pure.manchester.ac.uk/ws/api/
+      - type: Authentication
+        url: https://pure.manchester.ac.uk/ws/api/
+  - aid: university-of-manchester:research-explorer
+    name: Research Explorer Portal
+    description: >-
+      Public Pure portal exposing the University of Manchester's researcher
+      profiles, research outputs, projects, research units, impacts and theses.
+      It is a discovery front end over the Pure CRIS rather than a documented
+      programmatic API, but it is the canonical public surface of the
+      institution's research data.
+    humanURL: https://research.manchester.ac.uk/
+    baseURL: https://research.manchester.ac.uk/
+    tags: [ Research, Discovery, Portal, Pure ]
+    properties:
+      - type: Documentation
+        url: https://research.manchester.ac.uk/
+  - aid: university-of-manchester:figshare
+    name: Research Data Repository (Figshare)
+    description: >-
+      The University of Manchester uses Figshare as its institutional research
+      data repository for depositing and openly publishing research datasets.
+      Figshare exposes a public, documented REST API; Manchester's deposits are
+      discoverable through it, though the University does not operate the API
+      surface itself.
+    humanURL: https://www.openresearch.manchester.ac.uk/research-services/research-data-management/
+    baseURL: https://api.figshare.com/v2
+    tags: [ Research Data, Repository, Figshare, REST, Open Data ]
+    properties:
+      - type: Documentation
+        url: https://docs.figshare.com/
+  - aid: university-of-manchester:shibboleth-sso
+    name: Shibboleth SAML Identity (SSO)
+    description: >-
+      The University of Manchester provides federated authentication via a
+      Shibboleth SAML2 Identity Provider at shib.manchester.ac.uk, participating
+      in the Jisc UK Access Management Federation. This is institutional SSO
+      infrastructure for staff, students and federated e-resources rather than a
+      public OAuth developer API.
+    humanURL: https://shib.manchester.ac.uk/
+    tags: [ Identity, SSO, SAML, Shibboleth, Authentication ]
+    properties:
+      - type: Documentation
+        url: https://www.itservices.manchester.ac.uk/
+common:
+  - type: Website
+    url: https://www.manchester.ac.uk/
+  - type: GitHub
+    url: https://github.com/University-of-Manchester
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/the-university-of-manchester/
+  - type: DeveloperPortal
+    url: https://pure.manchester.ac.uk/ws/api/
+  - type: Authentication
+    url: https://shib.manchester.ac.uk/
+  - type: Plans
+    url: plans/university-of-manchester-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/university-of-manchester-rate-limits.yml
+  - type: FinOps
+    url: finops/university-of-manchester-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

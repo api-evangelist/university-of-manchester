@@ -1,0 +1,44 @@
+---
+name: University of Manchester
+description: University of Manchester public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/university-of-manchester/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      Research-led API footprint, no central self-service developer portal. Verified
+      live: the Pure OAI-PMH 2.0 endpoint returns a valid Identify response ("Pure OAI
+      Repository"), the Pure REST API documentation site loads, the public Research
+      Explorer portal loads, the main website loads, and the University-of-Manchester
+      GitHub org exists with two public repositories. The Shibboleth SAML IdP host
+      exists but its bare root returned HTTP 500 (the SSO flow itself is operational).
+      Figshare is the institution's research-data repository (third-party-hosted public
+      API). No public open-data, course, timetable or SIS APIs were confirmed; the Pure
+      REST write API is key-gated. No endpoints were fabricated.
+    endpoints:
+      - url: https://pure.manchester.ac.uk/ws/oai?verb=Identify
+        status: 200
+        note: Live OAI-PMH 2.0 Identify response, "Pure OAI Repository".
+      - url: https://pure.manchester.ac.uk/ws/api/
+        status: 200
+        note: Pure CRIS REST API documentation site (MkDocs, OpenAPI 3); write API is key-gated.
+      - url: https://research.manchester.ac.uk/
+        status: 200
+        note: Public Research Explorer (Pure) portal; discovery front end, not a documented API.
+      - url: https://www.manchester.ac.uk/
+        status: 200
+        note: Official institution website.
+      - url: https://shib.manchester.ac.uk/
+        status: 500
+        note: Shibboleth SAML2 IdP host; bare root errors but SSO profile endpoint is functional.
+      - url: https://github.com/University-of-Manchester
+        status: 200
+        note: Official GitHub org, 2 public repos (uPortal, umobile-app-phonegap).
+      - url: https://api.figshare.com/v2
+        status: 200
+        note: Figshare public REST API; Manchester research data repository host.
+      - url: https://research.manchester.ac.uk/ws/oai
+        status: 0
+        note: Not the OAI host; OAI-PMH is served from pure.manchester.ac.uk, not research.manchester.ac.uk.
