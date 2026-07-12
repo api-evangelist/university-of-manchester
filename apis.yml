@@ -116,6 +116,10 @@ apis:
       - type: Documentation
         url: https://www.itservices.manchester.ac.uk/
 common:
+  - type: DomainSecurity
+    url: security/university-of-manchester-domain-security.yml
+  - type: Authentication
+    url: authentication/university-of-manchester-authentication.yml
   - type: Website
     url: https://www.manchester.ac.uk/
   - type: GitHub
@@ -134,6 +138,8 @@ common:
     url: finops/university-of-manchester-finops.yml
   - type: Review
     url: review.yml
+  - url: https://www.manchester.ac.uk/rss
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
