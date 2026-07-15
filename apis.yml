@@ -116,6 +116,8 @@ apis:
       - type: Documentation
         url: https://www.itservices.manchester.ac.uk/
 common:
+  - type: AgenticAccess
+    url: agentic-access/university-of-manchester-agentic-access.yml
   - type: DomainSecurity
     url: security/university-of-manchester-domain-security.yml
   - type: Authentication
