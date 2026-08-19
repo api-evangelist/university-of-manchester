@@ -1,1088 +1,395 @@
----
 aid: university-of-manchester
 name: University of Manchester
-description: >-
-  The University of Manchester is a public research university in Manchester,
-  England, ranked #31 in the QS World University Rankings 2025. Its public
-  developer/API footprint is research-led rather than a centrally branded
-  developer portal: the institution runs an Elsevier Pure CRIS that exposes a
-  live OAI-PMH 2.0 metadata feed and a documented Pure REST API, surfaces its
-  outputs through the public Research Explorer portal, federates identity via
-  Shibboleth/SAML in the UK Access Management Federation, publishes open
-  research data through Figshare, and maintains a small public GitHub
-  organization. No unified, self-service developer portal with general-purpose
-  open data or course/timetable APIs was found to be publicly documented.
+description: 'The University of Manchester is a public research university in Manchester, England, a founding
+  member of the Russell Group and, on the QS World University Rankings, a consistent global top-40 institution.
+  Its programmable footprint is small, real, and almost entirely mis-stated by its own domain names. The
+  University operates exactly three machine-readable surfaces of its own: a IIIF Presentation API and
+  a IIIF Image API serving the John Rylands Library''s digitised manuscripts from the University''s own
+  hosts and its own JANET address space, and a Shibboleth SAML 2.0 Identity Provider registered in the
+  Jisc UK Access Management Federation under entityID https://shib.manchester.ac.uk/shibboleth. Everything
+  else that looks like a Manchester API is a tenancy: pure.manchester.ac.uk and research.manchester.ac.uk
+  both CNAME to uom-aws.elsevierpure.com and serve Elsevier''s Pure product API and OAI-PMH implementation;
+  figshare.manchester.ac.uk CNAMEs to figshare.com. Those are Manchester''s records on a supplier''s platform,
+  under a supplier''s contract, and they are recorded here as tenant relationships rather than credited
+  as the University''s engineering. There is no central developer portal, no self-service API keys, no
+  open data portal at data.manchester.ac.uk, and no public course, timetable or SIS API. Thirty-six OpenAPI
+  documents previously held in this repository were Elsevier''s Pure 5.35.2-2 specification split by tag
+  and re-titled; they have been quarantined, not counted.'
 type: Index
 accessModel:
   pricing: free
-  onboarding: self-serve
+  onboarding: none
   trial: false
   try_now: true
-  public: false
-  label: Free · Self-serve signup
+  public: true
+  label: Free · No registration (institution-operated surfaces)
   confidence: high
   source:
-  - plans
   - authentication
-  generated: '2026-07-22'
-  method: derived
+  - probe
+  generated: '2026-08-19'
+  method: probed
+  note: The two institution-operated IIIF APIs are anonymous, unauthenticated and free — verified by live
+    retrieval on 2026-08-19 with no credentials. There is no signup, no key and no plan. The previous
+    accessModel said "self-serve signup", which was read off Elsevier Pure's api-key scheme; that is a
+    tenant surface and its onboarding is not the institution's.
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/university-of-manchester.png
 url: https://raw.githubusercontent.com/api-evangelist/university-of-manchester/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
-  - University
-  - Research
-  - Open Data
-  - United Kingdom
+- University
+- Higher Education
+- Education
+- Research
+- United Kingdom
+- Russell Group
+- Library
+- Digital Collections
+- IIIF
+- Identity Federation
+- Research Data
+- Research Computing
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 specificationVersion: '0.23'
 apis:
-- aid: university-of-manchester:pure-oai-pmh
-  name: Research Explorer OAI-PMH (Pure)
-  description: >-
-    Live OAI-PMH 2.0 metadata harvesting endpoint for the University of Manchester's Pure-based institutional
-    repository / Current Research Information System (CRIS). The Identify response confirms a "Pure OAI
-    Repository" running protocol version 2.0, exposing research output metadata for harvesting via standard
-    verbs (Identify, ListRecords, ListMetadataFormats, etc.).
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
+- aid: university-of-manchester:iiif-presentation-api
+  name: Manchester Digital Collections — IIIF Presentation API
+  description: 'IIIF Presentation API 2.1 over the University of Manchester Library''s digitised manuscripts,
+    archives and rare books. Serves sc:Manifest documents at /iiif/{documentId} and sc:Collection documents
+    at /iiif/collection/{collectionId}. Verified live on 2026-08-19: MS-LATIN-00006 returned a 378 KB
+    manifest of 398 canvases, the `latin` collection returned 61 manifests, and a negative probe on a
+    real path shape returned a genuine 404. The host resolves to 130.88.101.74 inside the University''s
+    own JANET allocation — not a vendor CNAME — and every manifest is attributed to the University of
+    Manchester Library. This is institution-engineered.'
+  humanURL: https://www.digitalcollections.manchester.ac.uk/
+  baseURL: https://www.digitalcollections.manchester.ac.uk/iiif
   tags:
-  - Research
-  - OAI-PMH
-  - Repository
-  - Metadata
+  - IIIF
+  - Library
+  - Digital Collections
+  - Manuscripts
+  - Open Access
+  - Cultural Heritage
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-iiif-presentation-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/university-of-manchester-iiif-manifest-schema.json
+  - type: Examples
+    url: examples/university-of-manchester-iiif-manifest-example.json
+  - type: Documentation
+    url: https://www.digitalcollections.manchester.ac.uk/about/
+  - type: TermsOfService
+    url: https://www.digitalcollections.manchester.ac.uk/terms/
+  x-operator: institution
+  x-operator-evidence: www.digitalcollections.manchester.ac.uk -> 130.88.101.74 (University of Manchester
+    JANET allocation, no CNAME); manifest attribution reads 'Provided by The University of Manchester
+    ... (c) University of Manchester Library'.
+  x-probe:
+    baseURL_status: 404
+    note: 'The API base path itself returns 404 by design — it exposes no index. Verified 200 endpoints
+      under it: /iiif/MS-LATIN-00006 and /iiif/collection/latin.'
+    verified_endpoint: https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin
+    verified_status: 200
+    probed: '2026-08-19'
+- aid: university-of-manchester:iiif-image-api
+  name: Manchester Digital Collections — IIIF Image API
+  description: 'IIIF Image API 2.0 at compliance level 1, serving regions, scaled derivatives, rotations
+    and quality variants of the Library''s digitised page images. Self-describes through info.json: formats
+    [jpg]; qualities [native, color, gray, bitonal]; supports regionByPct, regionSquare, sizeByForcedWh,
+    sizeByWh, sizeAboveFull, rotationBy90s and mirroring; maxWidth and maxHeight 2000; 256x256 tiles at
+    scale factors 1-32. Verified live on 2026-08-19 with both a simple and a compound request, plus a
+    negative probe returning a genuine 404. Host resolves to 130.88.101.75, adjacent to the Presentation
+    API host in the University''s own address space.'
+  humanURL: https://www.digitalcollections.manchester.ac.uk/
+  baseURL: https://image.digitalcollections.manchester.ac.uk/iiif
+  tags:
+  - IIIF
+  - Image
+  - Tiles
+  - Library
+  - Digital Collections
   - Open Access
   properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-iiif-image-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/university-of-manchester-iiif-image-info-schema.json
+  - type: Examples
+    url: examples/university-of-manchester-iiif-image-info-example.json
   - type: Documentation
-    url: https://research.manchester.ac.uk/
-- aid: university-of-manchester:research-explorer
-  name: Research Explorer Portal
-  description: >-
-    Public Pure portal exposing the University of Manchester's researcher profiles, research outputs,
-    projects, research units, impacts and theses. It is a discovery front end over the Pure CRIS rather
-    than a documented programmatic API, but it is the canonical public surface of the institution's research
-    data.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://research.manchester.ac.uk/
-  tags:
-  - Research
-  - Discovery
-  - Portal
-  - Pure
-  properties:
-  - type: Documentation
-    url: https://research.manchester.ac.uk/
-- aid: university-of-manchester:figshare
-  name: Research Data Repository (Figshare)
-  description: >-
-    The University of Manchester uses Figshare as its institutional research data repository for depositing
-    and openly publishing research datasets. Figshare exposes a public, documented REST API; Manchester's
-    deposits are discoverable through it, though the University does not operate the API surface itself.
-  humanURL: https://www.openresearch.manchester.ac.uk/research-services/research-data-management/
-  baseURL: https://api.figshare.com/v2
-  tags:
-  - Research Data
-  - Repository
-  - Figshare
-  - REST
-  - Open Data
-  properties:
-  - type: Documentation
-    url: https://docs.figshare.com/
-- aid: university-of-manchester:shibboleth-sso
-  name: Shibboleth SAML Identity (SSO)
-  description: >-
-    The University of Manchester provides federated authentication via a Shibboleth SAML2 Identity Provider
-    at shib.manchester.ac.uk, participating in the Jisc UK Access Management Federation. This is institutional
-    SSO infrastructure for staff, students and federated e-resources rather than a public OAuth developer
-    API.
-  humanURL: https://shib.manchester.ac.uk/
+    url: https://www.digitalcollections.manchester.ac.uk/about/
+  - type: TermsOfService
+    url: https://www.digitalcollections.manchester.ac.uk/terms/
+  x-operator: institution
+  x-operator-evidence: image.digitalcollections.manchester.ac.uk -> 130.88.101.75 (University of Manchester
+    JANET allocation, no CNAME); referenced as the image service by every canvas in the University's own
+    manifests.
+  x-probe:
+    baseURL_status: 404
+    note: 'The API base path returns 404 and the host root returns 403 — no directory listing is exposed.
+      Verified 200 endpoint under it: /iiif/MS-LATIN-00006-000-00001.jp2/info.json.'
+    verified_endpoint: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json
+    verified_status: 200
+    probed: '2026-08-19'
+- aid: university-of-manchester:shibboleth-saml-idp
+  name: Shibboleth SAML Identity Provider (UK Access Management Federation)
+  description: 'The University''s own Shibboleth Identity Provider, entityID https://shib.manchester.ac.uk/shibboleth,
+    asserting the scope manchester.ac.uk. Its entity descriptor is published as signed, machine-readable
+    SAML metadata through the Jisc UK Access Management Federation MDQ service and onward into eduGAIN
+    — retrieved live on 2026-08-19 (200, 9647 bytes) and saved to this repo. Advertises SAML 2.0, SAML
+    1.1 and the native Shibboleth authn profile over HTTP-Redirect, HTTP-POST, HTTP-POST-SimpleSign and
+    SOAP artifact resolution. Institution-operated by definition, and the single most under-catalogued
+    programmable asset a university runs. Note that the IdP is not a public developer API: an application
+    cannot obtain an assertion without being registered as a service provider in the federation.'
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
   tags:
   - Identity
   - SSO
   - SAML
   - Shibboleth
-  - Authentication
+  - Federation
+  - eduGAIN
   properties:
-  - type: Documentation
-    url: https://www.itservices.manchester.ac.uk/
-- aid: university-of-manchester:university-of-manchester-activity-api
-  name: University of Manchester activity API
-  description: The activity API from University of Manchester — 39 operation(s) for activity.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - activity
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-activity-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-application-api
-  name: University of Manchester application API
-  description: The application API from University of Manchester — 36 operation(s) for application.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - application
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-application-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-authorcollaboration-api
-  name: University of Manchester authorCollaboration API
-  description: >-
-    The authorCollaboration API from University of Manchester — 9 operation(s) for authorcollaboration.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - authorCollaboration
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-authorcollaboration-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-award-api
-  name: University of Manchester award API
-  description: The award API from University of Manchester — 37 operation(s) for award.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - award
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-award-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-classificationscheme-api
-  name: University of Manchester classificationScheme API
-  description: >-
-    The classificationScheme API from University of Manchester — 7 operation(s) for classificationscheme.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - classificationScheme
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-classificationscheme-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-concept-api
-  name: University of Manchester concept API
-  description: The concept API from University of Manchester — 4 operation(s) for concept.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - concept
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-concept-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-contract-api
-  name: University of Manchester contract API
-  description: The contract API from University of Manchester — 26 operation(s) for contract.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - contract
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-contract-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-course-api
-  name: University of Manchester course API
-  description: The course API from University of Manchester — 27 operation(s) for course.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - course
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-course-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-dataset-api
-  name: University of Manchester dataSet API
-  description: The dataSet API from University of Manchester — 30 operation(s) for dataset.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - dataSet
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-dataset-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-education-api
-  name: University of Manchester education API
-  description: The education API from University of Manchester — 14 operation(s) for education.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - education
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-education-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-equipment-api
-  name: University of Manchester equipment API
-  description: The equipment API from University of Manchester — 28 operation(s) for equipment.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - equipment
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-equipment-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-ethicalreview-api
-  name: University of Manchester ethicalReview API
-  description: The ethicalReview API from University of Manchester — 22 operation(s) for ethicalreview.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - ethicalReview
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-ethicalreview-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-event-api
-  name: University of Manchester event API
-  description: The event API from University of Manchester — 22 operation(s) for event.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - event
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-event-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-externalorganization-api
-  name: University of Manchester externalOrganization API
-  description: >-
-    The externalOrganization API from University of Manchester — 29 operation(s) for externalorganization.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - externalOrganization
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-externalorganization-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-externalperson-api
-  name: University of Manchester externalPerson API
-  description: >-
-    The externalPerson API from University of Manchester — 22 operation(s) for externalperson.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - externalPerson
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-externalperson-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-fingerprint-api
-  name: University of Manchester fingerprint API
-  description: The fingerprint API from University of Manchester — 3 operation(s) for fingerprint.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - fingerprint
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-fingerprint-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-fundingopportunity-api
-  name: University of Manchester fundingOpportunity API
-  description: >-
-    The fundingOpportunity API from University of Manchester — 21 operation(s) for fundingopportunity.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - fundingOpportunity
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-fundingopportunity-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-impact-api
-  name: University of Manchester impact API
-  description: The impact API from University of Manchester — 31 operation(s) for impact.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - impact
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-impact-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-journal-api
-  name: University of Manchester journal API
-  description: The journal API from University of Manchester — 22 operation(s) for journal.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - journal
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-journal-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-keywordgroupconfiguration-api
-  name: University of Manchester keywordGroupConfiguration API
-  description: >-
-    The keywordGroupConfiguration API from University of Manchester — 7 operation(s) for keywordgroupconfiguration.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - keywordGroupConfiguration
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-keywordgroupconfiguration-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-milestone-api
-  name: University of Manchester milestone API
-  description: The milestone API from University of Manchester — 24 operation(s) for milestone.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - milestone
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-milestone-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-organization-api
-  name: University of Manchester organization API
-  description: The organization API from University of Manchester — 34 operation(s) for organization.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - organization
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-organization-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-person-api
-  name: University of Manchester person API
-  description: The person API from University of Manchester — 58 operation(s) for person.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - person
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-person-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-personexpertise-api
-  name: University of Manchester personExpertise API
-  description: >-
-    The personExpertise API from University of Manchester — 7 operation(s) for personexpertise.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - personExpertise
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-personexpertise-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-pressmedia-api
-  name: University of Manchester pressMedia API
-  description: The pressMedia API from University of Manchester — 24 operation(s) for pressmedia.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - pressMedia
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-pressmedia-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-prize-api
-  name: University of Manchester prize API
-  description: The prize API from University of Manchester — 29 operation(s) for prize.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - prize
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-prize-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-project-api
-  name: University of Manchester project API
-  description: The project API from University of Manchester — 33 operation(s) for project.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - project
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-project-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-publisher-api
-  name: University of Manchester publisher API
-  description: The publisher API from University of Manchester — 18 operation(s) for publisher.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - publisher
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-publisher-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-researchoutput-api
-  name: University of Manchester researchOutput API
-  description: >-
-    The researchOutput API from University of Manchester — 67 operation(s) for researchoutput.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - researchOutput
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-researchoutput-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-role-api
-  name: University of Manchester role API
-  description: The role API from University of Manchester — 2 operation(s) for role.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - role
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-role-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-semester-api
-  name: University of Manchester semester API
-  description: The semester API from University of Manchester — 8 operation(s) for semester.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - semester
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-semester-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-specialization-api
-  name: University of Manchester specialization API
-  description: >-
-    The specialization API from University of Manchester — 8 operation(s) for specialization.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - specialization
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-specialization-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-studentproject-api
-  name: University of Manchester studentProject API
-  description: >-
-    The studentProject API from University of Manchester — 26 operation(s) for studentproject.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - studentProject
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-studentproject-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-studentthesis-api
-  name: University of Manchester studentThesis API
-  description: The studentThesis API from University of Manchester — 26 operation(s) for studentthesis.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - studentThesis
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-studentthesis-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-thesaurus-api
-  name: University of Manchester thesaurus API
-  description: The thesaurus API from University of Manchester — 5 operation(s) for thesaurus.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - thesaurus
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-thesaurus-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-- aid: university-of-manchester:university-of-manchester-user-api
-  name: University of Manchester user API
-  description: The user API from University of Manchester — 7 operation(s) for user.
-  humanURL: https://research.manchester.ac.uk/
-  baseURL: https://pure.manchester.ac.uk/ws/oai
-  tags:
-  - user
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-user-api-openapi.yml
-  - type: Documentation
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://pure.manchester.ac.uk/ws/api/
-  - type: x-json-schema
-    url: json-schema/university-of-manchester-researchoutput-schema.json
-  - type: x-json-structure
-    url: json-structure/university-of-manchester-researchoutput-structure.json
-  - type: x-example
-    url: examples/university-of-manchester-research-outputs-list-example.json
-  - type: x-rules
-    url: rules/university-of-manchester-rules.yml
-  - type: x-vocabulary
-    url: vocabulary/university-of-manchester-vocabulary.yml
-  - type: x-json-ld
-    url: json-ld/university-of-manchester-context.jsonld
-common:
-  - type: AgenticAccess
-    url: agentic-access/university-of-manchester-agentic-access.yml
-  - type: DomainSecurity
-    url: security/university-of-manchester-domain-security.yml
   - type: Authentication
     url: authentication/university-of-manchester-authentication.yml
-  - type: Website
-    url: https://www.manchester.ac.uk/
-  - type: GitHub
-    url: https://github.com/University-of-Manchester
-  - type: LinkedIn
-    url: https://www.linkedin.com/school/the-university-of-manchester/
-  - type: DeveloperPortal
+  - type: IdentityFederation
+    url: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  - type: Documentation
+    url: https://www.itservices.manchester.ac.uk/
+  x-operator: institution
+  x-operator-evidence: Signed EntityDescriptor from the UK Access Management Federation names OrganizationName
+    'The University of Manchester' and shibmd:Scope 'manchester.ac.uk'; shib.manchester.ac.uk resolves
+    to 130.88.36.102 in the University's own address space.
+  x-sso-endpoint: https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/Redirect/SSO
+  x-entity-id: https://shib.manchester.ac.uk/shibboleth
+  x-probe:
+    baseURL_status: 200
+    note: baseURL is the federation MDQ location because that is the machine-readable artifact an agent
+      can actually retrieve — 200, 9647 bytes of signed SAML metadata. The SSO endpoint itself returns
+      500 to a bare GET because it requires a SAMLRequest; that is protocol behaviour, not an outage,
+      and it is recorded in x-sso-endpoint rather than as a pointer.
+    sso_endpoint_bare_get_status: 500
+    probed: '2026-08-19'
+- aid: university-of-manchester:pure-cris-tenancy
+  name: Elsevier Pure CRIS tenancy (REST + OAI-PMH)
+  description: 'The University''s tenancy of Elsevier Pure, its Current Research Information System, reached
+    at pure.manchester.ac.uk and surfaced publicly as Research Explorer at research.manchester.ac.uk.
+    Both hostnames CNAME to uom-aws.elsevierpure.com. The OAI-PMH 2.0 endpoint is live and fully functional
+    — Identify returns repositoryName ''Pure OAI Repository'' with adminEmail Pure@manchester.ac.uk and
+    an earliest datestamp of 2016-03-17, ListMetadataFormats offers seven formats including oai_cerif_openaire
+    and uketd_dc, and ListRecords returns real batches. The REST API is documented at /ws/api and gated
+    by an api-key header. All of that is Manchester''s data and Manchester''s administration on Elsevier''s
+    platform under Elsevier''s contract: the specification declares info.title ''Pure API'', info.contact.email
+    pure-support@elsevier.com and info.version 5.35.2-2, with a relative servers[] entry naming no institution
+    at all. Recorded here as a tenant relationship. The specification itself is not held under this slug.'
+  humanURL: https://research.manchester.ac.uk/
+  baseURL: https://pure.manchester.ac.uk/ws/oai
+  tags:
+  - Research
+  - CRIS
+  - Pure
+  - OAI-PMH
+  - Repository
+  - Metadata
+  - Open Access
+  - Tenant
+  properties:
+  - type: Documentation
     url: https://pure.manchester.ac.uk/ws/api/
-  - type: Authentication
-    url: https://shib.manchester.ac.uk/
-  - type: Plans
-    url: plans/university-of-manchester-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/university-of-manchester-rate-limits.yml
-  - type: FinOps
-    url: finops/university-of-manchester-finops.yml
-  - type: Review
-    url: review.yml
-  - url: https://www.manchester.ac.uk/rss
-    type: Blog
+  - type: ResearchRepository
+    url: https://research.manchester.ac.uk/
+  - type: Conformance
+    url: conformance/university-of-manchester-conformance.yml
+  x-operator: tenant
+  x-operator-evidence: 'DNS: pure.manchester.ac.uk CNAME uom-aws.elsevierpure.com; research.manchester.ac.uk
+    CNAME uom-aws.elsevierpure.com. Spec self-declaration: title ''Pure API'', contact pure-support@elsevier.com,
+    version 5.35.2-2, servers[0].url ''/ws/api''.'
+  x-vendor: Elsevier (Pure)
+- aid: university-of-manchester:figshare-tenancy
+  name: Figshare research data repository tenancy
+  description: 'The University''s institutional research data repository, presented at figshare.manchester.ac.uk,
+    which CNAMEs to figshare.com. Manchester''s researchers deposit here and the deposits carry Manchester''s
+    branding, but the platform, the REST API and the DOI minting are Figshare''s. Probed 2026-08-19: the
+    tenant host returns an AWS WAF interstitial (HTTP 202) rather than a page body — a bot challenge,
+    which grades as live-and-blocked, not dead. Recorded as a tenant relationship; the generic api.figshare.com/v2
+    contract that previously appeared under this slug is a vendor surface and has been removed. One Figshare
+    contract was at one point attributed to twenty-five separate universities in this catalog; this entry
+    exists so the relationship survives the correction without the misattribution.'
+  humanURL: https://www.openresearch.manchester.ac.uk/
+  baseURL: https://figshare.manchester.ac.uk/
+  tags:
+  - Research Data
+  - Repository
+  - Figshare
+  - Open Data
+  - Tenant
+  properties:
+  - type: Documentation
+    url: https://www.openresearch.manchester.ac.uk/
+  x-operator: tenant
+  x-operator-evidence: 'DNS: figshare.manchester.ac.uk CNAME figshare.com.'
+  x-vendor: Figshare
+common:
+- type: Website
+  url: https://www.manchester.ac.uk/
+- type: Blog
+  url: https://www.manchester.ac.uk/rss
+- type: Support
+  url: https://www.manchester.ac.uk/connect/contact-us/
+- type: TermsOfService
+  url: https://www.manchester.ac.uk/disclaimer/
+- type: PrivacyPolicy
+  url: https://www.manchester.ac.uk/about/privacy-information/data-protection/
+- type: Copyright
+  url: https://www.manchester.ac.uk/copyright/
+- type: LinkedIn
+  url: https://www.linkedin.com/school/the-university-of-manchester/
+- type: GitHub
+  url: https://github.com/University-of-Manchester
+- type: GitHubOrganization
+  url: https://github.com/UoMResearchIT
+- type: IdentityFederation
+  url: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+- type: LibraryCatalog
+  url: https://www.library.manchester.ac.uk/
+- type: DigitalCollections
+  url: https://www.digitalcollections.manchester.ac.uk/
+- type: ResearchRepository
+  url: https://research.manchester.ac.uk/
+- type: CourseCatalog
+  url: https://www.manchester.ac.uk/study/undergraduate/courses/
+- type: ResearchComputing
+  url: https://research-it.manchester.ac.uk/
+- type: AIPolicy
+  url: https://www.staffnet.manchester.ac.uk/ai-hub/ai-guidelines-and-policies/
+- type: AITooling
+  url: https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/
+- type: Authentication
+  url: authentication/university-of-manchester-authentication.yml
+- type: Conformance
+  url: conformance/university-of-manchester-conformance.yml
+- type: Errors
+  url: errors/university-of-manchester-errors.yml
+- type: Lifecycle
+  url: lifecycle/university-of-manchester-lifecycle.yml
+- type: Rules
+  url: rules/university-of-manchester-rules.yml
+- type: Vocabulary
+  url: vocabulary/university-of-manchester-vocabulary.yml
+- type: JSONLD
+  url: json-ld/university-of-manchester-context.jsonld
+- type: AgenticAccess
+  url: agentic-access/university-of-manchester-agentic-access.yml
+- type: DomainSecurity
+  url: security/university-of-manchester-domain-security.yml
+- type: Plans
+  url: plans/university-of-manchester-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/university-of-manchester-rate-limits.yml
+- type: FinOps
+  url: finops/university-of-manchester-finops.yml
+- type: Review
+  url: review.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-type: university
+x-coverage:
+  state: covered
+  reason: institution_operated_contract
+  detail: 'Three institution-operated surfaces found and verified by live probe on 2026-08-19: the IIIF
+    Presentation API and IIIF Image API at Manchester Digital Collections (both on the University''s own
+    hosts inside its own JANET address space, both returning genuine 404s on negative probes against real
+    path shapes), and the Shibboleth SAML 2.0 Identity Provider whose signed entity descriptor was retrieved
+    from the UK Access Management Federation MDQ service. Two contracts were written from those probes
+    and saved. Two further surfaces, spanning three hostnames, are real but tenant-operated and are recorded
+    as relationships without holding the supplier''s specification: the Elsevier Pure tenancy (pure.manchester.ac.uk
+    and research.manchester.ac.uk, both CNAME uom-aws.elsevierpure.com) and the Figshare tenancy (figshare.manchester.ac.uk
+    CNAME figshare.com). The profile is thin because the institution is thin, not because the probe was:
+    no open data portal exists (data.manchester.ac.uk and opendata.manchester.ac.uk do not resolve), no
+    api.manchester.ac.uk or developer.manchester.ac.uk exists, and no public course, timetable or SIS
+    API was found. Thirty-six OpenAPI documents previously scored under this slug were Elsevier''s Pure
+    5.35.2-2 specification split by tag; they are quarantined in _vendor-quarantine/ with the evidence.'
+  assessed: '2026-08-19'
+  method: pipeline-university + live probe
+  institution_surfaces: 3
+  tenant_surfaces: 2
+  vendor_surfaces_removed: 1
+  contracts_saved: 2
+  contracts_quarantined: 36
+  evidence:
+  - url: https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006
+    status: 200
+  - url: https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin
+    status: 200
+  - url: https://www.digitalcollections.manchester.ac.uk/iiif/NOT-A-REAL-ID-12345
+    status: 404
+  - url: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json
+    status: 200
+  - url: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/0,0,500,500/200,/90/gray.jpg
+    status: 200
+  - url: https://image.digitalcollections.manchester.ac.uk/iiif/NOT-REAL.jp2/info.json
+    status: 404
+  - url: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+    status: 200
+  - url: https://pure.manchester.ac.uk/ws/oai?verb=Identify
+    status: 200
+  - url: https://pure.manchester.ac.uk/ws/oai?verb=ListMetadataFormats
+    status: 200
+  - url: https://pure.manchester.ac.uk/ws/api/
+    status: 200
+  - url: https://research.manchester.ac.uk/
+    status: 200
+  - url: https://figshare.manchester.ac.uk/
+    status: 202
+    note: AWS WAF bot challenge; live and blocked, not dead.
+  - url: https://www.staffnet.manchester.ac.uk/ai-hub/ai-guidelines-and-policies/
+    status: 200
+  - url: https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/
+    status: 200
+  - url: https://research-it.manchester.ac.uk/
+    status: 200
+  - url: https://www.manchester.ac.uk/study/undergraduate/courses/
+    status: 200
+  - url: https://www.linkedin.com/school/the-university-of-manchester/
+    status: 999
+    note: LinkedIn bot challenge; live and blocked, not dead.
+  - url: https://shib.manchester.ac.uk/
+    status: 500
+    note: DEAD as a pointer; removed from common[]. The IdP SSO profile endpoints are functional and the
+      federation metadata is the correct machine-readable pointer.
+  - url: https://data.manchester.ac.uk/
+    status: 0
+    note: Does not resolve. No open data portal.
+  - url: https://api.manchester.ac.uk/
+    status: 0
+    note: Does not resolve. No central API host.
+  - url: https://developer.manchester.ac.uk/
+    status: 0
+    note: Does not resolve. No developer portal.
+  - url: https://raw.githubusercontent.com/eScienceLab/rocrate-microservice-api/main/cratey-api.json
+    status: 200
+    note: Real OpenAPI 3.0.3 in a University of Manchester eScience Lab repo, but servers[0].url is https://api.server.test/v1
+      — a placeholder. Rejected, not saved.
+  tenant_hosts: 3
+  audit_script_caveat: 'audit-university-contracts.py classifies every *.manchester.ac.uk host as institution-operated
+    because its verdict is host-name based. That heuristic cannot see a vanity CNAME: it reports pure.manchester.ac.uk
+    and figshare.manchester.ac.uk as institution when DNS shows them pointing at uom-aws.elsevierpure.com
+    and figshare.com. The x-operator values in this file are set from DNS plus the specification''s own
+    self-declaration, not from the script, and they should be treated as the authority where the two disagree.
+    The same blind spot will under-count tenants across the rest of the cohort wherever an institution
+    fronts a vendor platform with its own hostname.'
+x-category: Public Research University
+x-attribution-correction:
+  date: '2026-08-19'
+  summary: 36 OpenAPI documents, 70 collections and every derived schema, example, structure, vocabulary,
+    ruleset, JSON-LD context and authentication artifact under this slug were generated from Elsevier's
+    Pure product specification and scored as the University's own. They have been moved to _vendor-quarantine/
+    and are no longer referenced. The Figshare entry has been re-pointed from the generic vendor host
+    api.figshare.com/v2 to Manchester's actual tenancy at figshare.manchester.ac.uk. Expect this repository's
+    Kin Score to fall; the previous score was measuring Elsevier's engineering.
+  quarantine: _vendor-quarantine/README.md
