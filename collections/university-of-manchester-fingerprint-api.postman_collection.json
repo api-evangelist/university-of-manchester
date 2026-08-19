@@ -1,0 +1,498 @@
+{
+  "item": [
+    {
+      "id": "3e70dad1-dcaf-4a2d-a060-493b476e1b10",
+      "name": "fingerprint",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "44608805-afbc-40f9-9330-f1d18df83b32",
+          "name": "Lists all fingerprints",
+          "request": {
+            "name": "Lists all fingerprints",
+            "description": {
+              "content": "Lists all fingerprints in the Pure instance. If you need to filter the fingerprints returned, see the POST version which supports additional filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fingerprints"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of returned fingerprints per request."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "The offset for the returned list. 0 or null value is from the start"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96a709d5-a8b7-4873-aecb-23aa9202ea0f",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fingerprints"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 8552,\n  \"pageInformation\": {\n    \"offset\": 1886,\n    \"size\": 9232\n  },\n  \"items\": [\n    {\n      \"relatedContent\": {\n        \"systemName\": \"string\",\n        \"uuid\": \"b17b0c82-a719-5ec0-167b-7d9aaa13ce66\"\n      },\n      \"pureId\": 8781,\n      \"uuid\": \"405d15b4-c9b7-6624-b988-65d4d1025ca6\",\n      \"createdBy\": \"string\",\n      \"createdDate\": \"1968-03-22T02:41:11.675Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"2008-06-06T11:11:17.329Z\",\n      \"portalUrl\": \"string\",\n      \"prettyUrlIdentifiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousUuids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"string\",\n      \"concepts\": [\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 4665.1278509829,\n          \"weightedRank\": 1368.5871495359304,\n          \"frequency\": 4488\n        },\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 4112.916626459498,\n          \"weightedRank\": 5143.698618978533,\n          \"frequency\": 942\n        }\n      ],\n      \"systemName\": \"string\"\n    },\n    {\n      \"relatedContent\": {\n        \"systemName\": \"string\",\n        \"uuid\": \"199abdf1-2201-8398-fae0-e87ec7bce741\"\n      },\n      \"pureId\": 8250,\n      \"uuid\": \"55649794-1812-54d1-1d15-5cb5dc4eda26\",\n      \"createdBy\": \"string\",\n      \"createdDate\": \"1991-05-07T10:35:34.870Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"1951-11-26T02:52:26.885Z\",\n      \"portalUrl\": \"string\",\n      \"prettyUrlIdentifiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousUuids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"string\",\n      \"concepts\": [\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 8449.230816057347,\n          \"weightedRank\": 781.2026075840283,\n          \"frequency\": 7604\n        },\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 8064.636677378104,\n          \"weightedRank\": 5426.0789346594265,\n          \"frequency\": 3192\n        }\n      ],\n      \"systemName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1ef45b2-f1ca-4293-9ff6-f3cc302f8f9c",
+          "name": "Query operation for fingerprints",
+          "request": {
+            "name": "Query operation for fingerprints",
+            "description": {
+              "content": "Lists fingerprints in the Pure instance that matches the provided query, similar to the GET version, instead of using parameters to alter the response, a JSON document is posted with the request. The JSON document contains fields for all the parameters available for the GET version, but also additional filtering options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fingerprints",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"size\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"searchString\": \"<string>\",\n  \"relatedContentUuid\": \"<string>\",\n  \"relatedContentSystemName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "20505a94-f61f-4f85-92f6-d5f85b849564",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fingerprints",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"size\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"searchString\": \"<string>\",\n  \"relatedContentUuid\": \"<string>\",\n  \"relatedContentSystemName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 4200,\n  \"pageInformation\": {\n    \"offset\": 9677,\n    \"size\": 1667\n  },\n  \"items\": [\n    {\n      \"relatedContent\": {\n        \"systemName\": \"string\",\n        \"uuid\": \"ee14d720-68c0-2624-0158-91f393e7ae91\"\n      },\n      \"pureId\": 2402,\n      \"uuid\": \"d296679a-38c0-e2e8-f7b2-bb1cb478d99e\",\n      \"createdBy\": \"string\",\n      \"createdDate\": \"1997-07-26T15:37:14.515Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"1955-06-20T16:59:54.596Z\",\n      \"portalUrl\": \"string\",\n      \"prettyUrlIdentifiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousUuids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"string\",\n      \"concepts\": [\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 3427.7349082570354,\n          \"weightedRank\": 3910.613238926264,\n          \"frequency\": 888\n        },\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 5448.6434390695595,\n          \"weightedRank\": 7547.591903462676,\n          \"frequency\": 9961\n        }\n      ],\n      \"systemName\": \"string\"\n    },\n    {\n      \"relatedContent\": {\n        \"systemName\": \"string\",\n        \"uuid\": \"92b13d33-02e6-1a65-8e7a-087742b2001a\"\n      },\n      \"pureId\": 6631,\n      \"uuid\": \"886a001c-9a65-5a19-90c7-c1c7e1ce9e3b\",\n      \"createdBy\": \"string\",\n      \"createdDate\": \"1988-05-23T09:49:23.711Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedDate\": \"1965-06-17T17:59:48.185Z\",\n      \"portalUrl\": \"string\",\n      \"prettyUrlIdentifiers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"previousUuids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"string\",\n      \"concepts\": [\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 3001.6058359473054,\n          \"weightedRank\": 3277.321651541775,\n          \"frequency\": 5292\n        },\n        {\n          \"concept\": {\n            \"conceptId\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"rank\": 9643.260152389521,\n          \"weightedRank\": 9935.486506214569,\n          \"frequency\": 6527\n        }\n      ],\n      \"systemName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e360fde3-1280-4328-81ab-d3f1e10128ba",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fingerprints",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"size\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"searchString\": \"<string>\",\n  \"relatedContentUuid\": \"<string>\",\n  \"relatedContentSystemName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 987,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f621c31-aa9c-42e8-a831-a9b8746c6368",
+          "name": "Get fingerprint",
+          "request": {
+            "name": "Get fingerprint",
+            "description": {
+              "content": "Get fingerprint with specific UUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fingerprints",
+                ":uuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uuid",
+                  "description": "(Required) UUID of the desired fingerprint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9216564a-70a1-495c-8ee5-c6c3b3539e47",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fingerprints",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) UUID of the desired fingerprint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"relatedContent\": {\n    \"systemName\": \"string\",\n    \"uuid\": \"c6898bc5-5dcb-2299-4be3-b4b0bd6af0c0\"\n  },\n  \"pureId\": 1692,\n  \"uuid\": \"23d4b61c-1839-9c57-d910-0b7c3bd9e9c9\",\n  \"createdBy\": \"string\",\n  \"createdDate\": \"2019-06-02T17:44:10.704Z\",\n  \"modifiedBy\": \"string\",\n  \"modifiedDate\": \"2001-12-05T20:52:44.266Z\",\n  \"portalUrl\": \"string\",\n  \"prettyUrlIdentifiers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"previousUuids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"version\": \"string\",\n  \"concepts\": [\n    {\n      \"concept\": {\n        \"systemName\": \"string\",\n        \"uuid\": \"b845e3bb-8af5-260d-ecac-e244de722960\",\n        \"conceptId\": \"string\"\n      },\n      \"rank\": 1955.6975015027201,\n      \"weightedRank\": 9511.814488311016,\n      \"frequency\": 9710\n    },\n    {\n      \"concept\": {\n        \"systemName\": \"string\",\n        \"uuid\": \"02b28d3c-21fd-a2f4-aeed-f654a9d9fb14\",\n        \"conceptId\": \"string\"\n      },\n      \"rank\": 9568.775608573173,\n      \"weightedRank\": 7104.225365129123,\n      \"frequency\": 7911\n    }\n  ],\n  \"systemName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63f8657b-854d-40d8-aebf-58e0aea00e29",
+              "name": "The requested content have changed UUID",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fingerprints",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) UUID of the desired fingerprint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Moved Permanently",
+              "code": 301,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "180b3478-9c75-4eba-8a6f-aef369e06d59",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fingerprints",
+                    ":uuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uuid",
+                      "description": "(Required) UUID of the desired fingerprint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "api-key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 987,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/ws/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b8c8998-e850-4e06-99a5-e26336ca23aa",
+    "name": "Pure activity fingerprint API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.\n\nContact Support:\n Email: pure-support@elsevier.com",
+      "type": "text/plain"
+    }
+  }
+}
