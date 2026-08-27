@@ -54,96 +54,17 @@ created: '2026-06-03'
 modified: '2026-08-19'
 specificationVersion: '0.23'
 apis:
-- aid: university-of-manchester:iiif-presentation-api
-  name: Manchester Digital Collections — IIIF Presentation API
-  description: 'IIIF Presentation API 2.1 over the University of Manchester Library''s digitised manuscripts,
-    archives and rare books. Serves sc:Manifest documents at /iiif/{documentId} and sc:Collection documents
-    at /iiif/collection/{collectionId}. Verified live on 2026-08-19: MS-LATIN-00006 returned a 378 KB
-    manifest of 398 canvases, the `latin` collection returned 61 manifests, and a negative probe on a
-    real path shape returned a genuine 404. The host resolves to 130.88.101.74 inside the University''s
-    own JANET allocation — not a vendor CNAME — and every manifest is attributed to the University of
-    Manchester Library. This is institution-engineered.'
-  humanURL: https://www.digitalcollections.manchester.ac.uk/
-  baseURL: https://www.digitalcollections.manchester.ac.uk/iiif
-  tags:
-  - IIIF
-  - Library
-  - Digital Collections
-  - Manuscripts
-  - Open Access
-  - Cultural Heritage
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-iiif-presentation-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/university-of-manchester-iiif-manifest-schema.json
-  - type: Examples
-    url: examples/university-of-manchester-iiif-manifest-example.json
-  - type: Documentation
-    url: https://www.digitalcollections.manchester.ac.uk/about/
-  - type: TermsOfService
-    url: https://www.digitalcollections.manchester.ac.uk/terms/
-  x-operator: institution
-  x-operator-evidence: www.digitalcollections.manchester.ac.uk -> 130.88.101.74 (University of Manchester
-    JANET allocation, no CNAME); manifest attribution reads 'Provided by The University of Manchester
-    ... (c) University of Manchester Library'.
-  x-probe:
-    baseURL_status: 404
-    note: 'The API base path itself returns 404 by design — it exposes no index. Verified 200 endpoints
-      under it: /iiif/MS-LATIN-00006 and /iiif/collection/latin.'
-    verified_endpoint: https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin
-    verified_status: 200
-    probed: '2026-08-19'
-- aid: university-of-manchester:iiif-image-api
-  name: Manchester Digital Collections — IIIF Image API
-  description: 'IIIF Image API 2.0 at compliance level 1, serving regions, scaled derivatives, rotations
-    and quality variants of the Library''s digitised page images. Self-describes through info.json: formats
-    [jpg]; qualities [native, color, gray, bitonal]; supports regionByPct, regionSquare, sizeByForcedWh,
-    sizeByWh, sizeAboveFull, rotationBy90s and mirroring; maxWidth and maxHeight 2000; 256x256 tiles at
-    scale factors 1-32. Verified live on 2026-08-19 with both a simple and a compound request, plus a
-    negative probe returning a genuine 404. Host resolves to 130.88.101.75, adjacent to the Presentation
-    API host in the University''s own address space.'
-  humanURL: https://www.digitalcollections.manchester.ac.uk/
-  baseURL: https://image.digitalcollections.manchester.ac.uk/iiif
-  tags:
-  - IIIF
-  - Image
-  - Tiles
-  - Library
-  - Digital Collections
-  - Open Access
-  properties:
-  - type: OpenAPI
-    url: openapi/university-of-manchester-iiif-image-api-openapi.yml
-  - type: JSONSchema
-    url: json-schema/university-of-manchester-iiif-image-info-schema.json
-  - type: Examples
-    url: examples/university-of-manchester-iiif-image-info-example.json
-  - type: Documentation
-    url: https://www.digitalcollections.manchester.ac.uk/about/
-  - type: TermsOfService
-    url: https://www.digitalcollections.manchester.ac.uk/terms/
-  x-operator: institution
-  x-operator-evidence: image.digitalcollections.manchester.ac.uk -> 130.88.101.75 (University of Manchester
-    JANET allocation, no CNAME); referenced as the image service by every canvas in the University's own
-    manifests.
-  x-probe:
-    baseURL_status: 404
-    note: 'The API base path returns 404 and the host root returns 403 — no directory listing is exposed.
-      Verified 200 endpoint under it: /iiif/MS-LATIN-00006-000-00001.jp2/info.json.'
-    verified_endpoint: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json
-    verified_status: 200
-    probed: '2026-08-19'
 - aid: university-of-manchester:shibboleth-saml-idp
   name: Shibboleth SAML Identity Provider (UK Access Management Federation)
-  description: 'The University''s own Shibboleth Identity Provider, entityID https://shib.manchester.ac.uk/shibboleth,
+  description: >-
+    The University's own Shibboleth Identity Provider, entityID https://shib.manchester.ac.uk/shibboleth,
     asserting the scope manchester.ac.uk. Its entity descriptor is published as signed, machine-readable
     SAML metadata through the Jisc UK Access Management Federation MDQ service and onward into eduGAIN
     — retrieved live on 2026-08-19 (200, 9647 bytes) and saved to this repo. Advertises SAML 2.0, SAML
     1.1 and the native Shibboleth authn profile over HTTP-Redirect, HTTP-POST, HTTP-POST-SimpleSign and
     SOAP artifact resolution. Institution-operated by definition, and the single most under-catalogued
     programmable asset a university runs. Note that the IdP is not a public developer API: an application
-    cannot obtain an assertion without being registered as a service provider in the federation.'
+    cannot obtain an assertion without being registered as a service provider in the federation.
   humanURL: https://www.itservices.manchester.ac.uk/
   baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
   tags:
@@ -161,31 +82,34 @@ apis:
   - type: Documentation
     url: https://www.itservices.manchester.ac.uk/
   x-operator: institution
-  x-operator-evidence: Signed EntityDescriptor from the UK Access Management Federation names OrganizationName
-    'The University of Manchester' and shibmd:Scope 'manchester.ac.uk'; shib.manchester.ac.uk resolves
-    to 130.88.36.102 in the University's own address space.
+  x-operator-evidence: >-
+    Signed EntityDescriptor from the UK Access Management Federation names OrganizationName 'The University
+    of Manchester' and shibmd:Scope 'manchester.ac.uk'; shib.manchester.ac.uk resolves to 130.88.36.102
+    in the University's own address space.
   x-sso-endpoint: https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/Redirect/SSO
   x-entity-id: https://shib.manchester.ac.uk/shibboleth
   x-probe:
     baseURL_status: 200
-    note: baseURL is the federation MDQ location because that is the machine-readable artifact an agent
-      can actually retrieve — 200, 9647 bytes of signed SAML metadata. The SSO endpoint itself returns
-      500 to a bare GET because it requires a SAMLRequest; that is protocol behaviour, not an outage,
-      and it is recorded in x-sso-endpoint rather than as a pointer.
+    note: >-
+      baseURL is the federation MDQ location because that is the machine-readable artifact an agent can
+      actually retrieve — 200, 9647 bytes of signed SAML metadata. The SSO endpoint itself returns 500
+      to a bare GET because it requires a SAMLRequest; that is protocol behaviour, not an outage, and
+      it is recorded in x-sso-endpoint rather than as a pointer.
     sso_endpoint_bare_get_status: 500
     probed: '2026-08-19'
 - aid: university-of-manchester:pure-cris-tenancy
   name: Elsevier Pure CRIS tenancy (REST + OAI-PMH)
-  description: 'The University''s tenancy of Elsevier Pure, its Current Research Information System, reached
-    at pure.manchester.ac.uk and surfaced publicly as Research Explorer at research.manchester.ac.uk.
-    Both hostnames CNAME to uom-aws.elsevierpure.com. The OAI-PMH 2.0 endpoint is live and fully functional
-    — Identify returns repositoryName ''Pure OAI Repository'' with adminEmail Pure@manchester.ac.uk and
-    an earliest datestamp of 2016-03-17, ListMetadataFormats offers seven formats including oai_cerif_openaire
-    and uketd_dc, and ListRecords returns real batches. The REST API is documented at /ws/api and gated
-    by an api-key header. All of that is Manchester''s data and Manchester''s administration on Elsevier''s
-    platform under Elsevier''s contract: the specification declares info.title ''Pure API'', info.contact.email
-    pure-support@elsevier.com and info.version 5.35.2-2, with a relative servers[] entry naming no institution
-    at all. Recorded here as a tenant relationship. The specification itself is not held under this slug.'
+  description: >-
+    The University's tenancy of Elsevier Pure, its Current Research Information System, reached at pure.manchester.ac.uk
+    and surfaced publicly as Research Explorer at research.manchester.ac.uk. Both hostnames CNAME to uom-aws.elsevierpure.com.
+    The OAI-PMH 2.0 endpoint is live and fully functional — Identify returns repositoryName 'Pure OAI
+    Repository' with adminEmail Pure@manchester.ac.uk and an earliest datestamp of 2016-03-17, ListMetadataFormats
+    offers seven formats including oai_cerif_openaire and uketd_dc, and ListRecords returns real batches.
+    The REST API is documented at /ws/api and gated by an api-key header. All of that is Manchester's
+    data and Manchester's administration on Elsevier's platform under Elsevier's contract: the specification
+    declares info.title 'Pure API', info.contact.email pure-support@elsevier.com and info.version 5.35.2-2,
+    with a relative servers[] entry naming no institution at all. Recorded here as a tenant relationship.
+    The specification itself is not held under this slug.
   humanURL: https://research.manchester.ac.uk/
   baseURL: https://pure.manchester.ac.uk/ws/oai
   tags:
@@ -205,20 +129,22 @@ apis:
   - type: Conformance
     url: conformance/university-of-manchester-conformance.yml
   x-operator: tenant
-  x-operator-evidence: 'DNS: pure.manchester.ac.uk CNAME uom-aws.elsevierpure.com; research.manchester.ac.uk
-    CNAME uom-aws.elsevierpure.com. Spec self-declaration: title ''Pure API'', contact pure-support@elsevier.com,
-    version 5.35.2-2, servers[0].url ''/ws/api''.'
+  x-operator-evidence: >-
+    DNS: pure.manchester.ac.uk CNAME uom-aws.elsevierpure.com; research.manchester.ac.uk CNAME uom-aws.elsevierpure.com.
+    Spec self-declaration: title 'Pure API', contact pure-support@elsevier.com, version 5.35.2-2, servers[0].url
+    '/ws/api'.
   x-vendor: Elsevier (Pure)
 - aid: university-of-manchester:figshare-tenancy
   name: Figshare research data repository tenancy
-  description: 'The University''s institutional research data repository, presented at figshare.manchester.ac.uk,
-    which CNAMEs to figshare.com. Manchester''s researchers deposit here and the deposits carry Manchester''s
-    branding, but the platform, the REST API and the DOI minting are Figshare''s. Probed 2026-08-19: the
+  description: >-
+    The University's institutional research data repository, presented at figshare.manchester.ac.uk, which
+    CNAMEs to figshare.com. Manchester's researchers deposit here and the deposits carry Manchester's
+    branding, but the platform, the REST API and the DOI minting are Figshare's. Probed 2026-08-19: the
     tenant host returns an AWS WAF interstitial (HTTP 202) rather than a page body — a bot challenge,
     which grades as live-and-blocked, not dead. Recorded as a tenant relationship; the generic api.figshare.com/v2
     contract that previously appeared under this slug is a vendor surface and has been removed. One Figshare
     contract was at one point attributed to twenty-five separate universities in this catalog; this entry
-    exists so the relationship survives the correction without the misattribution.'
+    exists so the relationship survives the correction without the misattribution.
   humanURL: https://www.openresearch.manchester.ac.uk/
   baseURL: https://figshare.manchester.ac.uk/
   tags:
@@ -233,6 +159,50 @@ apis:
   x-operator: tenant
   x-operator-evidence: 'DNS: figshare.manchester.ac.uk CNAME figshare.com.'
   x-vendor: Figshare
+- aid: university-of-manchester:university-of-manchester-image-api
+  name: University of Manchester Image API
+  description: IIIF Image API 2.0 level 1 endpoints.
+  humanURL: https://www.digitalcollections.manchester.ac.uk/
+  baseURL: https://www.digitalcollections.manchester.ac.uk/iiif
+  tags:
+  - image
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-image-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/university-of-manchester-iiif-manifest-schema.json
+  - type: Examples
+    url: examples/university-of-manchester-iiif-manifest-example.json
+  - type: Documentation
+    url: https://www.digitalcollections.manchester.ac.uk/about/
+  - type: TermsOfService
+    url: https://www.digitalcollections.manchester.ac.uk/terms/
+  - type: JSONSchema
+    url: json-schema/university-of-manchester-iiif-image-info-schema.json
+  - type: Examples
+    url: examples/university-of-manchester-iiif-image-info-example.json
+- aid: university-of-manchester:university-of-manchester-presentation-api
+  name: University of Manchester Presentation API
+  description: IIIF Presentation API 2.1 manifests and collections.
+  humanURL: https://www.digitalcollections.manchester.ac.uk/
+  baseURL: https://www.digitalcollections.manchester.ac.uk/iiif
+  tags:
+  - presentation
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-presentation-api-openapi.yml
+  - type: JSONSchema
+    url: json-schema/university-of-manchester-iiif-manifest-schema.json
+  - type: Examples
+    url: examples/university-of-manchester-iiif-manifest-example.json
+  - type: Documentation
+    url: https://www.digitalcollections.manchester.ac.uk/about/
+  - type: TermsOfService
+    url: https://www.digitalcollections.manchester.ac.uk/terms/
+  - type: JSONSchema
+    url: json-schema/university-of-manchester-iiif-image-info-schema.json
+  - type: Examples
+    url: examples/university-of-manchester-iiif-image-info-example.json
 common:
 - type: Website
   url: https://www.manchester.ac.uk/
