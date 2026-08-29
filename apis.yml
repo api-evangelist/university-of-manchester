@@ -216,6 +216,9 @@ apis:
   - type: Examples
     url: examples/university-of-manchester-iiif-image-info-example.json
 common:
+- type: CapabilityMap
+  url: capabilities/university-of-manchester-capability-edges.yml
+  name: University of Manchester Business Capability Map
 - type: Website
   url: https://www.manchester.ac.uk/
 - type: Blog
