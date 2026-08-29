@@ -16,6 +16,18 @@ description: 'The University of Manchester is a public research university in Ma
   documents previously held in this repository were Elsevier''s Pure 5.35.2-2 specification split by tag
   and re-titled; they have been quarantined, not counted.'
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: none
