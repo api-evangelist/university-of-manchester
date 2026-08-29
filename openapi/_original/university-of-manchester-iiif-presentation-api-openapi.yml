@@ -1,0 +1,216 @@
+# generated: '2026-08-19'
+# method: derived
+# source: >-
+#   Derived from live probes of the University of Manchester's own IIIF Presentation
+#   endpoints on 2026-08-19. No vendor specification was copied.
+#     https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006          -> 200 application/json (sc:Manifest, 398 canvases)
+#     https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin        -> 200 application/json (sc:Collection, 61 manifests)
+#     https://www.digitalcollections.manchester.ac.uk/iiif/NOT-A-REAL-ID-12345     -> 404 (negative probe; no soft-404)
+# x-operator: institution
+openapi: 3.1.0
+info:
+  title: University of Manchester Digital Collections — IIIF Presentation API
+  version: '2.1'
+  summary: Institution-operated IIIF Presentation API 2.1 over the John Rylands Library digitised collections.
+  description: >-
+    Manchester Digital Collections publishes the University of Manchester Library's digitised
+    manuscripts, archives and rare books as IIIF Presentation API 2.1 documents. Manifests and
+    collections are served as JSON from the University's own host and its own address space
+    (www.digitalcollections.manchester.ac.uk resolves to 130.88.101.74, inside the University's
+    JANET allocation), not from a vendor CNAME, and every manifest carries the attribution
+    "Provided by The University of Manchester ... © University of Manchester Library".
+
+    This is one of the few genuinely institution-operated machine-readable surfaces the University
+    runs. It is distinct from the Elsevier Pure CRIS and the Figshare repository, both of which are
+    tenant relationships on vendor platforms and are recorded in apis.yml as such.
+
+    The specification implemented here is the IIIF Presentation API 2.1, authored by the IIIF
+    Consortium. This document describes the University's deployment of it — the paths, identifiers
+    and response shapes actually observed on the live service — and does not restate the standard.
+  contact:
+    name: The University of Manchester Library
+    url: https://www.digitalcollections.manchester.ac.uk/about/
+  license:
+    name: See per-manifest attribution and terms
+    url: https://www.digitalcollections.manchester.ac.uk/terms/
+  termsOfService: https://www.digitalcollections.manchester.ac.uk/terms/
+servers:
+- url: https://www.digitalcollections.manchester.ac.uk
+  description: Manchester Digital Collections (University of Manchester Library)
+tags:
+- name: presentation
+  description: IIIF Presentation API 2.1 manifests and collections.
+paths:
+  /iiif/{documentId}:
+    get:
+      tags: [ presentation ]
+      operationId: getManifest
+      summary: Retrieve a IIIF Presentation 2.1 manifest
+      description: >-
+        Returns the sc:Manifest for one digitised item. Verified live on 2026-08-19 against
+        MS-LATIN-00006 ("Petrus Lombardus Super Psalmos (Latin MS 6)"), which returned 200 with a
+        378 KB manifest containing a single sequence of 398 canvases. Each canvas image resource
+        carries a IIIF Image API 2 service pointing at image.digitalcollections.manchester.ac.uk.
+      parameters:
+      - name: documentId
+        in: path
+        required: true
+        description: Collection-scoped document identifier, e.g. MS-LATIN-00006.
+        schema:
+          type: string
+          pattern: '^[A-Za-z0-9-]+$'
+          examples: [ MS-LATIN-00006 ]
+      responses:
+        '200':
+          description: A IIIF Presentation 2.1 manifest.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Manifest'
+              examples:
+                msLatin6:
+                  summary: Latin MS 6 (truncated)
+                  externalValue: examples/university-of-manchester-iiif-manifest-example.json
+        '404':
+          description: >-
+            No such document. Verified with a negative probe against
+            /iiif/NOT-A-REAL-ID-12345, which returned a genuine 404 rather than a soft-404 body.
+          content:
+            text/html:
+              schema:
+                type: string
+  /iiif/collection/{collectionId}:
+    get:
+      tags: [ presentation ]
+      operationId: getCollection
+      summary: Retrieve a IIIF Presentation 2.1 collection
+      description: >-
+        Returns the sc:Collection listing every manifest in one named collection. Verified live on
+        2026-08-19 against `latin`, which returned 200 with "Latin Manuscripts" and 61 manifest
+        references. Collection identifiers are the slugs listed at /collections/ — arabic,
+        bibleillustrations, chinese, cunard, dante, hebrew, latin, maps, maryhamilton and others.
+      parameters:
+      - name: collectionId
+        in: path
+        required: true
+        description: Collection slug as published at /collections/.
+        schema:
+          type: string
+          pattern: '^[a-z0-9-]+$'
+          examples: [ latin ]
+      responses:
+        '200':
+          description: A IIIF Presentation 2.1 collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Collection'
+        '404':
+          description: No such collection.
+          content:
+            text/html:
+              schema:
+                type: string
+components:
+  schemas:
+    Manifest:
+      type: object
+      description: IIIF Presentation API 2.1 sc:Manifest, as returned by this deployment.
+      required: [ '@context', '@id', '@type' ]
+      properties:
+        '@context':
+          type: string
+          const: http://iiif.io/api/presentation/2/context.json
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          const: sc:Manifest
+        label:
+          type: string
+          description: Human-readable title of the digitised item.
+        attribution:
+          type: string
+          description: >-
+            Rights attribution string. On this deployment it always names the University of
+            Manchester and the University of Manchester Library.
+        logo:
+          type: string
+          format: uri
+        metadata:
+          type: array
+          items:
+            type: object
+            properties:
+              label: { type: string }
+              value: { type: string }
+        sequences:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sequence'
+    Sequence:
+      type: object
+      properties:
+        '@id': { type: string, format: uri }
+        '@type': { type: string, const: sc:Sequence }
+        canvases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Canvas'
+    Canvas:
+      type: object
+      properties:
+        '@id': { type: string, format: uri }
+        '@type': { type: string, const: sc:Canvas }
+        label: { type: string }
+        width: { type: integer }
+        height: { type: integer }
+        images:
+          type: array
+          items:
+            $ref: '#/components/schemas/Annotation'
+    Annotation:
+      type: object
+      properties:
+        '@type': { type: string, const: oa:Annotation }
+        motivation: { type: string, const: sc:painting }
+        on: { type: string, format: uri }
+        resource:
+          type: object
+          properties:
+            '@id': { type: string, format: uri }
+            '@type': { type: string, const: dctypes:Image }
+            format: { type: string }
+            width: { type: integer }
+            height: { type: integer }
+            service:
+              $ref: '#/components/schemas/ImageService'
+    ImageService:
+      type: object
+      description: >-
+        Reference to the companion IIIF Image API 2 service, described in
+        openapi/university-of-manchester-iiif-image-api-openapi.yml.
+      properties:
+        '@context': { type: string, const: http://iiif.io/api/image/2/context.json }
+        '@id': { type: string, format: uri }
+        profile: { type: string, const: http://iiif.io/api/image/2/level1.json }
+    Collection:
+      type: object
+      required: [ '@context', '@id', '@type' ]
+      properties:
+        '@context':
+          type: string
+          const: http://iiif.io/api/presentation/2/context.json
+        '@id': { type: string, format: uri }
+        '@type': { type: string, const: sc:Collection }
+        label: { type: string }
+        description: { type: string }
+        manifests:
+          type: array
+          items:
+            type: object
+            properties:
+              '@id': { type: string, format: uri }
+              '@type': { type: string, const: sc:Manifest }
+              label: { type: string }

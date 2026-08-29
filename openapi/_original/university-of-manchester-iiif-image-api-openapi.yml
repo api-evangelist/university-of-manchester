@@ -1,0 +1,197 @@
+# generated: '2026-08-19'
+# method: derived
+# source: >-
+#   Derived from live probes of the University of Manchester's own IIIF Image API server on
+#   2026-08-19, including its self-describing info.json. No vendor specification was copied.
+#     https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json                 -> 200 application/ld+json
+#     https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/full/200,/0/default.jpg   -> 200 image/jpeg
+#     https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/0,0,500,500/200,/90/gray.jpg -> 200 image/jpeg
+#     https://image.digitalcollections.manchester.ac.uk/iiif/NOT-REAL.jp2/info.json                                 -> 404 (negative probe)
+# x-operator: institution
+openapi: 3.1.0
+info:
+  title: University of Manchester Digital Collections — IIIF Image API
+  version: '2.0'
+  summary: Institution-operated IIIF Image API 2.0 level 1 tile and derivative service.
+  description: >-
+    The image server behind Manchester Digital Collections, implementing IIIF Image API 2.0 at
+    compliance level 1. It serves regions, scaled derivatives, rotations and quality variants of the
+    University of Manchester Library's digitised page images, and is the service every canvas in the
+    companion Presentation API manifests points at.
+
+    The host image.digitalcollections.manchester.ac.uk resolves to 130.88.101.75, adjacent to the
+    Presentation API host inside the University's own JANET address space — it is not a vendor
+    CNAME. The server advertises its own capabilities in the standard info.json profile, which is
+    the authority for what this document records: formats [jpg]; qualities [native, color, gray,
+    bitonal]; supports [regionByPct, regionSquare, sizeByForcedWh, sizeByWh, sizeAboveFull,
+    rotationBy90s, mirroring]; maxWidth 2000; maxHeight 2000; tile size 256x256 with scale factors
+    1, 2, 4, 8, 16, 32.
+
+    The specification implemented is the IIIF Image API 2.0, authored by the IIIF Consortium. This
+    document describes the University's deployment of it, not the standard itself.
+  contact:
+    name: The University of Manchester Library
+    url: https://www.digitalcollections.manchester.ac.uk/about/
+  termsOfService: https://www.digitalcollections.manchester.ac.uk/terms/
+servers:
+- url: https://image.digitalcollections.manchester.ac.uk
+  description: Manchester Digital Collections image server (University of Manchester Library)
+tags:
+- name: image
+  description: IIIF Image API 2.0 level 1 endpoints.
+paths:
+  /iiif/{identifier}/info.json:
+    get:
+      tags: [ image ]
+      operationId: getImageInfo
+      summary: Retrieve the image information document
+      description: >-
+        Returns the IIIF Image API 2.0 information document describing one image's dimensions,
+        available pre-generated sizes, tile geometry and compliance profile. Verified live on
+        2026-08-19; returns application/ld+json.
+      parameters:
+      - $ref: '#/components/parameters/identifier'
+      responses:
+        '200':
+          description: IIIF Image API 2.0 information document.
+          content:
+            application/ld+json:
+              schema:
+                $ref: '#/components/schemas/ImageInformation'
+              examples:
+                msLatin6Page1:
+                  externalValue: examples/university-of-manchester-iiif-image-info-example.json
+        '404':
+          description: >-
+            No such image. Verified with a negative probe against /iiif/NOT-REAL.jp2/info.json,
+            which returned a genuine 404 (196 bytes) rather than a soft-404 body.
+  /iiif/{identifier}/{region}/{size}/{rotation}/{quality}.{format}:
+    get:
+      tags: [ image ]
+      operationId: getImage
+      summary: Retrieve a derivative of an image
+      description: >-
+        The IIIF Image API request. Verified live on 2026-08-19 for both a simple scaled request
+        (full/200,/0/default.jpg) and a compound request exercising region, size, 90-degree rotation
+        and the gray quality (0,0,500,500/200,/90/gray.jpg); both returned 200 image/jpeg. Requests
+        beyond maxWidth/maxHeight 2000 are constrained by the server profile.
+      parameters:
+      - $ref: '#/components/parameters/identifier'
+      - name: region
+        in: path
+        required: true
+        description: full, square, x,y,w,h, or pct:x,y,w,h.
+        schema:
+          type: string
+          examples: [ full, '0,0,500,500' ]
+      - name: size
+        in: path
+        required: true
+        description: full, max, w,, ,h, pct:n, !w,h or w,h. Bounded by maxWidth/maxHeight 2000.
+        schema:
+          type: string
+          examples: [ '200,', 'full' ]
+      - name: rotation
+        in: path
+        required: true
+        description: Degrees clockwise. Level 1 with rotationBy90s supports 0, 90, 180, 270, optionally mirrored with a leading '!'.
+        schema:
+          type: string
+          examples: [ '0', '90' ]
+      - name: quality
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [ native, color, gray, bitonal, default ]
+      - name: format
+        in: path
+        required: true
+        schema:
+          type: string
+          enum: [ jpg ]
+      responses:
+        '200':
+          description: The requested image derivative.
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Malformed IIIF Image API request.
+        '404':
+          description: No such image identifier.
+components:
+  parameters:
+    identifier:
+      name: identifier
+      in: path
+      required: true
+      description: >-
+        Image identifier. On this deployment it is the source filename, formed as
+        <documentId>-<sequence>-<page>.jp2, e.g. MS-LATIN-00006-000-00001.jp2. Identifiers are
+        discovered from the Presentation API manifest rather than enumerated.
+      schema:
+        type: string
+        examples: [ MS-LATIN-00006-000-00001.jp2 ]
+  schemas:
+    ImageInformation:
+      type: object
+      description: IIIF Image API 2.0 information document, as returned by this deployment.
+      required: [ '@context', '@id', protocol, width, height, profile ]
+      properties:
+        '@context':
+          type: string
+          const: http://iiif.io/api/image/2/context.json
+        '@id':
+          type: string
+          format: uri
+        protocol:
+          type: string
+          const: http://iiif.io/api/image
+        width:
+          type: integer
+          description: Full pixel width of the source image.
+        height:
+          type: integer
+          description: Full pixel height of the source image.
+        sizes:
+          type: array
+          description: Pre-generated derivative sizes.
+          items:
+            type: object
+            properties:
+              width: { type: integer }
+              height: { type: integer }
+        tiles:
+          type: array
+          items:
+            type: object
+            properties:
+              width: { type: integer }
+              height: { type: integer }
+              scaleFactors:
+                type: array
+                items: { type: integer }
+        profile:
+          type: array
+          description: >-
+            Compliance level URI followed by a capability object. This deployment reports
+            level1 plus formats, qualities, supports, maxWidth and maxHeight.
+          items:
+            anyOf:
+            - type: string
+            - type: object
+              properties:
+                formats:
+                  type: array
+                  items: { type: string }
+                qualities:
+                  type: array
+                  items: { type: string }
+                supports:
+                  type: array
+                  items: { type: string }
+                maxWidth: { type: integer }
+                maxHeight: { type: integer }
