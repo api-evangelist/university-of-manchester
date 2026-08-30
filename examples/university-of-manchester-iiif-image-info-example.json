@@ -1,0 +1,75 @@
+{
+  "_provenance": {
+    "generated": "2026-08-19",
+    "method": "probed",
+    "source": "https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json",
+    "status": 200,
+    "content_type": "application/ld+json",
+    "operator": "institution",
+    "note": "Verbatim live response from the University of Manchester Library's own IIIF Image API server."
+  },
+  "response": {
+    "@context": "http://iiif.io/api/image/2/context.json",
+    "@id": "https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2",
+    "protocol": "http://iiif.io/api/image",
+    "width": 3876,
+    "height": 5811,
+    "sizes": [
+      {
+        "width": 121,
+        "height": 181
+      },
+      {
+        "width": 242,
+        "height": 363
+      },
+      {
+        "width": 484,
+        "height": 726
+      },
+      {
+        "width": 969,
+        "height": 1452
+      }
+    ],
+    "tiles": [
+      {
+        "width": 256,
+        "height": 256,
+        "scaleFactors": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32
+        ]
+      }
+    ],
+    "profile": [
+      "http://iiif.io/api/image/2/level1.json",
+      {
+        "formats": [
+          "jpg"
+        ],
+        "qualities": [
+          "native",
+          "color",
+          "gray",
+          "bitonal"
+        ],
+        "supports": [
+          "regionByPct",
+          "regionSquare",
+          "sizeByForcedWh",
+          "sizeByWh",
+          "sizeAboveFull",
+          "rotationBy90s",
+          "mirroring"
+        ],
+        "maxWidth": 2000,
+        "maxHeight": 2000
+      }
+    ]
+  }
+}

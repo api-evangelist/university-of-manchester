@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-manchester/refs/heads/main/json-schema/university-of-manchester-iiif-manifest-schema.json",
+  "title": "University of Manchester IIIF Presentation manifest",
+  "description": "Schema for the sc:Manifest documents served by Manchester Digital Collections at www.digitalcollections.manchester.ac.uk/iiif/{documentId}. Describes the shape this institution-operated deployment actually returns.",
+  "x-provenance": {
+    "generated": "2026-08-19",
+    "method": "derived",
+    "source": "https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006",
+    "status": 200,
+    "operator": "institution",
+    "note": "Derived from the live 398-canvas manifest saved (truncated) at examples/university-of-manchester-iiif-manifest-example.json."
+  },
+  "type": "object",
+  "required": ["@context", "@id", "@type"],
+  "additionalProperties": true,
+  "properties": {
+    "@context": { "const": "http://iiif.io/api/presentation/2/context.json" },
+    "@id": { "type": "string", "format": "uri", "pattern": "^https://www\\.digitalcollections\\.manchester\\.ac\\.uk/iiif/" },
+    "@type": { "const": "sc:Manifest" },
+    "label": { "type": "string" },
+    "attribution": {
+      "type": "string",
+      "description": "Always names the University of Manchester on this deployment; it is the ownership signal that makes the surface attributable to the institution.",
+      "pattern": "University of Manchester"
+    },
+    "logo": { "type": "string", "format": "uri" },
+    "metadata": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": { "label": { "type": "string" }, "value": {} }
+      }
+    },
+    "sequences": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sequence" }
+    }
+  },
+  "$defs": {
+    "sequence": {
+      "type": "object",
+      "properties": {
+        "@id": { "type": "string", "format": "uri" },
+        "@type": { "const": "sc:Sequence" },
+        "canvases": { "type": "array", "items": { "$ref": "#/$defs/canvas" } }
+      }
+    },
+    "canvas": {
+      "type": "object",
+      "required": ["@id", "@type"],
+      "properties": {
+        "@id": { "type": "string", "format": "uri" },
+        "@type": { "const": "sc:Canvas" },
+        "label": { "type": "string" },
+        "width": { "type": "integer" },
+        "height": { "type": "integer" },
+        "images": { "type": "array", "items": { "$ref": "#/$defs/annotation" } }
+      }
+    },
+    "annotation": {
+      "type": "object",
+      "properties": {
+        "@type": { "const": "oa:Annotation" },
+        "motivation": { "const": "sc:painting" },
+        "on": { "type": "string", "format": "uri" },
+        "resource": {
+          "type": "object",
+          "properties": {
+            "@id": { "type": "string", "format": "uri" },
+            "@type": { "const": "dctypes:Image" },
+            "format": { "type": "string" },
+            "width": { "type": "integer" },
+            "height": { "type": "integer" },
+            "service": {
+              "type": "object",
+              "properties": {
+                "@context": { "const": "http://iiif.io/api/image/2/context.json" },
+                "@id": { "type": "string", "format": "uri", "pattern": "^https://image\\.digitalcollections\\.manchester\\.ac\\.uk/iiif/" },
+                "profile": { "const": "http://iiif.io/api/image/2/level1.json" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

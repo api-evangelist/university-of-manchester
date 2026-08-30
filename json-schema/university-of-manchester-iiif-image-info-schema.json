@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/university-of-manchester/refs/heads/main/json-schema/university-of-manchester-iiif-image-info-schema.json",
+  "title": "University of Manchester IIIF Image API information document",
+  "description": "Schema for the info.json returned by the University of Manchester Library's own IIIF Image API server at image.digitalcollections.manchester.ac.uk. Constraints reflect what that deployment actually reports, not the full range the IIIF Image API 2.0 standard permits.",
+  "x-provenance": {
+    "generated": "2026-08-19",
+    "method": "derived",
+    "source": "https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json",
+    "status": 200,
+    "operator": "institution",
+    "note": "Derived from the live response saved at examples/university-of-manchester-iiif-image-info-example.json."
+  },
+  "type": "object",
+  "required": ["@context", "@id", "protocol", "width", "height", "profile"],
+  "additionalProperties": true,
+  "properties": {
+    "@context": { "const": "http://iiif.io/api/image/2/context.json" },
+    "@id": { "type": "string", "format": "uri", "pattern": "^https://image\\.digitalcollections\\.manchester\\.ac\\.uk/iiif/" },
+    "protocol": { "const": "http://iiif.io/api/image" },
+    "width": { "type": "integer", "minimum": 1 },
+    "height": { "type": "integer", "minimum": 1 },
+    "sizes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["width", "height"],
+        "properties": {
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "tiles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["width", "scaleFactors"],
+        "properties": {
+          "width": { "type": "integer", "const": 256 },
+          "height": { "type": "integer", "const": 256 },
+          "scaleFactors": { "type": "array", "items": { "type": "integer" } }
+        }
+      }
+    },
+    "profile": {
+      "type": "array",
+      "minItems": 1,
+      "prefixItems": [ { "const": "http://iiif.io/api/image/2/level1.json" } ],
+      "items": {
+        "type": "object",
+        "properties": {
+          "formats": { "type": "array", "items": { "enum": ["jpg"] } },
+          "qualities": { "type": "array", "items": { "enum": ["native", "color", "gray", "bitonal"] } },
+          "supports": { "type": "array", "items": { "type": "string" } },
+          "maxWidth": { "type": "integer", "const": 2000 },
+          "maxHeight": { "type": "integer", "const": 2000 }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "_provenance": {
+    "generated": "2026-08-19",
+    "method": "probed",
+    "source": "https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin",
+    "status": 200,
+    "content_type": "application/json",
+    "operator": "institution",
+    "note": "Live sc:Collection response, manifest list truncated to the first 5 of 61.",
+    "manifests_in_live_response": 61
+  },
+  "response": {
+    "@type": "sc:Collection",
+    "manifests": [
+      {
+        "@type": "sc:Manifest",
+        "label": "MS-LATIN-00001",
+        "@id": "https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00001"
+      },
+      {
+        "@type": "sc:Manifest",
+        "label": "MS-LATIN-00006",
+        "@id": "https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006"
+      },
+      {
+        "@type": "sc:Manifest",
+        "label": "MS-LATIN-00008",
+        "@id": "https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00008"
+      },
+      {
+        "@type": "sc:Manifest",
+        "label": "MS-LATIN-00009",
+        "@id": "https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00009"
+      },
+      {
+        "@type": "sc:Manifest",
+        "label": "MS-LATIN-00010",
+        "@id": "https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00010"
+      }
+    ],
+    "description": "The collection of over 500 Latin manuscripts includes works of outstanding importance, both textually and for their illumination. They span from the 7th century to the 19th, and the range of subjects is also very wide, with biblical, liturgical, patristic, theological, historical, legal, philosophical and scientific texts.",
+    "@id": "https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin",
+    "label": "Latin Manuscripts",
+    "@context": "http://iiif.io/api/presentation/2/context.json"
+  }
+}
