@@ -177,6 +177,8 @@ apis:
   humanURL: https://www.digitalcollections.manchester.ac.uk/
   baseURL: https://www.digitalcollections.manchester.ac.uk/iiif
   tags:
+  - Image
+  tags_raw:
   - image
   properties:
   - type: OpenAPI
@@ -199,6 +201,8 @@ apis:
   humanURL: https://www.digitalcollections.manchester.ac.uk/
   baseURL: https://www.digitalcollections.manchester.ac.uk/iiif
   tags:
+  - Presentation
+  tags_raw:
   - presentation
   properties:
   - type: OpenAPI
