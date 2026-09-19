@@ -126,6 +126,15 @@ apis:
   baseURL: https://pure.manchester.ac.uk/ws/oai
   tags:
   - Research
+  - CRI
+  - Pure
+  - OAI-PMH
+  - Repository
+  - Metadata
+  - Open Access
+  - Tenants
+  tags_raw:
+  - Research
   - CRIS
   - Pure
   - OAI-PMH
@@ -160,6 +169,12 @@ apis:
   humanURL: https://www.openresearch.manchester.ac.uk/
   baseURL: https://figshare.manchester.ac.uk/
   tags:
+  - Research Data
+  - Repository
+  - Figshare
+  - Open Data
+  - Tenants
+  tags_raw:
   - Research Data
   - Repository
   - Figshare
