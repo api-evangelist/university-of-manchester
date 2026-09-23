@@ -1,0 +1,71 @@
+---
+vocabulary:
+  name: University of Manchester Pure CRIS Vocabulary
+  description: >-
+    Controlled vocabulary of the core domain terms exposed by the University of
+    Manchester Pure-based Current Research Information System (CRIS) REST API
+    (OpenAPI 3.0.1, Pure 5.35.2-2) at https://pure.manchester.ac.uk/ws/api/.
+    Terms are drawn directly from the live OpenAPI contract's resource paths and
+    component schemas.
+  version: "5.35.2-2"
+  terms:
+    - term: ResearchOutput
+      definition: >-
+        A research publication or scholarly output (article, book, conference
+        contribution, etc.) recorded in Pure, with contributors, organizations,
+        electronic versions and identifiers.
+      tags: [ Research, Publication, CRIS ]
+    - term: Person
+      definition: >-
+        A researcher or staff member profile, including names, ORCID, nationality,
+        organizational associations and qualifications.
+      tags: [ People, Researcher, Profile ]
+    - term: Activity
+      definition: >-
+        A scholarly activity such as a talk, editorial work, membership, visit or
+        examination, linked to persons and organizations.
+      tags: [ Activity, Engagement ]
+    - term: Project
+      definition: >-
+        A research project record with participants, managing organizations,
+        period, funding and related outputs.
+      tags: [ Project, Funding, Research ]
+    - term: Organization
+      definition: >-
+        An organizational unit (department, school, faculty) or external
+        organization affiliated with research content.
+      tags: [ Organization, Affiliation ]
+    - term: ClassificationRef
+      definition: >-
+        A reference into a Pure classification scheme, carrying a URI and a
+        localized term, used for types, categories, languages and countries.
+      tags: [ Classification, Reference, Taxonomy ]
+    - term: Visibility
+      definition: >-
+        The publication/visibility state of a content item (e.g. FREE for public,
+        BACKEND, CAMPUS, RESTRICTED).
+      tags: [ Visibility, Access Control ]
+    - term: Identifier
+      definition: >-
+        An external or internal identifier (DOI, Scopus ID, ORCID, etc.) attached
+        to a content item.
+      tags: [ Identifier, DOI, ORCID ]
+    - term: KeywordGroup
+      definition: >-
+        A group of keywords or classified terms describing a research entity.
+      tags: [ Keyword, Metadata ]
+    - term: Workflow
+      definition: >-
+        The editorial workflow step of a content item within Pure (e.g. validated,
+        approved).
+      tags: [ Workflow, Curation ]
+    - term: ElectronicVersion
+      definition: >-
+        A digital file or DOI/URL version of a research output, including open
+        access status and licensing.
+      tags: [ Open Access, File, Document ]
+    - term: UUID
+      definition: >-
+        The universally unique identifier that is the primary identity of every
+        Pure content item, preferred over the numeric pureId.
+      tags: [ Identity, Key ]

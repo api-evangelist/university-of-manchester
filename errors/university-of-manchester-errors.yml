@@ -1,0 +1,62 @@
+---
+generated: '2026-08-19'
+method: probed
+source: >-
+  Live probes on 2026-08-19, including deliberate negative probes against real path shapes rather
+  than nonsense paths, so that soft-404 behaviour would be detected if present.
+x-operator: institution
+
+summary: >-
+  Both institution-operated surfaces return honest HTTP status codes. Neither returns a 200 with an
+  error body, and neither returns a machine-readable error object — errors are plain HTTP semantics
+  with an HTML or minimal body. There is no problem+json, no error code vocabulary and no
+  documented retry guidance, which is the main ergonomics gap on an otherwise clean surface.
+
+surfaces:
+
+- surface: IIIF Presentation API
+  base: https://www.digitalcollections.manchester.ac.uk
+  x-operator: institution
+  media_type_on_error: text/html
+  machine_readable_errors: false
+  observed:
+  - probe: https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006
+    status: 200
+    note: Known document; valid sc:Manifest.
+  - probe: https://www.digitalcollections.manchester.ac.uk/iiif/NOT-A-REAL-ID-12345
+    status: 404
+    bytes: 14680
+    note: >-
+      Unknown document on a real path shape. Genuine 404 with the site's HTML error page — no soft-200.
+  - probe: https://www.digitalcollections.manchester.ac.uk/iiif/collections/latin
+    status: 404
+    note: Wrong path segment (plural). Correctly 404s; the working form is /iiif/collection/{id}.
+  - probe: https://www.digitalcollections.manchester.ac.uk/search/JSON?keyword=manchester
+    status: 400
+    note: >-
+      Rejects a malformed request with 400 rather than silently returning an empty result set.
+
+- surface: IIIF Image API
+  base: https://image.digitalcollections.manchester.ac.uk
+  x-operator: institution
+  media_type_on_error: text/html
+  machine_readable_errors: false
+  observed:
+  - probe: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json
+    status: 200
+    note: Known image; valid info document.
+  - probe: https://image.digitalcollections.manchester.ac.uk/iiif/NOT-REAL.jp2/info.json
+    status: 404
+    bytes: 196
+    note: Unknown identifier on a real path shape. Genuine 404, minimal body.
+  - probe: https://image.digitalcollections.manchester.ac.uk/
+    status: 403
+    bytes: 199
+    note: >-
+      Bare root is forbidden by design — the server exposes no directory listing. A 403 here is a
+      finding about configuration, not a dead host; every real IIIF path under it returns 200.
+
+gaps:
+- No RFC 9457 / problem+json error representation on any institution-operated surface.
+- No documented error catalogue, error codes or retry guidance.
+- No rate-limit headers observed on any successful response.

@@ -1,66 +1,105 @@
 ---
-# Spectral ruleset encoding patterns observed in the University of Manchester
-# Pure CRIS REST API (OpenAPI 3.0.1, Pure 5.35.2-2) served from
-# https://pure.manchester.ac.uk/ws/api/openapi.yaml
-# These rules check that new/edited specs stay consistent with the Pure contract.
+# generated: '2026-08-19'
+# method: derived
+# source: >-
+#   Derived from the two institution-operated contracts in openapi/ (Manchester Digital Collections
+#   IIIF Presentation and Image APIs). Replaces the previous ruleset, which asserted conformance to
+#   Elsevier's Pure contract and is now quarantined.
+# x-operator: institution
+# Spectral built-in functions only.
 formats:
   - oas3
 rules:
-  pure-info-title-present:
-    description: API must declare an info.title.
+  uom-info-title-present:
+    description: Every contract must declare an info.title.
     severity: error
     given: "$.info"
     then:
       field: title
       function: truthy
 
-  pure-info-version-present:
-    description: API must declare an info.version (Pure uses a build version such as 5.35.2-2).
+  uom-info-description-present:
+    description: >-
+      Every contract must carry an info.description saying what the University operates and what it
+      merely runs on. The attribution belongs in the contract, not only in the catalog.
     severity: error
     given: "$.info"
     then:
-      field: version
+      field: description
       function: truthy
 
-  pure-api-key-security-scheme:
-    description: Pure authenticates with an apiKey security scheme named "api-key".
+  uom-info-contact-present:
+    description: A contract must name a responsible party inside the institution.
     severity: warn
-    given: "$.components.securitySchemes"
+    given: "$.info"
     then:
-      field: api-key
+      field: contact
       function: truthy
 
-  pure-server-relative-ws-api:
-    description: Pure serves the API under the /ws/api base path.
-    severity: warn
-    given: "$.servers[*]"
-    then:
-      field: url
-      function: pattern
-      functionOptions:
-        match: "/ws/api"
-
-  pure-operations-have-tags:
-    description: Every operation should be tagged by resource (activities, persons, research-outputs, projects, ...).
-    severity: warn
-    given: "$.paths[*][get,post,put,delete]"
-    then:
-      field: tags
-      function: truthy
-
-  pure-collection-paths-lowercase-hyphen:
-    description: Pure collection paths use lowercase hyphenated resource names (e.g. /research-outputs).
-    severity: info
-    given: "$.paths[*]~"
+  uom-servers-absolute-institution-host:
+    description: >-
+      servers[].url must be an absolute URL on a manchester.ac.uk host. A relative server URL is how
+      Elsevier's Pure contract avoided naming any operator at all, and it is the pattern that let one
+      vendor specification be attributed to dozens of universities.
+    severity: error
+    given: "$.servers[*].url"
     then:
       function: pattern
       functionOptions:
-        match: "^/[a-z0-9-]+(/.*)?$"
+        match: "^https://[a-z0-9.-]*manchester\\.ac\\.uk(/|$)"
 
-  pure-uuid-is-primary-identity:
-    description: Object schemas should expose uuid as the primary identity field.
-    severity: info
-    given: "$.components.schemas[?(@.properties && @.properties.pureId)]"
+  uom-no-vendor-contact:
+    description: >-
+      info.contact.email must not be a supplier support address. If the contact is the vendor's, the
+      contract is the vendor's.
+    severity: error
+    given: "$.info.contact.email"
     then:
-      field: "properties.uuid"
+      function: pattern
+      functionOptions:
+        notMatch: "(elsevier|figshare|exlibrisgroup|symplectic|clarivate|instructure|workday)\\.com$"
+
+  uom-no-placeholder-server:
+    description: >-
+      Reject placeholder hosts. An example/test/localhost server is never a surface.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "(example\\.(com|org|domain)|\\.test(/|$)|localhost|staging|127\\.0\\.0\\.1)"
+
+  uom-operations-have-operation-id:
+    description: Every operation needs an operationId so it can be referenced and generated against.
+    severity: warn
+    given: "$.paths[*][get,put,post,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+
+  uom-operations-have-description:
+    description: >-
+      Every operation must describe what was actually observed, including the probe that verified it.
+    severity: warn
+    given: "$.paths[*][get,put,post,delete,patch]"
+    then:
+      field: description
+      function: truthy
+
+  uom-operations-document-404:
+    description: >-
+      Every read operation must document a 404. Manchester's IIIF services return real 404s on
+      unknown identifiers; a contract that omits it invites soft-404 false credit downstream.
+    severity: warn
+    given: "$.paths[*].get.responses"
+    then:
+      field: "404"
+      function: truthy
+
+  uom-terms-of-service-present:
+    description: A public reuse surface should point at its terms.
+    severity: warn
+    given: "$.info"
+    then:
+      field: termsOfService
       function: truthy

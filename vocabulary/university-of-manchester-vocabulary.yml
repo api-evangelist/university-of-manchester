@@ -1,71 +1,87 @@
 ---
+generated: '2026-08-19'
+method: derived
+source: >-
+  Derived from the University of Manchester's own verified surfaces — the Manchester Digital
+  Collections IIIF deployment, the Shibboleth entity descriptor in the UK Access Management
+  Federation, and the operator classification of every other surface in apis.yml. Replaces the
+  previous "Pure CRIS Vocabulary", whose terms were Elsevier's entity model and are now quarantined.
+x-operator: institution
 vocabulary:
-  name: University of Manchester Pure CRIS Vocabulary
+  name: University of Manchester Programmable Surface Vocabulary
   description: >-
-    Controlled vocabulary of the core domain terms exposed by the University of
-    Manchester Pure-based Current Research Information System (CRIS) REST API
-    (OpenAPI 3.0.1, Pure 5.35.2-2) at https://pure.manchester.ac.uk/ws/api/.
-    Terms are drawn directly from the live OpenAPI contract's resource paths and
-    component schemas.
-  version: "5.35.2-2"
+    The terms that describe what the University of Manchester actually operates, and the terms that
+    describe what it merely runs on. For a university the second list matters as much as the first:
+    almost every apparently institutional API is a supplier's contract wearing the institution's
+    domain name.
+  version: '2026-08-19'
+
   terms:
-    - term: ResearchOutput
-      definition: >-
-        A research publication or scholarly output (article, book, conference
-        contribution, etc.) recorded in Pure, with contributors, organizations,
-        electronic versions and identifiers.
-      tags: [ Research, Publication, CRIS ]
-    - term: Person
-      definition: >-
-        A researcher or staff member profile, including names, ORCID, nationality,
-        organizational associations and qualifications.
-      tags: [ People, Researcher, Profile ]
-    - term: Activity
-      definition: >-
-        A scholarly activity such as a talk, editorial work, membership, visit or
-        examination, linked to persons and organizations.
-      tags: [ Activity, Engagement ]
-    - term: Project
-      definition: >-
-        A research project record with participants, managing organizations,
-        period, funding and related outputs.
-      tags: [ Project, Funding, Research ]
-    - term: Organization
-      definition: >-
-        An organizational unit (department, school, faculty) or external
-        organization affiliated with research content.
-      tags: [ Organization, Affiliation ]
-    - term: ClassificationRef
-      definition: >-
-        A reference into a Pure classification scheme, carrying a URI and a
-        localized term, used for types, categories, languages and countries.
-      tags: [ Classification, Reference, Taxonomy ]
-    - term: Visibility
-      definition: >-
-        The publication/visibility state of a content item (e.g. FREE for public,
-        BACKEND, CAMPUS, RESTRICTED).
-      tags: [ Visibility, Access Control ]
-    - term: Identifier
-      definition: >-
-        An external or internal identifier (DOI, Scopus ID, ORCID, etc.) attached
-        to a content item.
-      tags: [ Identifier, DOI, ORCID ]
-    - term: KeywordGroup
-      definition: >-
-        A group of keywords or classified terms describing a research entity.
-      tags: [ Keyword, Metadata ]
-    - term: Workflow
-      definition: >-
-        The editorial workflow step of a content item within Pure (e.g. validated,
-        approved).
-      tags: [ Workflow, Curation ]
-    - term: ElectronicVersion
-      definition: >-
-        A digital file or DOI/URL version of a research output, including open
-        access status and licensing.
-      tags: [ Open Access, File, Document ]
-    - term: UUID
-      definition: >-
-        The universally unique identifier that is the primary identity of every
-        Pure content item, preferred over the numeric pureId.
-      tags: [ Identity, Key ]
+
+  - term: DigitalCollectionsManifest
+    definition: >-
+      A IIIF Presentation API 2.1 sc:Manifest describing one digitised item from the University of
+      Manchester Library — a manuscript, an archive item, a rare book — including its sequence of
+      canvases and their image services.
+    operator: institution
+    surface: https://www.digitalcollections.manchester.ac.uk/iiif/{documentId}
+    tags: [ IIIF, Library, Digital Collections, Manifest ]
+
+  - term: DigitalCollectionsCollection
+    definition: >-
+      A IIIF sc:Collection grouping the manifests of one named collection, such as "Latin
+      Manuscripts". The collection slugs are the University's own curatorial groupings.
+    operator: institution
+    surface: https://www.digitalcollections.manchester.ac.uk/iiif/collection/{collectionId}
+    tags: [ IIIF, Library, Collection ]
+
+  - term: ImageService
+    definition: >-
+      A IIIF Image API 2.0 level 1 endpoint serving regions, scaled derivatives, rotations and
+      quality variants of a single digitised page image, capped at 2000x2000 by the server profile.
+    operator: institution
+    surface: https://image.digitalcollections.manchester.ac.uk/iiif/{identifier}
+    tags: [ IIIF, Image, Tiles ]
+
+  - term: IdentityProvider
+    definition: >-
+      The University's Shibboleth SAML Identity Provider, entityID
+      https://shib.manchester.ac.uk/shibboleth, asserting the scope manchester.ac.uk and registered
+      in the Jisc UK Access Management Federation. Machine-readable through federation metadata, and
+      the University's most under-catalogued programmable asset.
+    operator: institution
+    surface: https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/Redirect/SSO
+    tags: [ Identity, SAML, Shibboleth, Federation ]
+
+  - term: ResearchInformationTenancy
+    definition: >-
+      The University's instance of Elsevier Pure, reached at pure.manchester.ac.uk and
+      research.manchester.ac.uk. The records are Manchester's; the REST contract, the OAI-PMH
+      implementation, the API-key scheme and the release cadence are Elsevier's. Both hostnames
+      CNAME to uom-aws.elsevierpure.com.
+    operator: tenant
+    surface: https://pure.manchester.ac.uk/ws/oai
+    tags: [ Research, CRIS, Pure, OAI-PMH, Tenant ]
+
+  - term: ResearchDataTenancy
+    definition: >-
+      The University's Figshare repository at figshare.manchester.ac.uk, which CNAMEs to
+      figshare.com. Manchester's deposits, Figshare's platform and Figshare's API.
+    operator: tenant
+    surface: https://figshare.manchester.ac.uk/
+    tags: [ Research Data, Repository, Figshare, Tenant ]
+
+  - term: TenantSurface
+    definition: >-
+      A surface reached through a hostname the institution owns but running on a platform it does
+      not operate. The data is the institution's; the contract is the supplier's. Recorded as a real
+      institutional fact, never scored as institutional engineering.
+    operator: n/a
+    tags: [ Attribution, Governance ]
+
+  - term: VendorSurface
+    definition: >-
+      A generic supplier host every customer of that supplier shares. Never attributed to any one
+      institution. The reason this vocabulary exists.
+    operator: n/a
+    tags: [ Attribution, Governance ]

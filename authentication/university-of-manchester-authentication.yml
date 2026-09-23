@@ -1,16 +1,90 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/university-of-manchester-pure-rest.yaml
+---
+generated: '2026-08-19'
+method: probed
+source: >-
+  Live probes on 2026-08-19 of the University of Manchester's own authentication surfaces, plus
+  the institution's signed SAML entity descriptor retrieved from the UK Access Management
+  Federation MDQ service.
+x-operator: institution
+
 summary:
+  note: >-
+    The University of Manchester operates no public OAuth authorization server and issues no
+    self-service API credentials. Its institution-operated authentication is federated SAML for
+    people, and its institution-operated machine surfaces are open and unauthenticated.
   types:
-  - apiKey
-  api_key_in:
-  - header
+  - saml2
+  - none
+  public_oauth: false
+  self_serve_api_keys: false
+
 schemes:
-- name: api-key
-  type: apiKey
-  in: header
-  parameter: api-key
-  description: Security mechanism for the API
+- name: shibboleth-saml2
+  type: saml2
+  x-operator: institution
+  description: >-
+    Shibboleth Identity Provider for staff, students and federated e-resource access. Registered in
+    the Jisc UK Access Management Federation (and through it eduGAIN) under entityID
+    https://shib.manchester.ac.uk/shibboleth, asserting the scope manchester.ac.uk. This is
+    institutional single sign-on infrastructure, not a developer API — no application can obtain a
+    token from it without being registered as a service provider in the federation.
+  entity_id: https://shib.manchester.ac.uk/shibboleth
+  scope: manchester.ac.uk
+  organization_name: The University of Manchester
+  display_name: University of Manchester
+  protocols:
+  - urn:mace:shibboleth:1.0
+  - urn:oasis:names:tc:SAML:1.1:protocol
+  - urn:oasis:names:tc:SAML:2.0:protocol
+  endpoints:
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect
+    location: https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/Redirect/SSO
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST
+    location: https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/POST/SSO
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign
+    location: https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/POST-SimpleSign/SSO
+  - binding: urn:mace:shibboleth:1.0:profiles:AuthnRequest
+    location: https://shib.manchester.ac.uk/shibboleth-idp/profile/Shibboleth/SSO
+  - binding: urn:oasis:names:tc:SAML:2.0:bindings:SOAP
+    location: https://shib.manchester.ac.uk:8443/shibboleth-idp/profile/SAML2/SOAP/ArtifactResolution
+  metadata:
+    document: authentication/university-of-manchester-saml-idp-metadata.xml
+    retrieved_from: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+    retrieved: '2026-08-19'
+    status: 200
+    bytes: 9647
+    signed: true
+    method: searched
   sources:
-  - openapi/university-of-manchester-pure-rest.yaml
+  - http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+
+- name: iiif-anonymous
+  type: none
+  x-operator: institution
+  description: >-
+    The Manchester Digital Collections IIIF Presentation and Image APIs require no authentication.
+    Manifests, collections, info.json documents and image derivatives were all retrieved anonymously
+    on 2026-08-19 and returned 200. There is no key, no token and no registration step.
+  sources:
+  - https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006
+  - https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json
+
+not_operated_by_institution:
+- name: pure-api-key
+  type: apiKey
+  x-operator: tenant
+  description: >-
+    The Pure CRIS REST API at pure.manchester.ac.uk/ws/api is gated by an `api-key` request header.
+    The scheme is Elsevier's, defined in Elsevier's Pure product specification, and the same header
+    gates every Pure customer's instance. Manchester administers the keys for its own tenancy; it
+    did not design the mechanism. Recorded here for completeness and deliberately excluded from
+    `schemes` so it is not credited to the institution.
+  host: pure.manchester.ac.uk
+  cname: uom-aws.elsevierpure.com
+- name: figshare-oauth
+  type: oauth2
+  x-operator: vendor
+  description: >-
+    Figshare's OAuth 2.0 authorization, operated by Figshare for all customers at
+    api.figshare.com. Manchester is a tenant at figshare.manchester.ac.uk; the authorization server
+    is not Manchester's.

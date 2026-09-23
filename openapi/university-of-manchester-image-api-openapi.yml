@@ -1,13 +1,9 @@
 openapi: 3.2.0
 info:
-  title: University of Manchester Digital Collections — IIIF Image API
+  title: University of Manchester Digital Collections — IIIF Image…
   version: '2.0'
   summary: Institution-operated IIIF Image API 2.0 level 1 tile and derivative service.
-  description: 'The image server behind Manchester Digital Collections, implementing IIIF Image API 2.0 at compliance level 1. It serves regions, scaled derivatives, rotations and quality variants of the University of Manchester Library''s digitised page images, and is the service every canvas in the companion Presentation API manifests points at.
-
-    The host image.digitalcollections.manchester.ac.uk resolves to 130.88.101.75, adjacent to the Presentation API host inside the University''s own JANET address space — it is not a vendor CNAME. The server advertises its own capabilities in the standard info.json profile, which is the authority for what this document records: formats [jpg]; qualities [native, color, gray, bitonal]; supports [regionByPct, regionSquare, sizeByForcedWh, sizeByWh, sizeAboveFull, rotationBy90s, mirroring]; maxWidth 2000; maxHeight 2000; tile size 256x256 with scale factors 1, 2, 4, 8, 16, 32.
-
-    The specification implemented is the IIIF Image API 2.0, authored by the IIIF Consortium. This document describes the University''s deployment of it, not the standard itself.'
+  description: The image server behind Manchester Digital Collections, implementing IIIF Image API 2.0 at compliance level 1.
   contact:
     name: The University of Manchester Library
     url: https://www.digitalcollections.manchester.ac.uk/about/
@@ -16,13 +12,13 @@ servers:
 - url: https://image.digitalcollections.manchester.ac.uk
   description: Manchester Digital Collections image server (University of Manchester Library)
 tags:
-- name: image
+- name: Image
   description: IIIF Image API 2.0 level 1 endpoints.
 paths:
   /iiif/{identifier}/info.json:
     get:
       tags:
-      - image
+      - Image
       operationId: getImageInfo
       summary: Retrieve the image information document
       description: Returns the IIIF Image API 2.0 information document describing one image's dimensions, available pre-generated sizes, tile geometry and compliance profile. Verified live on 2026-08-19; returns application/ld+json.
@@ -43,7 +39,7 @@ paths:
   /iiif/{identifier}/{region}/{size}/{rotation}/{quality}.{format}:
     get:
       tags:
-      - image
+      - Image
       operationId: getImage
       summary: Retrieve a derivative of an image
       description: The IIIF Image API request. Verified live on 2026-08-19 for both a simple scaled request (full/200,/0/default.jpg) and a compound request exercising region, size, 90-degree rotation and the gray quality (0,0,500,500/200,/90/gray.jpg); both returned 200 image/jpeg. Requests beyond maxWidth/maxHeight 2000 are constrained by the server profile.

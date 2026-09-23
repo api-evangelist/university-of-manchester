@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" ID="_" cacheDuration="P0Y0M0DT6H0M0.000S" entityID="https://shib.manchester.ac.uk/shibboleth" validUntil="2026-09-09T15:00:28Z"><Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/><Reference URI="#_"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/><DigestValue>9+3FL34bkWqfWu1nOVYKajdAYj3kv0x64oCL+pN6gp8=</DigestValue></Reference></SignedInfo><SignatureValue>WUi29EJJKSiTfF5KZ9mq2kL4xTXUPLLHPgemIqfyZXoQDT+3WHTYB7j2COR2noKrNLCITEel67KW
+/CFWY3BwMUOZSZTKMWxMWwIap5zWRl6Y+YDAYY13Y1cOi2ZgUdZRQVouexSBKsFcfQeeF+cSbjDe
+eNSapvdUv8Pmk4BtiosfCU1JGdnpxHc/ur77y5XI+QHPBGZcJL8rg6hOEGePaSKhuf0EAACe8UdE
+DySYs0mnXKFPfrpYPc8h5jkYjPDIcsOzPlkyXe7Fwv2C+E9Dl2hEZsvzw0aMs1fySaFoIe5MyjOg
+wCDBlcyNxXewFUo5G8ZGMLmEw7bkVqJBtsAUn+oun5/xf1zpuhU8e5GkkBtu4zv/oLrYwn6xGPJc
+EeojOWHsED4l1shHwwvytXh3hcnUd0sWOV2+GcROmgNWfyR025IP1/+KUoBJX5bHsAdXaQP8BqZD
+xJds1Gen2umTPnacBPBnOMfga5R6fENd6pz33ADv9fEg7MBQ0vohUwzFvuIemLgLzwtga73Nf5cA
+ZXD9ehvulRSWq6QuyArNRJfXjti2R7WnvzjHIGzmspSRju+/JhdTPLJLSniQANn/kp1j8F0or1WT
+OAlwK7O5xHbfQj6V4+OymLklp7XqFSQ5ctS+FJrTWzstrl61NGBLTeJXAVHvK2/DOa/eSNCYnK0=</SignatureValue></Signature>
+	<!--
+		This is a Shibboleth IdP for The University of Manchester.
+	-->
+	<Extensions>
+        <mdrpi:PublicationInfo xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi" creationInstant="2026-08-19T15:22:41Z" publisher="http://ukfederation.org.uk"/>
+
+
+		<ukfedlabel:AccountableUsers xmlns:ukfedlabel="http://ukfederation.org.uk/2006/11/label"/>
+
+
+		<mdrpi:RegistrationInfo xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi" registrationAuthority="http://ukfederation.org.uk" registrationInstant="2007-12-04T15:35:56.421696Z">
+			<mdrpi:RegistrationPolicy xml:lang="en">http://ukfederation.org.uk/doc/mdrps-20130902</mdrpi:RegistrationPolicy>
+		</mdrpi:RegistrationInfo>
+	</Extensions>
+	<IDPSSODescriptor protocolSupportEnumeration="urn:mace:shibboleth:1.0 urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+		<Extensions>
+			<shibmd:Scope xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false">manchester.ac.uk</shibmd:Scope>
+			<mdui:UIInfo xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+				<mdui:DisplayName xml:lang="en">University of Manchester</mdui:DisplayName>
+				<mdui:Logo height="16" width="16">https://login.manchester.ac.uk/disco/logo-16x16-m.png</mdui:Logo>
+				<mdui:Logo height="34" width="80">https://login.manchester.ac.uk/disco/logo-80x34-ltd.png</mdui:Logo>
+			</mdui:UIInfo>
+			<mdui:DiscoHints xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui">
+				<mdui:IPHint>130.88.0.0/16</mdui:IPHint>
+				<mdui:DomainHint>manchester.ac.uk</mdui:DomainHint>
+				<mdui:DomainHint>man.ac.uk</mdui:DomainHint>
+				<mdui:DomainHint>mbs.ac.uk</mdui:DomainHint>
+				<mdui:DomainHint>mib.ac.uk</mdui:DomainHint>
+				<mdui:DomainHint>mbs-worldwide.ac.uk</mdui:DomainHint>
+				<mdui:GeolocationHint>geo:53.465624,-2.233193</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.474881,-2.233593</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.236237,-2.306421</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.480372,-2.24893</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:51.572576,-1.315923</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.462436,-2.227711</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.429749,-2.230049</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.445089,-2.278115</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.490592,-2.28839</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.487545,-2.323424</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:53.427332,-2.247825</mdui:GeolocationHint>
+				<mdui:GeolocationHint>geo:46.23145,6.050119</mdui:GeolocationHint>
+			</mdui:DiscoHints>
+		</Extensions>
+		<KeyDescriptor>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509Certificate>
+						MIIDETCCAfmgAwIBAgIUDpPi3sADSldc2PxDJfdmOs6L9P4wDQYJKoZIhvcNAQEL
+						BQAwIDEeMBwGA1UEAwwVc2hpYi5tYW5jaGVzdGVyLmFjLnVrMB4XDTE5MDQxNTE0
+						MjM0OVoXDTM5MDQxNTE0MjM0OVowIDEeMBwGA1UEAwwVc2hpYi5tYW5jaGVzdGVy
+						LmFjLnVrMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAis4ahu/XIXSI
+						IW/AacModtg5O2lWGgOKo0hb2HlEiaJ2bpVjskqeYgOuMuSJCYBnl/hWjVznpa7I
+						uJQglxhAHYwUyLVki2aQLo7UmanctVUH8jNJddP3hgE93dMMV0bDSLLoQXGyQmiV
+						4cLBGTi7CSra0+mT4Onuim7laOLo60jEqPcQ0jqHXPkoqy+Q7IhPqNjSvsctglwU
+						0qki9NL7jSVXujZSq630E7B6Q8GEljk662U4wrrbhRig5hEX8mZUwhqTChXMHBnh
+						G1DAenS1uBBEFAPIyvsFwu7sGG7p8jfEpJr5w0peZb2UdVgGze6w5N/6adhyzLpH
+						8HCeXvTPPQIDAQABo0MwQTAdBgNVHQ4EFgQU1/VpaM06xd2Gr7jWQRdjy2PhkNEw
+						IAYDVR0RBBkwF4IVc2hpYi5tYW5jaGVzdGVyLmFjLnVrMA0GCSqGSIb3DQEBCwUA
+						A4IBAQBfvskXBRgutOVXwdH+aW/gt+RDYzSGAX1xz6i5P4Dq4GGn8znRXPj9VIZv
+						TZR8HhyUAS/DmBc+pP0VNTCIfFJLEpPbPPC8srEqpCyybg0nKCZ7ppPciefFmsH/
+						mBt4ASAN/mr/sQlBFUxaD4UJ/JUW1Nr55MyuaE1lLT3fYrkcoKA2yzHOjH0aC9Ym
+						f8yITawG4AwlPfVG4W/fVWTl0KNcuv/B0Ucp7WffYTBiFzdn1/9o4L4gtf6OUHQZ
+						CGR+yTYGp8KDHa6gCCvJtzqfSXknkgHBK8smNuqFdA8K1AoYcyCLC8vvW7+YCj6e
+						rtTDJF8F6nvi6hVF6Bd0VIcsS7VK
+					</ds:X509Certificate>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</KeyDescriptor>
+		<ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding" Location="https://shib.manchester.ac.uk:8443/shibboleth-idp/profile/SAML1/SOAP/ArtifactResolution" index="1"/>
+		<ArtifactResolutionService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://shib.manchester.ac.uk:8443/shibboleth-idp/profile/SAML2/SOAP/ArtifactResolution" index="2"/>
+		<NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+		<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+		<SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest" Location="https://shib.manchester.ac.uk/shibboleth-idp/profile/Shibboleth/SSO"/>
+		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/POST/SSO"/>
+		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/POST-SimpleSign/SSO"/>
+		<SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://shib.manchester.ac.uk/shibboleth-idp/profile/SAML2/Redirect/SSO"/>
+	</IDPSSODescriptor>
+	<AttributeAuthorityDescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+		<Extensions>
+			<shibmd:Scope xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" regexp="false">manchester.ac.uk</shibmd:Scope>
+		</Extensions>
+		<KeyDescriptor>
+			<ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+				<ds:X509Data>
+					<ds:X509Certificate>
+						MIIDETCCAfmgAwIBAgIUDpPi3sADSldc2PxDJfdmOs6L9P4wDQYJKoZIhvcNAQEL
+						BQAwIDEeMBwGA1UEAwwVc2hpYi5tYW5jaGVzdGVyLmFjLnVrMB4XDTE5MDQxNTE0
+						MjM0OVoXDTM5MDQxNTE0MjM0OVowIDEeMBwGA1UEAwwVc2hpYi5tYW5jaGVzdGVy
+						LmFjLnVrMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAis4ahu/XIXSI
+						IW/AacModtg5O2lWGgOKo0hb2HlEiaJ2bpVjskqeYgOuMuSJCYBnl/hWjVznpa7I
+						uJQglxhAHYwUyLVki2aQLo7UmanctVUH8jNJddP3hgE93dMMV0bDSLLoQXGyQmiV
+						4cLBGTi7CSra0+mT4Onuim7laOLo60jEqPcQ0jqHXPkoqy+Q7IhPqNjSvsctglwU
+						0qki9NL7jSVXujZSq630E7B6Q8GEljk662U4wrrbhRig5hEX8mZUwhqTChXMHBnh
+						G1DAenS1uBBEFAPIyvsFwu7sGG7p8jfEpJr5w0peZb2UdVgGze6w5N/6adhyzLpH
+						8HCeXvTPPQIDAQABo0MwQTAdBgNVHQ4EFgQU1/VpaM06xd2Gr7jWQRdjy2PhkNEw
+						IAYDVR0RBBkwF4IVc2hpYi5tYW5jaGVzdGVyLmFjLnVrMA0GCSqGSIb3DQEBCwUA
+						A4IBAQBfvskXBRgutOVXwdH+aW/gt+RDYzSGAX1xz6i5P4Dq4GGn8znRXPj9VIZv
+						TZR8HhyUAS/DmBc+pP0VNTCIfFJLEpPbPPC8srEqpCyybg0nKCZ7ppPciefFmsH/
+						mBt4ASAN/mr/sQlBFUxaD4UJ/JUW1Nr55MyuaE1lLT3fYrkcoKA2yzHOjH0aC9Ym
+						f8yITawG4AwlPfVG4W/fVWTl0KNcuv/B0Ucp7WffYTBiFzdn1/9o4L4gtf6OUHQZ
+						CGR+yTYGp8KDHa6gCCvJtzqfSXknkgHBK8smNuqFdA8K1AoYcyCLC8vvW7+YCj6e
+						rtTDJF8F6nvi6hVF6Bd0VIcsS7VK
+					</ds:X509Certificate>
+				</ds:X509Data>
+			</ds:KeyInfo>
+		</KeyDescriptor>
+		<AttributeService Binding="urn:oasis:names:tc:SAML:1.0:bindings:SOAP-binding" Location="https://shib.manchester.ac.uk:8443/shibboleth-idp/profile/SAML1/SOAP/AttributeQuery"/>
+		<AttributeService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://shib.manchester.ac.uk:8443/shibboleth-idp/profile/SAML2/SOAP/AttributeQuery"/>
+		<NameIDFormat>urn:mace:shibboleth:1.0:nameIdentifier</NameIDFormat>
+		<NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+	</AttributeAuthorityDescriptor>
+	<Organization>
+		<OrganizationName xml:lang="en">The University of Manchester</OrganizationName>
+		<OrganizationDisplayName xml:lang="en">University of Manchester</OrganizationDisplayName>
+		<OrganizationURL xml:lang="en">http://www.manchester.ac.uk/</OrganizationURL>
+	</Organization>
+	<ContactPerson contactType="support">
+		<GivenName>Shibboleth support</GivenName>
+		<EmailAddress>mailto:shibboleth-support@manchester.ac.uk</EmailAddress>
+	</ContactPerson>
+	<ContactPerson contactType="technical">
+		<GivenName>Andy</GivenName>
+		<SurName>Newgrosh</SurName>
+		<EmailAddress>mailto:andy.newgrosh@manchester.ac.uk</EmailAddress>
+	</ContactPerson>
+
+</EntityDescriptor>

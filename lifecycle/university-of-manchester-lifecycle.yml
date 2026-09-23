@@ -1,0 +1,71 @@
+---
+generated: '2026-08-19'
+method: derived
+source: >-
+  Derived from the versions the surfaces declare about themselves, plus the operator classification
+  of each. Live probes 2026-08-19.
+x-operator: institution
+
+summary: >-
+  The University of Manchester publishes no versioning policy, no deprecation policy and no
+  changelog for any surface it operates. Its two institution-operated contracts are versioned only
+  by the specification they implement, and both implement a superseded major version of that
+  specification. Nothing here is a defect of neglect — it is what an institution that has never
+  framed these as products looks like.
+
+surfaces:
+
+- surface: IIIF Presentation API
+  x-operator: institution
+  implements: IIIF Presentation API 2.1
+  declared_by: '@context http://iiif.io/api/presentation/2/context.json'
+  current_standard_version: '3.0'
+  status: stable
+  note: >-
+    Presentation API 3.0 has been the recommended version since 2020. Manchester serves 2.1, which
+    is widely supported by IIIF viewers and is a deliberate compatibility posture rather than an
+    outage — but it is a version-currency gap, and no migration statement is published.
+  versioning_in_url: false
+  deprecation_policy: none published
+  changelog: none published
+
+- surface: IIIF Image API
+  x-operator: institution
+  implements: IIIF Image API 2.0, compliance level 1
+  declared_by: 'profile http://iiif.io/api/image/2/level1.json'
+  current_standard_version: '3.0'
+  status: stable
+  note: Same posture as the Presentation API; level 1 rather than level 2.
+  versioning_in_url: false
+  deprecation_policy: none published
+  changelog: none published
+
+- surface: Shibboleth SAML Identity Provider
+  x-operator: institution
+  implements: SAML 2.0 and SAML 1.1
+  status: stable
+  note: >-
+    Lifecycle is governed by the Jisc UK Access Management Federation, which is where the entity
+    descriptor lives and where any change to it becomes visible. The institution does not publish an
+    independent lifecycle for it.
+  deprecation_policy: federation-governed
+  changelog: federation metadata is the changelog
+
+- surface: Pure CRIS (REST + OAI-PMH)
+  x-operator: tenant
+  implements: Elsevier Pure 5.35.2-2
+  status: vendor-governed
+  note: >-
+    Version, deprecation and release cadence are Elsevier's. Manchester consumes whatever release
+    its tenancy is upgraded to. Excluded from any lifecycle credit to the institution.
+
+- surface: Figshare repository
+  x-operator: tenant
+  status: vendor-governed
+  note: Figshare's API versioning applies; the institution has no control over it.
+
+gaps:
+- No public versioning policy for any institution-operated surface.
+- No deprecation or sunset policy, and no Sunset/Deprecation headers observed.
+- No changelog, release notes or status page for the digital collections platform.
+- Both IIIF surfaces implement a superseded major version of their specification.

@@ -1,49 +1,59 @@
 {
+  "x-provenance": {
+    "generated": "2026-08-19",
+    "method": "derived",
+    "source": "Derived from the University of Manchester's verified institution-operated surfaces (Manchester Digital Collections IIIF, Shibboleth federation entry) and its public identity. Replaces the previous context, whose terms were Elsevier Pure's entity model.",
+    "operator": "institution"
+  },
   "@context": {
     "@version": 1.1,
     "schema": "https://schema.org/",
-    "uom": "https://research.manchester.ac.uk/ns#",
-    "@vocab": "https://research.manchester.ac.uk/ns#",
+    "sc": "http://iiif.io/api/presentation/2#",
+    "iiif": "http://iiif.io/api/image/2#",
+    "md": "urn:oasis:names:tc:SAML:2.0:metadata#",
+    "uom": "https://www.manchester.ac.uk/ns#",
 
     "University": "schema:CollegeOrUniversity",
+    "Library": "schema:Library",
     "name": "schema:name",
-    "url": "schema:url",
+    "url": { "@id": "schema:url", "@type": "@id" },
     "description": "schema:description",
     "identifier": "schema:identifier",
+    "parentOrganization": { "@id": "schema:parentOrganization", "@type": "@id" },
 
-    "ResearchOutput": "schema:ScholarlyArticle",
-    "Person": "schema:Person",
-    "Activity": "schema:Event",
-    "Project": "schema:ResearchProject",
-    "Organization": "schema:Organization",
+    "Manifest": "sc:Manifest",
+    "Collection": "sc:Collection",
+    "Canvas": "sc:Canvas",
+    "Sequence": "sc:Sequence",
+    "label": "schema:name",
+    "attribution": "schema:creditText",
+    "logo": { "@id": "schema:logo", "@type": "@id" },
+    "canvases": { "@id": "sc:hasCanvases", "@container": "@list" },
+    "manifests": { "@id": "sc:hasManifests", "@container": "@list" },
 
-    "uuid": { "@id": "schema:identifier" },
-    "pureId": { "@id": "uom:pureId" },
-    "title": { "@id": "schema:name" },
-    "subTitle": { "@id": "schema:alternativeHeadline" },
-    "abstract": { "@id": "schema:abstract" },
-    "portalUrl": { "@id": "schema:url", "@type": "@id" },
-    "createdDate": { "@id": "schema:dateCreated", "@type": "schema:DateTime" },
-    "modifiedDate": { "@id": "schema:dateModified", "@type": "schema:DateTime" },
-    "submissionYear": { "@id": "schema:datePublished" },
-    "peerReview": { "@id": "uom:peerReviewed", "@type": "schema:Boolean" },
-    "language": { "@id": "schema:inLanguage" },
+    "ImageService": "iiif:ImageService",
+    "protocol": { "@id": "iiif:protocol", "@type": "@id" },
+    "profile": { "@id": "iiif:profile", "@type": "@id" },
+    "width": { "@id": "schema:width", "@type": "http://www.w3.org/2001/XMLSchema#integer" },
+    "height": { "@id": "schema:height", "@type": "http://www.w3.org/2001/XMLSchema#integer" },
+    "maxWidth": { "@id": "uom:maxWidth", "@type": "http://www.w3.org/2001/XMLSchema#integer" },
+    "maxHeight": { "@id": "uom:maxHeight", "@type": "http://www.w3.org/2001/XMLSchema#integer" },
 
-    "firstName": { "@id": "schema:givenName" },
-    "lastName": { "@id": "schema:familyName" },
-    "orcid": { "@id": "uom:orcid" },
-    "nationality": { "@id": "schema:nationality" },
+    "IdentityProvider": "md:IDPSSODescriptor",
+    "entityID": { "@id": "md:entityID", "@type": "@id" },
+    "scope": "uom:samlScope",
+    "singleSignOnService": { "@id": "md:SingleSignOnService", "@type": "@id" },
 
-    "organizations": { "@id": "schema:affiliation" },
-    "managingOrganization": { "@id": "schema:affiliation" },
-    "contributors": { "@id": "schema:author" },
-    "period": { "@id": "uom:period" },
-    "acronym": { "@id": "schema:alternateName" },
-    "keywordGroups": { "@id": "schema:keywords" },
-    "identifiers": { "@id": "schema:identifier" }
-  },
-  "@type": "University",
-  "name": "University of Manchester",
-  "url": "https://www.manchester.ac.uk/",
-  "description": "Public research university in Manchester, England, exposing research information through a Pure-based CRIS REST API and Research Explorer portal."
+    "operator": {
+      "@id": "uom:operator",
+      "@type": "@vocab",
+      "@context": {
+        "@vocab": "https://www.manchester.ac.uk/ns#operator/",
+        "institution": "uom:operator/institution",
+        "tenant": "uom:operator/tenant",
+        "vendor": "uom:operator/vendor",
+        "placeholder": "uom:operator/placeholder"
+      }
+    }
+  }
 }

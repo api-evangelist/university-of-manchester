@@ -3,42 +3,114 @@ name: University of Manchester
 description: University of Manchester public developer/API footprint review for APIs.json cataloging.
 url: https://raw.githubusercontent.com/api-evangelist/university-of-manchester/refs/heads/main/review.yml
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-19'
 reviews:
-  - date: '2026-06-03'
+  - date: '2026-08-19'
     rating: 2
     summary: >-
-      Research-led API footprint, no central self-service developer portal. Verified
-      live: the Pure OAI-PMH 2.0 endpoint returns a valid Identify response ("Pure OAI
-      Repository"), the Pure REST API documentation site loads, the public Research
-      Explorer portal loads, the main website loads, and the University-of-Manchester
-      GitHub org exists with two public repositories. The Shibboleth SAML IdP host
-      exists but its bare root returned HTTP 500 (the SSO flow itself is operational).
-      Figshare is the institution's research-data repository (third-party-hosted public
-      API). No public open-data, course, timetable or SIS APIs were confirmed; the Pure
-      REST write API is key-gated. No endpoints were fabricated.
+      Re-profiled under the university pipeline, which settles operator attribution before saving
+      anything. The June 2026 profile scored 36 OpenAPI documents as the University's own; every one
+      of them was Elsevier's Pure 5.35.2-2 specification split by tag — info.title "Pure API",
+      info.contact.email pure-support@elsevier.com, servers[0].url "/ws/api" naming no institution —
+      and DNS confirms pure.manchester.ac.uk and research.manchester.ac.uk both CNAME to
+      uom-aws.elsevierpure.com. Those contracts and everything derived from them are quarantined.
+
+      What the University does operate, verified live: a IIIF Presentation API 2.1 and a IIIF Image
+      API 2.0 level 1 at Manchester Digital Collections, both on hosts inside the University's own
+      JANET address space (130.88.101.74 and .75) with manifests attributed to the University of
+      Manchester Library; and a Shibboleth SAML 2.0 Identity Provider whose signed entity descriptor
+      is published through the Jisc UK Access Management Federation. Two contracts were written from
+      those probes and saved. Three further surfaces are real but tenant-operated — Pure, Research
+      Explorer and Figshare — and are recorded as relationships without holding the supplier's spec.
+
+      No open data portal, no central API host, no developer portal, no public course/timetable/SIS
+      API. This is a correct thin profile, and the score should fall accordingly.
     endpoints:
+      - url: https://www.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006
+        status: 200
+        note: >-
+          IIIF Presentation 2.1 sc:Manifest, 398 canvases, attributed to the University of Manchester
+          Library. Institution-operated.
+      - url: https://www.digitalcollections.manchester.ac.uk/iiif/collection/latin
+        status: 200
+        note: sc:Collection "Latin Manuscripts", 61 manifests.
+      - url: https://www.digitalcollections.manchester.ac.uk/iiif/NOT-A-REAL-ID-12345
+        status: 404
+        note: Negative probe on a real path shape. Genuine 404 — no soft-404 false credit.
+      - url: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/info.json
+        status: 200
+        note: IIIF Image API 2.0 level1 info document, application/ld+json.
+      - url: https://image.digitalcollections.manchester.ac.uk/iiif/MS-LATIN-00006-000-00001.jp2/0,0,500,500/200,/90/gray.jpg
+        status: 200
+        note: Compound region/size/rotation/quality request; declared capabilities are real.
+      - url: https://image.digitalcollections.manchester.ac.uk/iiif/NOT-REAL.jp2/info.json
+        status: 404
+        note: Negative probe. Genuine 404.
+      - url: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+        status: 200
+        note: >-
+          Signed SAML EntityDescriptor, 9647 bytes. entityID https://shib.manchester.ac.uk/shibboleth,
+          OrganizationName "The University of Manchester", scope manchester.ac.uk. Institution-operated
+          identity federation — the real find on this profile.
       - url: https://pure.manchester.ac.uk/ws/oai?verb=Identify
         status: 200
-        note: Live OAI-PMH 2.0 Identify response, "Pure OAI Repository".
+        note: >-
+          Live OAI-PMH 2.0, repositoryName "Pure OAI Repository", adminEmail Pure@manchester.ac.uk.
+          Tenant — host CNAMEs to uom-aws.elsevierpure.com.
+      - url: https://pure.manchester.ac.uk/ws/oai?verb=ListMetadataFormats
+        status: 200
+        note: Seven formats including oai_cerif_openaire and uketd_dc.
       - url: https://pure.manchester.ac.uk/ws/api/
         status: 200
-        note: Pure CRIS REST API documentation site (MkDocs, OpenAPI 3); write API is key-gated.
+        note: Elsevier Pure REST API documentation, api-key gated. Vendor contract on a tenant host.
       - url: https://research.manchester.ac.uk/
         status: 200
-        note: Public Research Explorer (Pure) portal; discovery front end, not a documented API.
-      - url: https://www.manchester.ac.uk/
-        status: 200
-        note: Official institution website.
+        note: Research Explorer, the public Pure portal. Tenant.
+      - url: https://figshare.manchester.ac.uk/
+        status: 202
+        note: >-
+          Manchester's Figshare tenancy; CNAMEs to figshare.com. AWS WAF bot challenge — live and
+          blocked, not dead. Replaces the generic api.figshare.com/v2 entry, which was a vendor surface.
       - url: https://shib.manchester.ac.uk/
         status: 500
-        note: Shibboleth SAML2 IdP host; bare root errors but SSO profile endpoint is functional.
-      - url: https://github.com/University-of-Manchester
+        note: >-
+          Bare IdP root errors. Removed as a pointer; the federation metadata is the correct
+          machine-readable reference and the SSO profile endpoints are functional.
+      - url: https://www.staffnet.manchester.ac.uk/ai-hub/ai-guidelines-and-policies/
         status: 200
-        note: Official GitHub org, 2 public repos (uPortal, umobile-app-phonegap).
-      - url: https://api.figshare.com/v2
+        note: Institutional AI guidelines and policies. AIPolicy pointer.
+      - url: https://www.staffnet.manchester.ac.uk/ai-hub/tools-and-resources/
         status: 200
-        note: Figshare public REST API; Manchester research data repository host.
-      - url: https://research.manchester.ac.uk/ws/oai
+        note: Approved AI tooling for staff, including the M365 Copilot rollout. AITooling pointer.
+      - url: https://research-it.manchester.ac.uk/
+        status: 200
+        note: Research IT service site. Research computing is documented but not programmable.
+      - url: https://www.manchester.ac.uk/study/undergraduate/courses/
+        status: 200
+        note: Course catalog is HTML only. No JSON or feed surface found behind it.
+      - url: https://github.com/UoMResearchIT
+        status: 200
+        note: Research IT GitHub organization, 217 public repositories. No institution API specs found.
+      - url: https://raw.githubusercontent.com/eScienceLab/rocrate-microservice-api/main/cratey-api.json
+        status: 200
+        note: >-
+          Real OpenAPI 3.0.3 ("Cratey API") in a University of Manchester eScience Lab repository, but
+          servers[0].url is https://api.server.test/v1 — a placeholder. Rejected, not saved.
+      - url: https://data.manchester.ac.uk/
         status: 0
-        note: Not the OAI host; OAI-PMH is served from pure.manchester.ac.uk, not research.manchester.ac.uk.
+        note: Does not resolve. No open data portal.
+      - url: https://api.manchester.ac.uk/
+        status: 0
+        note: Does not resolve. No central API host.
+      - url: https://developer.manchester.ac.uk/
+        status: 0
+        note: Does not resolve. No developer portal.
+  - date: '2026-06-03'
+    rating: 2
+    superseded_by: '2026-08-19'
+    summary: >-
+      SUPERSEDED. Recorded the Pure CRIS REST API and OAI-PMH endpoint, the Research Explorer portal,
+      the Shibboleth IdP, a Figshare repository and a small GitHub org. Correct as far as it went, but
+      it saved Elsevier's Pure specification under this slug and split it into 36 apis[] entries,
+      inflating the University's apparent footprint 36-fold. No endpoints were fabricated; the failure
+      was attribution, not invention.
