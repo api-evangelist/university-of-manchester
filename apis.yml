@@ -234,6 +234,376 @@ apis:
     url: json-schema/university-of-manchester-iiif-image-info-schema.json
   - type: Examples
     url: examples/university-of-manchester-iiif-image-info-example.json
+- aid: university-of-manchester:university-of-manchester-activity-api
+  name: University of Manchester Activity API
+  description: The activity API from University of Manchester — 39 operation(s) for activity.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - activity
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-activity-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-application-api
+  name: University of Manchester Application API
+  description: The application API from University of Manchester — 36 operation(s) for application.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - application
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-application-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-authorcollaboration-api
+  name: University of Manchester Author Collaboration API
+  description: >-
+    The authorCollaboration API from University of Manchester — 9 operation(s) for authorcollaboration.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - authorCollaboration
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-authorcollaboration-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-award-api
+  name: University of Manchester Award API
+  description: The award API from University of Manchester — 37 operation(s) for award.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - award
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-award-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-classificationscheme-api
+  name: University of Manchester Classification Scheme API
+  description: >-
+    The classificationScheme API from University of Manchester — 7 operation(s) for classificationscheme.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - classificationScheme
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-classificationscheme-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-concept-api
+  name: University of Manchester Concept API
+  description: The concept API from University of Manchester — 4 operation(s) for concept.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - concept
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-concept-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-contract-api
+  name: University of Manchester Contract API
+  description: The contract API from University of Manchester — 26 operation(s) for contract.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - contract
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-contract-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-course-api
+  name: University of Manchester Course API
+  description: The course API from University of Manchester — 27 operation(s) for course.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - course
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-course-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-dataset-api
+  name: University of Manchester Data Set API
+  description: The dataSet API from University of Manchester — 30 operation(s) for dataset.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - dataSet
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-dataset-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-education-api
+  name: University of Manchester Education API
+  description: The education API from University of Manchester — 14 operation(s) for education.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - education
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-education-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-equipment-api
+  name: University of Manchester Equipment API
+  description: The equipment API from University of Manchester — 28 operation(s) for equipment.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - equipment
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-equipment-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-ethicalreview-api
+  name: University of Manchester Ethical Review API
+  description: The ethicalReview API from University of Manchester — 22 operation(s) for ethicalreview.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - ethicalReview
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-ethicalreview-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-event-api
+  name: University of Manchester Event API
+  description: The event API from University of Manchester — 22 operation(s) for event.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - event
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-event-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-externalorganization-api
+  name: University of Manchester External Organization API
+  description: >-
+    The externalOrganization API from University of Manchester — 29 operation(s) for externalorganization.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - externalOrganization
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-externalorganization-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-externalperson-api
+  name: University of Manchester External Person API
+  description: >-
+    The externalPerson API from University of Manchester — 22 operation(s) for externalperson.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - externalPerson
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-externalperson-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-fingerprint-api
+  name: University of Manchester Fingerprint API
+  description: The fingerprint API from University of Manchester — 3 operation(s) for fingerprint.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - fingerprint
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-fingerprint-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-fundingopportunity-api
+  name: University of Manchester Funding Opportunity API
+  description: >-
+    The fundingOpportunity API from University of Manchester — 21 operation(s) for fundingopportunity.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - fundingOpportunity
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-fundingopportunity-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-impact-api
+  name: University of Manchester Impact API
+  description: The impact API from University of Manchester — 31 operation(s) for impact.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - impact
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-impact-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-journal-api
+  name: University of Manchester Journal API
+  description: The journal API from University of Manchester — 22 operation(s) for journal.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - journal
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-journal-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-keywordgroupconfiguration-api
+  name: University of Manchester Keyword Group Configuration API
+  description: >-
+    The keywordGroupConfiguration API from University of Manchester — 7 operation(s) for keywordgroupconfiguration.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - keywordGroupConfiguration
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-keywordgroupconfiguration-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-milestone-api
+  name: University of Manchester Milestone API
+  description: The milestone API from University of Manchester — 24 operation(s) for milestone.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - milestone
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-milestone-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-organization-api
+  name: University of Manchester Organization API
+  description: The organization API from University of Manchester — 34 operation(s) for organization.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - organization
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-organization-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-person-api
+  name: University of Manchester Person API
+  description: The person API from University of Manchester — 58 operation(s) for person.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - person
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-person-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-personexpertise-api
+  name: University of Manchester Person Expertise API
+  description: >-
+    The personExpertise API from University of Manchester — 7 operation(s) for personexpertise.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - personExpertise
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-personexpertise-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-pressmedia-api
+  name: University of Manchester Press Media API
+  description: The pressMedia API from University of Manchester — 24 operation(s) for pressmedia.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - pressMedia
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-pressmedia-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-prize-api
+  name: University of Manchester Prize API
+  description: The prize API from University of Manchester — 29 operation(s) for prize.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - prize
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-prize-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-project-api
+  name: University of Manchester Project API
+  description: The project API from University of Manchester — 33 operation(s) for project.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - project
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-project-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-publisher-api
+  name: University of Manchester Publisher API
+  description: The publisher API from University of Manchester — 18 operation(s) for publisher.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - publisher
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-publisher-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-researchoutput-api
+  name: University of Manchester Research Output API
+  description: >-
+    The researchOutput API from University of Manchester — 67 operation(s) for researchoutput.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - researchOutput
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-researchoutput-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-role-api
+  name: University of Manchester Role API
+  description: The role API from University of Manchester — 2 operation(s) for role.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - role
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-role-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-semester-api
+  name: University of Manchester Semester API
+  description: The semester API from University of Manchester — 8 operation(s) for semester.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - semester
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-semester-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-specialization-api
+  name: University of Manchester Specialization API
+  description: >-
+    The specialization API from University of Manchester — 8 operation(s) for specialization.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - specialization
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-specialization-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-studentproject-api
+  name: University of Manchester Student Project API
+  description: >-
+    The studentProject API from University of Manchester — 26 operation(s) for studentproject.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - studentProject
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-studentproject-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-studentthesis-api
+  name: University of Manchester Student Thesis API
+  description: The studentThesis API from University of Manchester — 26 operation(s) for studentthesis.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - studentThesis
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-studentthesis-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-thesaurus-api
+  name: University of Manchester Thesaurus API
+  description: The thesaurus API from University of Manchester — 5 operation(s) for thesaurus.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - thesaurus
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-thesaurus-api-openapi.yml
+- aid: university-of-manchester:university-of-manchester-user-api
+  name: University of Manchester User API
+  description: The user API from University of Manchester — 7 operation(s) for user.
+  humanURL: https://www.itservices.manchester.ac.uk/
+  baseURL: http://mdq.ukfederation.org.uk/entities/https%3A%2F%2Fshib.manchester.ac.uk%2Fshibboleth
+  tags:
+  - user
+  properties:
+  - type: OpenAPI
+    url: openapi/university-of-manchester-user-api-openapi.yml
 common:
 - type: CapabilityMap
   url: capabilities/university-of-manchester-capability-edges.yml

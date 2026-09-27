@@ -117,7 +117,7 @@ components:
                 const: sc:Manifest
               label:
                 type: string
-    Canvas:
+    Sequence:
       type: object
       properties:
         '@id':
@@ -125,30 +125,11 @@ components:
           format: uri
         '@type':
           type: string
-          const: sc:Canvas
-        label:
-          type: string
-        width:
-          type: integer
-        height:
-          type: integer
-        images:
+          const: sc:Sequence
+        canvases:
           type: array
           items:
-            $ref: '#/components/schemas/Annotation'
-    ImageService:
-      type: object
-      description: Reference to the companion IIIF Image API 2 service, described in openapi/university-of-manchester-iiif-image-api-openapi.yml.
-      properties:
-        '@context':
-          type: string
-          const: http://iiif.io/api/image/2/context.json
-        '@id':
-          type: string
-          format: uri
-        profile:
-          type: string
-          const: http://iiif.io/api/image/2/level1.json
+            $ref: '#/components/schemas/Canvas'
     Annotation:
       type: object
       properties:
@@ -217,7 +198,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sequence'
-    Sequence:
+    ImageService:
+      type: object
+      description: Reference to the companion IIIF Image API 2 service, described in openapi/university-of-manchester-iiif-image-api-openapi.yml.
+      properties:
+        '@context':
+          type: string
+          const: http://iiif.io/api/image/2/context.json
+        '@id':
+          type: string
+          format: uri
+        profile:
+          type: string
+          const: http://iiif.io/api/image/2/level1.json
+    Canvas:
       type: object
       properties:
         '@id':
@@ -225,8 +219,14 @@ components:
           format: uri
         '@type':
           type: string
-          const: sc:Sequence
-        canvases:
+          const: sc:Canvas
+        label:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        images:
           type: array
           items:
-            $ref: '#/components/schemas/Canvas'
+            $ref: '#/components/schemas/Annotation'
