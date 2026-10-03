@@ -292,6 +292,29 @@ paths:
                 $ref: '#/components/schemas/ConflictProblemDetails'
 components:
   schemas:
+    ClassificationSchemeRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a classification scheme
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    KeywordGroupConfigurationList:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeywordGroupConfiguration'
+      description: List of keyword group configurations
     KeywordGroupConfiguration:
       required:
       - logicalName
@@ -430,6 +453,31 @@ components:
           description: The content system name
           readOnly: true
       description: A specification of the allowed behavior of a specified keyword group
+    LocalesList:
+      type: object
+      properties:
+        locales:
+          pattern: /^[a-z]{2}_[A-Z]{2}$/
+          type: array
+          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+          items:
+            pattern: /^[a-z]{2}_[A-Z]{2}$/
+            type: string
+            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+      description: List of available locales
+    LocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
+        example: '{"en_GB":"Some text"}'
+      description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
+      example:
+        en_GB: Some text
     ContentRef:
       required:
       - systemName
@@ -497,20 +545,19 @@ components:
           Fingerprint: '#/components/schemas/FingerprintRef'
           Specialization: '#/components/schemas/SpecializationRef'
           StudentProject: '#/components/schemas/StudentProjectRef'
-    KeywordGroupConfigurationList:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/KeywordGroupConfiguration'
-      description: List of keyword group configurations
+    FormattedLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+      example:
+        en_GB: Some text
     PageInformation:
       type: object
       properties:
@@ -523,19 +570,20 @@ components:
           description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
           format: int32
       description: Information about pages
-    LocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
-        example: '{"en_GB":"Some text"}'
-      description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
-      example:
-        en_GB: Some text
+    APIStringToStringListMapResult:
+      type: object
+      properties:
+        items:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              xml:
+                name: item
+        count:
+          type: integer
+          format: int32
     ConflictProblemDetails:
       type: object
       properties:
@@ -561,6 +609,16 @@ components:
         modifiedBy:
           type: string
       description: Problem details for state conflict failures
+    APIStringListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        count:
+          type: integer
+          format: int32
     ProblemDetails:
       type: object
       properties:
@@ -587,64 +645,6 @@ components:
           /error: '#/components/schemas/GenericProblemDetails'
           /validation-error: '#/components/schemas/ValidationProblemDetails'
           /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
-    LocalesList:
-      type: object
-      properties:
-        locales:
-          pattern: /^[a-z]{2}_[A-Z]{2}$/
-          type: array
-          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
-          items:
-            pattern: /^[a-z]{2}_[A-Z]{2}$/
-            type: string
-            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
-      description: List of available locales
-    FormattedLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-      example:
-        en_GB: Some text
-    APIStringListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            type: string
-        count:
-          type: integer
-          format: int32
-    ClassificationSchemeRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a classification scheme
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    APIStringToStringListMapResult:
-      type: object
-      properties:
-        items:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-              xml:
-                name: item
-        count:
-          type: integer
-          format: int32
   securitySchemes:
     api-key:
       type: apiKey

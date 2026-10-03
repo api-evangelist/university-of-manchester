@@ -370,121 +370,28 @@ paths:
                 $ref: '#/components/schemas/ConflictProblemDetails'
 components:
   schemas:
-    OrderingsList:
+    AssignableRoleRef:
+      required:
+      - assignableRoleName
       type: object
       properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
-    ContentRef:
-      required:
-      - systemName
-      - uuid
-      type:
-      - object
-      - 'null'
-      properties:
-        uuid:
+        assignableRoleName:
           type: string
-          description: UUID of the referred content
-          format: uuid
-        systemName:
+          description: Name of an assignable role
+      description: A reference to an assignable role that can be either local or global
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
           type: string
       discriminator:
-        propertyName: systemName
+        propertyName: typeDiscriminator
         mapping:
-          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
-          Activity: '#/components/schemas/ActivityRef'
-          Application: '#/components/schemas/ApplicationRef'
-          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
-          Award: '#/components/schemas/AwardRef'
-          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
-          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
-          DataSet: '#/components/schemas/DataSetRef'
-          Equipment: '#/components/schemas/EquipmentRef'
-          Event: '#/components/schemas/EventRef'
-          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
-          ExternalPerson: '#/components/schemas/ExternalPersonRef'
-          Impact: '#/components/schemas/ImpactRef'
-          Journal: '#/components/schemas/JournalRef'
-          Organization: '#/components/schemas/OrganizationRef'
-          Person: '#/components/schemas/PersonRef'
-          Publisher: '#/components/schemas/PublisherRef'
-          PressMedia: '#/components/schemas/PressMediaRef'
-          Prize: '#/components/schemas/PrizeRef'
-          Project: '#/components/schemas/ProjectRef'
-          ResearchOutput: '#/components/schemas/ResearchOutputRef'
-          StudentThesis: '#/components/schemas/StudentThesisRef'
-          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
-          EthicalReview: '#/components/schemas/EthicalReviewRef'
-          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
-          AwardCluster: '#/components/schemas/AwardClusterRef'
-          User: '#/components/schemas/UserRef'
-          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
-          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
-          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
-          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
-          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
-          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
-          Semester: '#/components/schemas/SemesterRef'
-          Education: '#/components/schemas/EducationRef'
-          Course: '#/components/schemas/CourseRef'
-          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
-          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
-          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
-          Review: '#/components/schemas/ReviewRef'
-          GenericContentRef: '#/components/schemas/GenericContentRef'
-          UserProfile: '#/components/schemas/UserProfileRef'
-          Thesaurus: '#/components/schemas/ThesaurusRef'
-          Concept: '#/components/schemas/ConceptRef'
-          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
-          Contract: '#/components/schemas/ContractRef'
-          Milestone: '#/components/schemas/MilestoneRef'
-          Fingerprint: '#/components/schemas/FingerprintRef'
-          Specialization: '#/components/schemas/SpecializationRef'
-          StudentProject: '#/components/schemas/StudentProjectRef'
-    LocalRoleAssignment:
-      required:
-      - roleDefinition
-      type: object
-      properties:
-        roleDefinition:
-          $ref: '#/components/schemas/AssignableRoleRef'
-        assignments:
-          type:
-          - array
-          - 'null'
-          description: Where the local role is (to be) assigned
-          items:
-            $ref: '#/components/schemas/ContentRef'
-      description: The complete picture of where a local role is to be assigned
-    Name:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-      description: A name describing a person, made up of given- and family name
-    UserListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Users
-          items:
-            $ref: '#/components/schemas/User'
-      description: List of users. Can contain a subset of all items along with the full count
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
     PageInformation:
       type: object
       properties:
@@ -497,57 +404,6 @@ components:
           description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
           format: int32
       description: Information about pages
-    ConflictProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-        modified:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-      description: Problem details for state conflict failures
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-      description: RFC7807 Error details
-      discriminator:
-        propertyName: type
-        mapping:
-          /error: '#/components/schemas/GenericProblemDetails'
-          /validation-error: '#/components/schemas/ValidationProblemDetails'
-          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
     UserRoles:
       required:
       - globalRoleAssignments
@@ -577,15 +433,6 @@ components:
         roleDefinition:
           $ref: '#/components/schemas/AssignableRoleRef'
       description: Assignment of a global role
-    AssignableRoleRef:
-      required:
-      - assignableRoleName
-      type: object
-      properties:
-        assignableRoleName:
-          type: string
-          description: Name of an assignable role
-      description: A reference to an assignable role that can be either local or global
     User:
       required:
       - email
@@ -676,19 +523,172 @@ components:
           description: The content system name
           readOnly: true
       description: A user that can be attached to a person in Pure
-    Identifier:
+    LocalRoleAssignment:
       required:
-      - typeDiscriminator
+      - roleDefinition
       type: object
       properties:
-        typeDiscriminator:
+        roleDefinition:
+          $ref: '#/components/schemas/AssignableRoleRef'
+        assignments:
+          type:
+          - array
+          - 'null'
+          description: Where the local role is (to be) assigned
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: The complete picture of where a local role is to be assigned
+    UserListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Users
+          items:
+            $ref: '#/components/schemas/User'
+      description: List of users. Can contain a subset of all items along with the full count
+    ConflictProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+        modified:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+      description: Problem details for state conflict failures
+    OrderingsList:
+      type: object
+      properties:
+        orderings:
+          type: array
+          description: IDs of ways content can be ordered
+          items:
+            type: string
+            description: IDs of ways content can be ordered
+      description: List of available orderings
+    ContentRef:
+      required:
+      - systemName
+      - uuid
+      type:
+      - object
+      - 'null'
+      properties:
+        uuid:
+          type: string
+          description: UUID of the referred content
+          format: uuid
+        systemName:
           type: string
       discriminator:
-        propertyName: typeDiscriminator
+        propertyName: systemName
         mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
+          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
+          Activity: '#/components/schemas/ActivityRef'
+          Application: '#/components/schemas/ApplicationRef'
+          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
+          Award: '#/components/schemas/AwardRef'
+          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
+          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
+          DataSet: '#/components/schemas/DataSetRef'
+          Equipment: '#/components/schemas/EquipmentRef'
+          Event: '#/components/schemas/EventRef'
+          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
+          ExternalPerson: '#/components/schemas/ExternalPersonRef'
+          Impact: '#/components/schemas/ImpactRef'
+          Journal: '#/components/schemas/JournalRef'
+          Organization: '#/components/schemas/OrganizationRef'
+          Person: '#/components/schemas/PersonRef'
+          Publisher: '#/components/schemas/PublisherRef'
+          PressMedia: '#/components/schemas/PressMediaRef'
+          Prize: '#/components/schemas/PrizeRef'
+          Project: '#/components/schemas/ProjectRef'
+          ResearchOutput: '#/components/schemas/ResearchOutputRef'
+          StudentThesis: '#/components/schemas/StudentThesisRef'
+          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
+          EthicalReview: '#/components/schemas/EthicalReviewRef'
+          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
+          AwardCluster: '#/components/schemas/AwardClusterRef'
+          User: '#/components/schemas/UserRef'
+          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
+          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
+          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
+          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
+          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
+          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
+          Semester: '#/components/schemas/SemesterRef'
+          Education: '#/components/schemas/EducationRef'
+          Course: '#/components/schemas/CourseRef'
+          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
+          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
+          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
+          Review: '#/components/schemas/ReviewRef'
+          GenericContentRef: '#/components/schemas/GenericContentRef'
+          UserProfile: '#/components/schemas/UserProfileRef'
+          Thesaurus: '#/components/schemas/ThesaurusRef'
+          Concept: '#/components/schemas/ConceptRef'
+          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
+          Contract: '#/components/schemas/ContractRef'
+          Milestone: '#/components/schemas/MilestoneRef'
+          Fingerprint: '#/components/schemas/FingerprintRef'
+          Specialization: '#/components/schemas/SpecializationRef'
+          StudentProject: '#/components/schemas/StudentProjectRef'
+    Name:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+      description: A name describing a person, made up of given- and family name
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+      description: RFC7807 Error details
+      discriminator:
+        propertyName: type
+        mapping:
+          /error: '#/components/schemas/GenericProblemDetails'
+          /validation-error: '#/components/schemas/ValidationProblemDetails'
+          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
   securitySchemes:
     api-key:
       type: apiKey

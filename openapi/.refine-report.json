@@ -3,7 +3,7 @@
   "sources": [
     "_original/university-of-manchester-iiif-image-api-openapi.yml",
     "_original/university-of-manchester-iiif-presentation-api-openapi.yml",
-    "_vendor-quarantine/openapi-original/university-of-manchester-pure-rest.yaml"
+    "_original/university-of-manchester-pure-rest.yaml"
   ],
   "outputs": [
     "university-of-manchester-image-api-openapi.yml",
@@ -45,14 +45,11 @@
     "university-of-manchester-thesaurus-api-openapi.yml",
     "university-of-manchester-user-api-openapi.yml"
   ],
-  "archived": [
-    "archived _vendor-quarantine/openapi-original/university-of-manchester-pure-rest.yaml"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "discovered stray spec: _vendor-quarantine/openapi-original/university-of-manchester-pure-rest.yaml",
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "university-of-manchester-iiif-image-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "university-of-manchester-iiif-presentation-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "university-of-manchester-pure-rest.yaml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
@@ -92,10 +89,46 @@
     "university-of-manchester-pure-rest.yaml: declared missing tag: studentThesis",
     "university-of-manchester-pure-rest.yaml: declared missing tag: thesaurus",
     "university-of-manchester-pure-rest.yaml: declared missing tag: user",
-    "apis.yml register: written (+36 apis, 41 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
+    "university-of-manchester-activity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-application-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-authorcollaboration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-award-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-classificationscheme-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-concept-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-contract-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-course-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-dataset-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-education-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-equipment-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-ethicalreview-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-event-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-externalorganization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-externalperson-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-fingerprint-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-fundingopportunity-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "university-of-manchester-image-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "university-of-manchester-presentation-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "university-of-manchester-impact-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-journal-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-keywordgroupconfiguration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-milestone-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-organization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-person-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-personexpertise-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-presentation-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-pressmedia-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-prize-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-project-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-publisher-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-researchoutput-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-role-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-semester-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-specialization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-studentproject-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-studentthesis-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-thesaurus-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "university-of-manchester-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

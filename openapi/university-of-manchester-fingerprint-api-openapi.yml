@@ -108,6 +108,93 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
 components:
   schemas:
+    Fingerprint:
+      required:
+      - relatedContent
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        uuid:
+          type: string
+          description: UUID, this is the primary identity of the entity
+          format: uuid
+          readOnly: true
+        createdBy:
+          type: string
+          description: Username of creator
+          readOnly: true
+        createdDate:
+          type: string
+          description: Date and time of creation
+          format: date-time
+          readOnly: true
+        modifiedBy:
+          type: string
+          description: Username of the user that performed a modification
+          readOnly: true
+        modifiedDate:
+          type: string
+          description: Date and time of last modification
+          format: date-time
+          readOnly: true
+        portalUrl:
+          type: string
+          description: URL of the content on the Pure Portal
+          readOnly: true
+        prettyUrlIdentifiers:
+          type: array
+          description: All pretty URLs
+          readOnly: true
+          items:
+            type: string
+            description: All pretty URLs
+            readOnly: true
+        previousUuids:
+          type: array
+          description: UUIDs of other content items which have been merged into this content item (or similar)
+          readOnly: true
+          items:
+            type: string
+            description: UUIDs of other content items which have been merged into this content item (or similar)
+            readOnly: true
+        version:
+          type:
+          - string
+          - 'null'
+          description: Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a "dirty write". A dirty write is performed by not including the property value or setting the property to null
+        relatedContent:
+          $ref: '#/components/schemas/ContentRef'
+        concepts:
+          type:
+          - array
+          - 'null'
+          description: The ranked concepts that makes up this fingerprint
+          items:
+            $ref: '#/components/schemas/RankedConcept'
+        systemName:
+          type: string
+          description: The content system name
+          readOnly: true
+      description: A fingerprint
+    FingerprintListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Fingerprints
+          items:
+            $ref: '#/components/schemas/Fingerprint'
+      description: List of fingerprints. Can contain a subset of all items along with the full count
     ContentRef:
       required:
       - systemName
@@ -187,6 +274,70 @@ components:
           description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
           format: int32
       description: Information about pages
+    FingerprintQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+        searchString:
+          type: string
+          description: String used to perform search
+        relatedContentUuid:
+          type: string
+          description: UUID of the related content
+        relatedContentSystemName:
+          type: string
+          description: System name of the related content
+      description: Create a query for fingerprint
+    ConceptRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a concept
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+      - type: object
+        properties:
+          conceptId:
+            type: string
+            description: The concept ID
+            readOnly: true
+    RankedConcept:
+      required:
+      - concept
+      - rank
+      type: object
+      properties:
+        concept:
+          $ref: '#/components/schemas/ConceptRef'
+        rank:
+          type: number
+          description: The rank of the ranked concept. If this is not set on creation, the ranked concept will have a default rank value of 0
+          format: double
+        weightedRank:
+          type:
+          - number
+          - 'null'
+          description: WeightedRank
+          format: double
+        frequency:
+          type:
+          - integer
+          - 'null'
+          description: Frequency
+          format: int32
+      description: A ranked concept
     ProblemDetails:
       type: object
       properties:
@@ -213,157 +364,6 @@ components:
           /error: '#/components/schemas/GenericProblemDetails'
           /validation-error: '#/components/schemas/ValidationProblemDetails'
           /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
-    FingerprintListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Fingerprints
-          items:
-            $ref: '#/components/schemas/Fingerprint'
-      description: List of fingerprints. Can contain a subset of all items along with the full count
-    FingerprintQuery:
-      type: object
-      properties:
-        uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        size:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-        searchString:
-          type: string
-          description: String used to perform search
-        relatedContentUuid:
-          type: string
-          description: UUID of the related content
-        relatedContentSystemName:
-          type: string
-          description: System name of the related content
-      description: Create a query for fingerprint
-    RankedConcept:
-      required:
-      - concept
-      - rank
-      type: object
-      properties:
-        concept:
-          $ref: '#/components/schemas/ConceptRef'
-        rank:
-          type: number
-          description: The rank of the ranked concept. If this is not set on creation, the ranked concept will have a default rank value of 0
-          format: double
-        weightedRank:
-          type:
-          - number
-          - 'null'
-          description: WeightedRank
-          format: double
-        frequency:
-          type:
-          - integer
-          - 'null'
-          description: Frequency
-          format: int32
-      description: A ranked concept
-    Fingerprint:
-      required:
-      - relatedContent
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        uuid:
-          type: string
-          description: UUID, this is the primary identity of the entity
-          format: uuid
-          readOnly: true
-        createdBy:
-          type: string
-          description: Username of creator
-          readOnly: true
-        createdDate:
-          type: string
-          description: Date and time of creation
-          format: date-time
-          readOnly: true
-        modifiedBy:
-          type: string
-          description: Username of the user that performed a modification
-          readOnly: true
-        modifiedDate:
-          type: string
-          description: Date and time of last modification
-          format: date-time
-          readOnly: true
-        portalUrl:
-          type: string
-          description: URL of the content on the Pure Portal
-          readOnly: true
-        prettyUrlIdentifiers:
-          type: array
-          description: All pretty URLs
-          readOnly: true
-          items:
-            type: string
-            description: All pretty URLs
-            readOnly: true
-        previousUuids:
-          type: array
-          description: UUIDs of other content items which have been merged into this content item (or similar)
-          readOnly: true
-          items:
-            type: string
-            description: UUIDs of other content items which have been merged into this content item (or similar)
-            readOnly: true
-        version:
-          type:
-          - string
-          - 'null'
-          description: Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a "dirty write". A dirty write is performed by not including the property value or setting the property to null
-        relatedContent:
-          $ref: '#/components/schemas/ContentRef'
-        concepts:
-          type:
-          - array
-          - 'null'
-          description: The ranked concepts that makes up this fingerprint
-          items:
-            $ref: '#/components/schemas/RankedConcept'
-        systemName:
-          type: string
-          description: The content system name
-          readOnly: true
-      description: A fingerprint
-    ConceptRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a concept
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-      - type: object
-        properties:
-          conceptId:
-            type: string
-            description: The concept ID
-            readOnly: true
   securitySchemes:
     api-key:
       type: apiKey
