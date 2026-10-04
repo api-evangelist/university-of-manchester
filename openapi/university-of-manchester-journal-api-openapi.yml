@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pure Journal API
-  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
-  termsOfService: ''
+  title: University Of Manchester Journal API
+  version: 5.35.2-2
   contact:
     name: ''
     url: ''
@@ -10,7 +9,8 @@ info:
   license:
     name: ''
     url: ''
-  version: 5.35.2-2
+  termsOfService: ''
+  description: 'Operations tagged journal across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /ws/api
 security:
@@ -78,6 +78,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/allowed-classified-identifier-types:
     get:
       tags:
@@ -92,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /journals/allowed-countries:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /journals/allowed-keyword-group-configurations:
     get:
       tags:
@@ -120,6 +126,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllowedKeywordGroupConfigurationList'
+    servers:
+    - url: /ws/api
   /journals/allowed-keyword-group-configurations/{id}/classifications:
     get:
       tags:
@@ -142,6 +150,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /journals/allowed-link-types:
     get:
       tags:
@@ -156,6 +166,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /journals/allowed-locales:
     get:
       tags:
@@ -170,6 +182,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LocalesList'
+    servers:
+    - url: /ws/api
   /journals/allowed-metric-collections:
     get:
       tags:
@@ -184,6 +198,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MetricCollectionDefinitionList'
+    servers:
+    - url: /ws/api
   /journals/allowed-types:
     get:
       tags:
@@ -198,6 +214,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /journals/allowed-workflow-steps:
     get:
       tags:
@@ -212,6 +230,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkflowListResult'
+    servers:
+    - url: /ws/api
   /journals/disciplines/allowed-discipline-schemes:
     get:
       tags:
@@ -226,6 +246,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineSchemeListResult'
+    servers:
+    - url: /ws/api
   /journals/disciplines/{discipline-scheme}/allowed-disciplines:
     get:
       tags:
@@ -262,6 +284,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineListResult'
+    servers:
+    - url: /ws/api
   /journals/disciplines/{discipline-scheme}/search:
     post:
       tags:
@@ -296,6 +320,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/orderings:
     get:
       tags:
@@ -310,6 +336,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderingsList'
+    servers:
+    - url: /ws/api
   /journals/search:
     post:
       tags:
@@ -337,6 +365,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/{uuid}:
     get:
       tags:
@@ -445,6 +475,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/{uuid}/actions/lock:
     post:
       tags:
@@ -476,6 +508,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/{uuid}/actions/unlock:
     post:
       tags:
@@ -507,6 +541,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/{uuid}/dependents:
     get:
       tags:
@@ -536,6 +572,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentRefListResult'
+    servers:
+    - url: /ws/api
   /journals/{uuid}/disciplines/{discipline-scheme}:
     get:
       tags:
@@ -618,6 +656,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/{uuid}/metrics/{collection-id}:
     get:
       tags:
@@ -654,6 +694,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /journals/{uuid}/notes:
     get:
       tags:
@@ -733,57 +775,144 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
 components:
   schemas:
-    ClassificationRefList:
+    AllowedKeywordGroupConfigurationList:
       type: object
       properties:
-        classifications:
+        configurations:
           type: array
           items:
-            $ref: '#/components/schemas/ClassificationRef'
-      description: List of classification references
-    ClassificationSchemeRef:
+            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
+      description: List of allowed keyword group configurations
+    AllowedKeywordGroupConfiguration:
       required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a classification scheme
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    MetricCollectionDefinition:
-      required:
-      - collectionId
-      - name
+      - targetSystemName
       type: object
       properties:
-        metrics:
-          type: array
-          description: Information about each metric in the collection
-          items:
-            $ref: '#/components/schemas/MetricDefinition'
-        collectionId:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        targetSystemName:
           type: string
-          description: ID of the metric collection
+          description: The content system name this configuration applies to
+        keywordGroupType:
+          type: string
+          description: The OpenAPI schema type of this keyword configuration
+          readOnly: true
         name:
           $ref: '#/components/schemas/LocalizedString'
-      description: Information about a set of related metrics, usually from a single provider
-    DisciplinesAssociationsQuery:
+        description:
+          $ref: '#/components/schemas/FormattedLocalizedString'
+        classificationScheme:
+          $ref: '#/components/schemas/ClassificationSchemeRef'
+        allowUserdefinedKeywords:
+          type: boolean
+          description: Defines if user defined keywords are allowed
+        limitToLeafSelection:
+          type: boolean
+        logicalName:
+          type: string
+        relationType:
+          type:
+          - string
+          - 'null'
+          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
+      description: A specification of the allowed behavior of a specified keyword group
+    LocalesList:
       type: object
       properties:
-        uuids:
+        locales:
+          pattern: /^[a-z]{2}_[A-Z]{2}$/
           type: array
+          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
           items:
+            pattern: /^[a-z]{2}_[A-Z]{2}$/
             type: string
-            format: uuid
-        size:
+            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+      description: List of available locales
+    MetricDefinition:
+      required:
+      - metricId
+      - valueType
+      type: object
+      properties:
+        metricId:
+          type: string
+          description: Unique identifier of metric definition
+        valueType:
+          type: string
+          description: Type of value handled by the metric
+          x-extensible-enum:
+          - INTEGER
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+      description: Information about how a specific metric is defined; how data of the metric is structured
+    Workflow:
+      required:
+      - step
+      type: object
+      properties:
+        step:
+          type: string
+          description: Current workflow step
+        description:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: Information about workflow
+    SherpaRomeoPolicy:
+      type: object
+      properties:
+        pureId:
           type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-      description: Create a query for discipline associations
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        openAccessProhibited:
+          type: boolean
+          description: If the policy prohibits Open Access - in which case there won't be any Open Access permissions
+        openAccessPermissions:
+          type:
+          - array
+          - 'null'
+          description: The Open Access permissions for this policy
+          items:
+            $ref: '#/components/schemas/SherpaRomeoOpenAccessPermission'
+        publisherPolicies:
+          type:
+          - array
+          - 'null'
+          description: A list of publisher specific policies
+          items:
+            type:
+            - string
+            - 'null'
+            description: A list of publisher specific policies
+        sherpaRomeoUri:
+          type:
+          - string
+          - 'null'
+          description: The link to the journal in SHERPA RoMEO
+        lastUpdatedDate:
+          type:
+          - string
+          - 'null'
+          description: The link to the journal in SHERPA RoMEO
+          format: date-time
+          readOnly: true
+      description: Describes a SHERPA RoMEO open access policy.
+    WorkflowListResult:
+      type: object
+      properties:
+        workflows:
+          type: array
+          description: Allowed workflow steps.
+          items:
+            $ref: '#/components/schemas/Workflow'
+      description: List of workflow steps.
     LocalizedString:
       type:
       - object
@@ -797,6 +926,136 @@ components:
       description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
       example:
         en_GB: Some text
+    NoteListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Notes
+          items:
+            $ref: '#/components/schemas/Note'
+      description: List of notes
+    PublisherRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a publisher
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    MetricCollectionDefinitionList:
+      type: object
+      properties:
+        items:
+          type: array
+          description: Information about each metric collection
+          items:
+            $ref: '#/components/schemas/MetricCollectionDefinition'
+      description: List of metric collection definitions
+    FormattedLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+      example:
+        en_GB: Some text
+    ArticleVersion:
+      required:
+      - key
+      type: object
+      properties:
+        key:
+          type: string
+          description: Article version value
+          enum:
+          - SUBMITTED
+          - ACCEPTED
+          - PUBLISHED
+        description:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: Version of an article
+    ContentRefListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: List of Content Refs
+    ClassificationRef:
+      required:
+      - uri
+      type:
+      - object
+      - 'null'
+      properties:
+        uri:
+          type: string
+          description: Classification URI of the referred classification
+        term:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: A reference to a classification value
+    DisciplinesAssociation:
+      required:
+      - disciplineAssignments
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/ContentRef'
+        disciplineScheme:
+          type: string
+          description: The discipline scheme these disciplines are assigned from
+          readOnly: true
+        disciplineAssignments:
+          type: array
+          description: A collection of assigned disciplines
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
+      description: An association between a content and a number of discipline assignments
+    MetricCollection:
+      required:
+      - collectionId
+      type: object
+      properties:
+        owner:
+          $ref: '#/components/schemas/ContentRef'
+        collectionId:
+          type: string
+          description: Collection ID is the unique id of the provider for the metrics. A collection of metrics is a list of metrics that have a shared data structure and provider.
+        items:
+          type: array
+          description: Metric collection items
+          items:
+            $ref: '#/components/schemas/MetricCollectionItem'
+      description: List of metrics
+    DisciplinesAssociationListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Discipline associations
+          items:
+            $ref: '#/components/schemas/DisciplinesAssociation'
+      description: List of discipline associations. Can contain a subset of all items along with the full count
     DisciplinesDisciplineListResult:
       type: object
       properties:
@@ -812,31 +1071,144 @@ components:
           items:
             $ref: '#/components/schemas/DisciplinesDiscipline'
       description: List of disciplines for a specific discipline scheme
-    ClassificationRef:
+    SherpaRomeoOpenAccessPermission:
       required:
-      - uri
+      - articleVersion
       type:
       - object
       - 'null'
       properties:
-        uri:
-          type: string
-          description: Classification URI of the referred classification
-        term:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: A reference to a classification value
-    LocalesList:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        articleVersion:
+          $ref: '#/components/schemas/ArticleVersion'
+        licenses:
+          type:
+          - array
+          - 'null'
+          description: The licenses the article must adhere to.
+          items:
+            type:
+            - string
+            - 'null'
+            description: The licenses the article must adhere to.
+        conditions:
+          type:
+          - array
+          - 'null'
+          description: Any conditions that must be fulfilled.
+          items:
+            type:
+            - string
+            - 'null'
+            description: Any conditions that must be fulfilled.
+        prerequisites:
+          type:
+          - array
+          - 'null'
+          description: Any prerequisites that must be fulfilled.
+          items:
+            type:
+            - string
+            - 'null'
+            description: Any prerequisites that must be fulfilled.
+        funderPrerequisites:
+          type:
+          - array
+          - 'null'
+          description: Any funder prerequisites that must be fulfilled.
+          items:
+            type:
+            - string
+            - 'null'
+            description: Any funder prerequisites that must be fulfilled.
+        subjectPrerequisites:
+          type:
+          - array
+          - 'null'
+          description: Any subject prerequisites that must be fulfilled.
+          items:
+            type:
+            - string
+            - 'null'
+            description: Any subject prerequisites that must be fulfilled.
+        locations:
+          type:
+          - array
+          - 'null'
+          description: Locations where the article is permitted to be placed.
+          items:
+            type:
+            - string
+            - 'null'
+            description: Locations where the article is permitted to be placed.
+        publisherDeposits:
+          type:
+          - array
+          - 'null'
+          description: The location(s) the publisher will automatically deposit the article into.
+          items:
+            type:
+            - string
+            - 'null'
+            description: The location(s) the publisher will automatically deposit the article into.
+        additionalFee:
+          type: boolean
+          description: If an additional fee is required to make the article Open Access.
+        embargo:
+          type:
+          - string
+          - 'null'
+          description: How long the article should be embargoed. Will be a number follow by a unit - days, months or years.
+      description: Describes a SHERPA RoMEO access permissions object used in a policy.
+    OrderingsList:
       type: object
       properties:
-        locales:
-          pattern: /^[a-z]{2}_[A-Z]{2}$/
+        orderings:
           type: array
-          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+          description: IDs of ways content can be ordered
           items:
-            pattern: /^[a-z]{2}_[A-Z]{2}$/
             type: string
-            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
-      description: List of available locales
+            description: IDs of ways content can be ordered
+      description: List of available orderings
+    ClassificationSchemeRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a classification scheme
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
+    DisciplinesDisciplineScheme:
+      required:
+      - disciplineScheme
+      - title
+      type: object
+      properties:
+        disciplineScheme:
+          type: string
+          description: The discipline scheme identifier
+        title:
+          type: string
+          description: The discipline title
+      description: A discipline scheme
     CompoundDate:
       required:
       - year
@@ -864,60 +1236,155 @@ components:
           - 'null'
           format: int32
       description: A date that can be defined by only year, year and month or a full date
-    DisciplinesDisciplineScheme:
+    ContentRef:
       required:
-      - disciplineScheme
+      - systemName
+      - uuid
+      type:
+      - object
+      - 'null'
+      properties:
+        uuid:
+          type: string
+          description: UUID of the referred content
+          format: uuid
+        systemName:
+          type: string
+      discriminator:
+        propertyName: systemName
+        mapping:
+          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
+          Activity: '#/components/schemas/ActivityRef'
+          Application: '#/components/schemas/ApplicationRef'
+          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
+          Award: '#/components/schemas/AwardRef'
+          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
+          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
+          DataSet: '#/components/schemas/DataSetRef'
+          Equipment: '#/components/schemas/EquipmentRef'
+          Event: '#/components/schemas/EventRef'
+          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
+          ExternalPerson: '#/components/schemas/ExternalPersonRef'
+          Impact: '#/components/schemas/ImpactRef'
+          Journal: '#/components/schemas/JournalRef'
+          Organization: '#/components/schemas/OrganizationRef'
+          Person: '#/components/schemas/PersonRef'
+          Publisher: '#/components/schemas/PublisherRef'
+          PressMedia: '#/components/schemas/PressMediaRef'
+          Prize: '#/components/schemas/PrizeRef'
+          Project: '#/components/schemas/ProjectRef'
+          ResearchOutput: '#/components/schemas/ResearchOutputRef'
+          StudentThesis: '#/components/schemas/StudentThesisRef'
+          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
+          EthicalReview: '#/components/schemas/EthicalReviewRef'
+          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
+          AwardCluster: '#/components/schemas/AwardClusterRef'
+          User: '#/components/schemas/UserRef'
+          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
+          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
+          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
+          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
+          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
+          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
+          Semester: '#/components/schemas/SemesterRef'
+          Education: '#/components/schemas/EducationRef'
+          Course: '#/components/schemas/CourseRef'
+          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
+          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
+          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
+          Review: '#/components/schemas/ReviewRef'
+          GenericContentRef: '#/components/schemas/GenericContentRef'
+          UserProfile: '#/components/schemas/UserProfileRef'
+          Thesaurus: '#/components/schemas/ThesaurusRef'
+          Concept: '#/components/schemas/ConceptRef'
+          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
+          Contract: '#/components/schemas/ContractRef'
+          Milestone: '#/components/schemas/MilestoneRef'
+          Fingerprint: '#/components/schemas/FingerprintRef'
+          Specialization: '#/components/schemas/SpecializationRef'
+          StudentProject: '#/components/schemas/StudentProjectRef'
+    KeywordGroup:
+      required:
+      - logicalName
+      - typeDiscriminator
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        logicalName:
+          type: string
+          description: Unique name of the configuration that specifies this keyword group
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
+          FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
+          FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
+    MetricCollectionDefinition:
+      required:
+      - collectionId
+      - name
+      type: object
+      properties:
+        metrics:
+          type: array
+          description: Information about each metric in the collection
+          items:
+            $ref: '#/components/schemas/MetricDefinition'
+        collectionId:
+          type: string
+          description: ID of the metric collection
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+      description: Information about a set of related metrics, usually from a single provider
+    Link:
+      required:
+      - url
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        url:
+          type: string
+          description: The URL (Uniform Resource Locator) of the link
+        alias:
+          type:
+          - string
+          - 'null'
+          description: A user-friendly text to show instead of the URL
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        linkType:
+          $ref: '#/components/schemas/ClassificationRef'
+      description: A hyperlink describing a location on the web.
+    JournalTitle:
+      required:
       - title
       type: object
       properties:
-        disciplineScheme:
-          type: string
-          description: The discipline scheme identifier
-        title:
-          type: string
-          description: The discipline title
-      description: A discipline scheme
-    MetricCollection:
-      required:
-      - collectionId
-      type: object
-      properties:
-        owner:
-          $ref: '#/components/schemas/ContentRef'
-        collectionId:
-          type: string
-          description: Collection ID is the unique id of the provider for the metrics. A collection of metrics is a list of metrics that have a shared data structure and provider.
-        items:
-          type: array
-          description: Metric collection items
-          items:
-            $ref: '#/components/schemas/MetricCollectionItem'
-      description: List of metrics
-    ConflictProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
+        pureId:
           type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        title:
           type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-        modified:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-      description: Problem details for state conflict failures
+          description: The title of the journal.
+        startDate:
+          $ref: '#/components/schemas/CompoundDate'
+        endDate:
+          $ref: '#/components/schemas/CompoundDate'
+      description: A title of a journal, can be populated with a start and end date if the title is only used in a specific period.
     AdditionalISSN:
       required:
       - issn
@@ -936,15 +1403,40 @@ components:
         mapping:
           ElectronicISSN: '#/components/schemas/ElectronicISSN'
           AlternativeISSN: '#/components/schemas/AlternativeISSN'
-    MetricCollectionDefinitionList:
+    ClassificationRefList:
       type: object
       properties:
-        items:
+        classifications:
           type: array
-          description: Information about each metric collection
           items:
-            $ref: '#/components/schemas/MetricCollectionDefinition'
-      description: List of metric collection definitions
+            $ref: '#/components/schemas/ClassificationRef'
+      description: List of classification references
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+      description: RFC7807 Error details
+      discriminator:
+        propertyName: type
+        mapping:
+          /error: '#/components/schemas/GenericProblemDetails'
+          /validation-error: '#/components/schemas/ValidationProblemDetails'
+          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
     Journal:
       required:
       - titles
@@ -1075,6 +1567,120 @@ components:
           description: The content system name
           readOnly: true
       description: A periodical presenting articles on a particular subject.
+    ConflictProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+        modified:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+      description: Problem details for state conflict failures
+    DisciplinesDisciplineSchemeListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The amount of discipline schemes
+          format: int32
+        items:
+          type: array
+          description: Discipline schemes
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
+      description: List of discipline schemes
+    DisciplinesAssociationsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+      description: Create a query for discipline associations
+    Note:
+      required:
+      - text
+      type: object
+      properties:
+        date:
+          type:
+          - string
+          - 'null'
+          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
+          format: date-time
+        username:
+          type:
+          - string
+          - 'null'
+          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
+        text:
+          type: string
+          description: Note text
+      description: A note
+    PageInformation:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: Offset that returned items start at
+          format: int32
+        size:
+          type: integer
+          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
+          format: int32
+      description: Information about pages
+    DisciplinesDiscipline:
+      type: object
+      properties:
+        disciplineId:
+          type: string
+          description: The discipline identifier
+          readOnly: true
+        title:
+          type: string
+          description: The discipline title
+          readOnly: true
+        description:
+          type: string
+          description: The discipline description
+          readOnly: true
+      description: A discipline within a specific discipline scheme
+    SystemLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized string values each for a specific UI locale.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized string values each for a specific UI locale.
+      example:
+        en_GB: Some text
     MetricCollectionItem:
       required:
       - metricValues
@@ -1096,182 +1702,6 @@ components:
           items:
             $ref: '#/components/schemas/MetricValue'
       description: A metric collection. Contents a list of metric values.
-    JournalTitle:
-      required:
-      - title
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        title:
-          type: string
-          description: The title of the journal.
-        startDate:
-          $ref: '#/components/schemas/CompoundDate'
-        endDate:
-          $ref: '#/components/schemas/CompoundDate'
-      description: A title of a journal, can be populated with a start and end date if the title is only used in a specific period.
-    MetricDefinition:
-      required:
-      - metricId
-      - valueType
-      type: object
-      properties:
-        metricId:
-          type: string
-          description: Unique identifier of metric definition
-        valueType:
-          type: string
-          description: Type of value handled by the metric
-          x-extensible-enum:
-          - INTEGER
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-      description: Information about how a specific metric is defined; how data of the metric is structured
-    PublisherRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a publisher
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    ArticleVersion:
-      required:
-      - key
-      type: object
-      properties:
-        key:
-          type: string
-          description: Article version value
-          enum:
-          - SUBMITTED
-          - ACCEPTED
-          - PUBLISHED
-        description:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: Version of an article
-    Link:
-      required:
-      - url
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        url:
-          type: string
-          description: The URL (Uniform Resource Locator) of the link
-        alias:
-          type:
-          - string
-          - 'null'
-          description: A user-friendly text to show instead of the URL
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        linkType:
-          $ref: '#/components/schemas/ClassificationRef'
-      description: A hyperlink describing a location on the web.
-    DisciplinesDisciplineSchemeListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The amount of discipline schemes
-          format: int32
-        items:
-          type: array
-          description: Discipline schemes
-          items:
-            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
-      description: List of discipline schemes
-    SystemLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized string values each for a specific UI locale.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized string values each for a specific UI locale.
-      example:
-        en_GB: Some text
-    FormattedLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-      example:
-        en_GB: Some text
-    WorkflowListResult:
-      type: object
-      properties:
-        workflows:
-          type: array
-          description: Allowed workflow steps.
-          items:
-            $ref: '#/components/schemas/Workflow'
-      description: List of workflow steps.
-    Note:
-      required:
-      - text
-      type: object
-      properties:
-        date:
-          type:
-          - string
-          - 'null'
-          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
-          format: date-time
-        username:
-          type:
-          - string
-          - 'null'
-          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
-        text:
-          type: string
-          description: Note text
-      description: A note
-    Workflow:
-      required:
-      - step
-      type: object
-      properties:
-        step:
-          type: string
-          description: Current workflow step
-        description:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: Information about workflow
-    NoteListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Notes
-          items:
-            $ref: '#/components/schemas/Note'
-      description: List of notes
     ISSN:
       required:
       - issn
@@ -1322,239 +1752,6 @@ components:
         classificationValue:
           $ref: '#/components/schemas/ClassificationRef'
       description: A metric value, that contains one piece of data. Only one type of value can be set at a time, and it must match the specification of the metric definition.
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-      description: RFC7807 Error details
-      discriminator:
-        propertyName: type
-        mapping:
-          /error: '#/components/schemas/GenericProblemDetails'
-          /validation-error: '#/components/schemas/ValidationProblemDetails'
-          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
-    SherpaRomeoPolicy:
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        openAccessProhibited:
-          type: boolean
-          description: If the policy prohibits Open Access - in which case there won't be any Open Access permissions
-        openAccessPermissions:
-          type:
-          - array
-          - 'null'
-          description: The Open Access permissions for this policy
-          items:
-            $ref: '#/components/schemas/SherpaRomeoOpenAccessPermission'
-        publisherPolicies:
-          type:
-          - array
-          - 'null'
-          description: A list of publisher specific policies
-          items:
-            type:
-            - string
-            - 'null'
-            description: A list of publisher specific policies
-        sherpaRomeoUri:
-          type:
-          - string
-          - 'null'
-          description: The link to the journal in SHERPA RoMEO
-        lastUpdatedDate:
-          type:
-          - string
-          - 'null'
-          description: The link to the journal in SHERPA RoMEO
-          format: date-time
-          readOnly: true
-      description: Describes a SHERPA RoMEO open access policy.
-    ContentRefListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentRef'
-      description: List of Content Refs
-    Identifier:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
-    SherpaRomeoOpenAccessPermission:
-      required:
-      - articleVersion
-      type:
-      - object
-      - 'null'
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        articleVersion:
-          $ref: '#/components/schemas/ArticleVersion'
-        licenses:
-          type:
-          - array
-          - 'null'
-          description: The licenses the article must adhere to.
-          items:
-            type:
-            - string
-            - 'null'
-            description: The licenses the article must adhere to.
-        conditions:
-          type:
-          - array
-          - 'null'
-          description: Any conditions that must be fulfilled.
-          items:
-            type:
-            - string
-            - 'null'
-            description: Any conditions that must be fulfilled.
-        prerequisites:
-          type:
-          - array
-          - 'null'
-          description: Any prerequisites that must be fulfilled.
-          items:
-            type:
-            - string
-            - 'null'
-            description: Any prerequisites that must be fulfilled.
-        funderPrerequisites:
-          type:
-          - array
-          - 'null'
-          description: Any funder prerequisites that must be fulfilled.
-          items:
-            type:
-            - string
-            - 'null'
-            description: Any funder prerequisites that must be fulfilled.
-        subjectPrerequisites:
-          type:
-          - array
-          - 'null'
-          description: Any subject prerequisites that must be fulfilled.
-          items:
-            type:
-            - string
-            - 'null'
-            description: Any subject prerequisites that must be fulfilled.
-        locations:
-          type:
-          - array
-          - 'null'
-          description: Locations where the article is permitted to be placed.
-          items:
-            type:
-            - string
-            - 'null'
-            description: Locations where the article is permitted to be placed.
-        publisherDeposits:
-          type:
-          - array
-          - 'null'
-          description: The location(s) the publisher will automatically deposit the article into.
-          items:
-            type:
-            - string
-            - 'null'
-            description: The location(s) the publisher will automatically deposit the article into.
-        additionalFee:
-          type: boolean
-          description: If an additional fee is required to make the article Open Access.
-        embargo:
-          type:
-          - string
-          - 'null'
-          description: How long the article should be embargoed. Will be a number follow by a unit - days, months or years.
-      description: Describes a SHERPA RoMEO access permissions object used in a policy.
-    PageInformation:
-      type: object
-      properties:
-        offset:
-          type: integer
-          description: Offset that returned items start at
-          format: int32
-        size:
-          type: integer
-          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
-          format: int32
-      description: Information about pages
-    DisciplinesDiscipline:
-      type: object
-      properties:
-        disciplineId:
-          type: string
-          description: The discipline identifier
-          readOnly: true
-        title:
-          type: string
-          description: The discipline title
-          readOnly: true
-        description:
-          type: string
-          description: The discipline description
-          readOnly: true
-      description: A discipline within a specific discipline scheme
-    OrderingsList:
-      type: object
-      properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
-    JournalListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Journal'
-      description: A list of journals
     JournalsQuery:
       type: object
       properties:
@@ -1580,106 +1777,7 @@ components:
           type: string
           writeOnly: true
       description: Create a query for journals
-    ContentRef:
-      required:
-      - systemName
-      - uuid
-      type:
-      - object
-      - 'null'
-      properties:
-        uuid:
-          type: string
-          description: UUID of the referred content
-          format: uuid
-        systemName:
-          type: string
-      discriminator:
-        propertyName: systemName
-        mapping:
-          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
-          Activity: '#/components/schemas/ActivityRef'
-          Application: '#/components/schemas/ApplicationRef'
-          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
-          Award: '#/components/schemas/AwardRef'
-          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
-          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
-          DataSet: '#/components/schemas/DataSetRef'
-          Equipment: '#/components/schemas/EquipmentRef'
-          Event: '#/components/schemas/EventRef'
-          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
-          ExternalPerson: '#/components/schemas/ExternalPersonRef'
-          Impact: '#/components/schemas/ImpactRef'
-          Journal: '#/components/schemas/JournalRef'
-          Organization: '#/components/schemas/OrganizationRef'
-          Person: '#/components/schemas/PersonRef'
-          Publisher: '#/components/schemas/PublisherRef'
-          PressMedia: '#/components/schemas/PressMediaRef'
-          Prize: '#/components/schemas/PrizeRef'
-          Project: '#/components/schemas/ProjectRef'
-          ResearchOutput: '#/components/schemas/ResearchOutputRef'
-          StudentThesis: '#/components/schemas/StudentThesisRef'
-          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
-          EthicalReview: '#/components/schemas/EthicalReviewRef'
-          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
-          AwardCluster: '#/components/schemas/AwardClusterRef'
-          User: '#/components/schemas/UserRef'
-          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
-          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
-          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
-          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
-          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
-          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
-          Semester: '#/components/schemas/SemesterRef'
-          Education: '#/components/schemas/EducationRef'
-          Course: '#/components/schemas/CourseRef'
-          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
-          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
-          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
-          Review: '#/components/schemas/ReviewRef'
-          GenericContentRef: '#/components/schemas/GenericContentRef'
-          UserProfile: '#/components/schemas/UserProfileRef'
-          Thesaurus: '#/components/schemas/ThesaurusRef'
-          Concept: '#/components/schemas/ConceptRef'
-          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
-          Contract: '#/components/schemas/ContractRef'
-          Milestone: '#/components/schemas/MilestoneRef'
-          Fingerprint: '#/components/schemas/FingerprintRef'
-          Specialization: '#/components/schemas/SpecializationRef'
-          StudentProject: '#/components/schemas/StudentProjectRef'
-    AllowedKeywordGroupConfigurationList:
-      type: object
-      properties:
-        configurations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
-      description: List of allowed keyword group configurations
-    KeywordGroup:
-      required:
-      - logicalName
-      - typeDiscriminator
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        logicalName:
-          type: string
-          description: Unique name of the configuration that specifies this keyword group
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
-          FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
-          FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
-    DisciplinesAssociationListResult:
+    JournalListResult:
       type: object
       properties:
         count:
@@ -1690,63 +1788,9 @@ components:
           $ref: '#/components/schemas/PageInformation'
         items:
           type: array
-          description: Discipline associations
           items:
-            $ref: '#/components/schemas/DisciplinesAssociation'
-      description: List of discipline associations. Can contain a subset of all items along with the full count
-    DisciplinesAssociation:
-      required:
-      - disciplineAssignments
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/ContentRef'
-        disciplineScheme:
-          type: string
-          description: The discipline scheme these disciplines are assigned from
-          readOnly: true
-        disciplineAssignments:
-          type: array
-          description: A collection of assigned disciplines
-          items:
-            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
-      description: An association between a content and a number of discipline assignments
-    AllowedKeywordGroupConfiguration:
-      required:
-      - targetSystemName
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        targetSystemName:
-          type: string
-          description: The content system name this configuration applies to
-        keywordGroupType:
-          type: string
-          description: The OpenAPI schema type of this keyword configuration
-          readOnly: true
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/FormattedLocalizedString'
-        classificationScheme:
-          $ref: '#/components/schemas/ClassificationSchemeRef'
-        allowUserdefinedKeywords:
-          type: boolean
-          description: Defines if user defined keywords are allowed
-        limitToLeafSelection:
-          type: boolean
-        logicalName:
-          type: string
-        relationType:
-          type:
-          - string
-          - 'null'
-          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
-      description: A specification of the allowed behavior of a specified keyword group
+            $ref: '#/components/schemas/Journal'
+      description: A list of journals
     DisciplinesDisciplineAssignment:
       required:
       - disciplineId
@@ -1767,3 +1811,6 @@ components:
       description: Security mechanism for the API
       name: api-key
       in: header
+x-refined-from:
+- university-of-manchester-pure-rest.yaml
+- university-of-manchester-pure-rest.yaml

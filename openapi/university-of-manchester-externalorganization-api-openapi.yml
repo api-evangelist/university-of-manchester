@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pure External Organization API
-  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
-  termsOfService: ''
+  title: University Of Manchester External Organization API
+  version: 5.35.2-2
   contact:
     name: ''
     url: ''
@@ -10,7 +9,8 @@ info:
   license:
     name: ''
     url: ''
-  version: 5.35.2-2
+  termsOfService: ''
+  description: 'Operations tagged externalOrganization across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /ws/api
 security:
@@ -78,6 +78,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-address-countries:
     get:
       tags:
@@ -92,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-address-subdivision:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-classified-file-types:
     get:
       tags:
@@ -120,6 +126,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-classified-identifier-types:
     get:
       tags:
@@ -134,6 +142,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-document-licenses:
     get:
       tags:
@@ -148,6 +158,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-document-types:
     get:
       tags:
@@ -162,6 +174,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-keyword-group-configurations:
     get:
       tags:
@@ -176,6 +190,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllowedKeywordGroupConfigurationList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-keyword-group-configurations/{id}/classifications:
     get:
       tags:
@@ -198,6 +214,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-link-types:
     get:
       tags:
@@ -212,6 +230,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-locales:
     get:
       tags:
@@ -226,6 +246,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LocalesList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-nature-types:
     get:
       tags:
@@ -240,6 +262,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-types:
     get:
       tags:
@@ -254,6 +278,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-organizations/allowed-workflow-steps:
     get:
       tags:
@@ -268,6 +294,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkflowListResult'
+    servers:
+    - url: /ws/api
   /external-organizations/disciplines/allowed-discipline-schemes:
     get:
       tags:
@@ -282,6 +310,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineSchemeListResult'
+    servers:
+    - url: /ws/api
   /external-organizations/disciplines/{discipline-scheme}/allowed-disciplines:
     get:
       tags:
@@ -318,6 +348,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineListResult'
+    servers:
+    - url: /ws/api
   /external-organizations/disciplines/{discipline-scheme}/search:
     post:
       tags:
@@ -352,6 +384,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/file-uploads:
     put:
       tags:
@@ -382,6 +416,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/UploadedFile'
+    servers:
+    - url: /ws/api
   /external-organizations/merge:
     post:
       tags:
@@ -409,6 +445,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/orderings:
     get:
       tags:
@@ -423,6 +461,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderingsList'
+    servers:
+    - url: /ws/api
   /external-organizations/preview-deduplication:
     post:
       tags:
@@ -450,6 +490,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/search:
     post:
       tags:
@@ -477,6 +519,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}:
     get:
       tags:
@@ -585,6 +629,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}/actions/lock:
     post:
       tags:
@@ -616,6 +662,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}/actions/unlock:
     post:
       tags:
@@ -647,6 +695,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}/dependents:
     get:
       tags:
@@ -676,6 +726,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentRefListResult'
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}/disciplines/{discipline-scheme}:
     get:
       tags:
@@ -758,6 +810,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}/files/{fileId}:
     get:
       tags:
@@ -788,6 +842,8 @@ paths:
               schema:
                 type: string
                 format: binary
+    servers:
+    - url: /ws/api
   /external-organizations/{uuid}/notes:
     get:
       tags:
@@ -867,55 +923,95 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
 components:
   schemas:
-    ClassificationRefList:
+    AllowedKeywordGroupConfigurationList:
       type: object
       properties:
-        classifications:
+        configurations:
           type: array
           items:
-            $ref: '#/components/schemas/ClassificationRef'
-      description: List of classification references
-    ClassificationSchemeRef:
+            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
+      description: List of allowed keyword group configurations
+    AllowedKeywordGroupConfiguration:
       required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a classification scheme
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    DisciplinesAssociationsQuery:
+      - targetSystemName
       type: object
       properties:
-        uuids:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        targetSystemName:
+          type: string
+          description: The content system name this configuration applies to
+        keywordGroupType:
+          type: string
+          description: The OpenAPI schema type of this keyword configuration
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/FormattedLocalizedString'
+        classificationScheme:
+          $ref: '#/components/schemas/ClassificationSchemeRef'
+        allowUserdefinedKeywords:
+          type: boolean
+          description: Defines if user defined keywords are allowed
+        limitToLeafSelection:
+          type: boolean
+        logicalName:
+          type: string
+        relationType:
+          type:
+          - string
+          - 'null'
+          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
+      description: A specification of the allowed behavior of a specified keyword group
+    LocalesList:
+      type: object
+      properties:
+        locales:
+          pattern: /^[a-z]{2}_[A-Z]{2}$/
           type: array
+          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
           items:
+            pattern: /^[a-z]{2}_[A-Z]{2}$/
             type: string
-            format: uuid
-        size:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-      description: Create a query for discipline associations
-    ExternalOrganizationListResult:
+            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+      description: List of available locales
+    ExternalOrganizationRefList:
       type: object
       properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
         items:
           type: array
-          description: External organizations
+          description: External organization references
           items:
-            $ref: '#/components/schemas/ExternalOrganization'
-      description: List of organizations external to the institution. Can contain a subset of all items along with the full count
+            $ref: '#/components/schemas/ExternalOrganizationRef'
+      description: List of references to organizations external to the institution.
+    Workflow:
+      required:
+      - step
+      type: object
+      properties:
+        step:
+          type: string
+          description: Current workflow step
+        description:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: Information about workflow
+    WorkflowListResult:
+      type: object
+      properties:
+        workflows:
+          type: array
+          description: Allowed workflow steps.
+          items:
+            $ref: '#/components/schemas/Workflow'
+      description: List of workflow steps.
     LocalizedString:
       type:
       - object
@@ -929,6 +1025,326 @@ components:
       description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
       example:
         en_GB: Some text
+    NoteListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Notes
+          items:
+            $ref: '#/components/schemas/Note'
+      description: List of notes
+    ImageFile:
+      required:
+      - fileName
+      - mimeType
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        fileId:
+          type: string
+          description: The id of the file
+          readOnly: true
+        fileName:
+          type: string
+          description: The documents file name
+        mimeType:
+          type: string
+          description: The documents mime type
+        size:
+          type: integer
+          description: The documents size in bytes
+          format: int64
+        url:
+          type: string
+          description: Download url for the binary file
+          readOnly: true
+        fileStoreLocations:
+          type: object
+          additionalProperties:
+            type: string
+            description: Locations of the binary file in file stores.
+            readOnly: true
+          description: Locations of the binary file in file stores.
+          readOnly: true
+        uploadedFile:
+          $ref: '#/components/schemas/UploadedFile'
+        remoteFile:
+          $ref: '#/components/schemas/RemoteFile'
+        fileData:
+          type: string
+          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
+          format: byte
+          writeOnly: true
+        type:
+          $ref: '#/components/schemas/ClassificationRef'
+        copyrightConfirmation:
+          type:
+          - boolean
+          - 'null'
+          description: Indicates whether this file has been confirmed to adhere to the appropriate copyrights
+        caption:
+          $ref: '#/components/schemas/LocalizedString'
+        altText:
+          $ref: '#/components/schemas/LocalizedString'
+        copyrightStatement:
+          $ref: '#/components/schemas/LocalizedString'
+      description: An image file
+    FormattedLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+      example:
+        en_GB: Some text
+    ContentRefListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: List of Content Refs
+    Document:
+      required:
+      - fileName
+      - mimeType
+      - type
+      - visibility
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        fileId:
+          type: string
+          description: The id of the file
+          readOnly: true
+        fileName:
+          type: string
+          description: The documents file name
+        mimeType:
+          type: string
+          description: The documents mime type
+        size:
+          type: integer
+          description: The documents size in bytes
+          format: int64
+        url:
+          type: string
+          description: Download url for the binary file
+          readOnly: true
+        fileStoreLocations:
+          type: object
+          additionalProperties:
+            type: string
+            description: Locations of the binary file in file stores.
+            readOnly: true
+          description: Locations of the binary file in file stores.
+          readOnly: true
+        uploadedFile:
+          $ref: '#/components/schemas/UploadedFile'
+        remoteFile:
+          $ref: '#/components/schemas/RemoteFile'
+        fileData:
+          type: string
+          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
+          format: byte
+          writeOnly: true
+        title:
+          type:
+          - string
+          - 'null'
+          description: Document title
+        type:
+          $ref: '#/components/schemas/ClassificationRef'
+        license:
+          $ref: '#/components/schemas/ClassificationRef'
+        visibleOnPortalDate:
+          type: string
+          description: The date the document will be available on the portal
+          format: date
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/Visibility'
+        creator:
+          type: string
+          description: The user that created the document
+          readOnly: true
+        created:
+          type: string
+          description: Create date for the document
+          format: date-time
+          readOnly: true
+      description: Document
+    ClassificationRef:
+      required:
+      - uri
+      type:
+      - object
+      - 'null'
+      properties:
+        uri:
+          type: string
+          description: Classification URI of the referred classification
+        term:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: A reference to a classification value
+    DisciplinesAssociation:
+      required:
+      - disciplineAssignments
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/ContentRef'
+        disciplineScheme:
+          type: string
+          description: The discipline scheme these disciplines are assigned from
+          readOnly: true
+        disciplineAssignments:
+          type: array
+          description: A collection of assigned disciplines
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
+      description: An association between a content and a number of discipline assignments
+    DisciplinesAssociationListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Discipline associations
+          items:
+            $ref: '#/components/schemas/DisciplinesAssociation'
+      description: List of discipline associations. Can contain a subset of all items along with the full count
+    UploadedFile:
+      required:
+      - key
+      type: object
+      properties:
+        digest:
+          type: string
+          description: The calculated digest for the file in Pure
+          readOnly: true
+        digestType:
+          type: string
+          description: The digest type
+          readOnly: true
+        size:
+          type: integer
+          description: The file size of the file in Pure
+          format: int64
+          readOnly: true
+        mimeType:
+          type: string
+          description: The mime type detected for the file
+          readOnly: true
+        timeStamp:
+          type: string
+          description: The timestamp Pure received the file
+          format: date-time
+          readOnly: true
+        expires:
+          type: string
+          description: The timestamp where Pure deletes the uploaded file if it has not been attached to any content
+          format: date-time
+          readOnly: true
+        key:
+          type: string
+          description: Pure key identifer for the file upload
+          readOnly: true
+      description: Information about the uploaded file
+    Visibility:
+      required:
+      - key
+      type: object
+      properties:
+        key:
+          type: string
+          description: Visibility value
+          enum:
+          - FREE
+          - CAMPUS
+          - BACKEND
+          - CONFIDENTIAL
+        description:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: Visibility of an object
+    CERIFAddress:
+      type:
+      - object
+      - 'null'
+      properties:
+        address1:
+          type:
+          - string
+          - 'null'
+          description: Address line 1
+        address2:
+          type:
+          - string
+          - 'null'
+          description: Address line 2
+        address3:
+          type:
+          - string
+          - 'null'
+          description: Address line 3
+        address4:
+          type:
+          - string
+          - 'null'
+          description: Address line 4
+        address5:
+          type:
+          - string
+          - 'null'
+          description: Address line 5
+        postalCode:
+          type:
+          - string
+          - 'null'
+          description: Postal code of city
+        city:
+          type:
+          - string
+          - 'null'
+          description: City
+        country:
+          $ref: '#/components/schemas/ClassificationRef'
+        subdivision:
+          $ref: '#/components/schemas/ClassificationRef'
+        state:
+          type:
+          - string
+          - 'null'
+          description: State. Mutually exclusive with state
+        geoLocation:
+          $ref: '#/components/schemas/GeoLocation'
+      description: A physical address
     DisciplinesDisciplineListResult:
       type: object
       properties:
@@ -944,31 +1360,100 @@ components:
           items:
             $ref: '#/components/schemas/DisciplinesDiscipline'
       description: List of disciplines for a specific discipline scheme
-    ClassificationRef:
+    ExternalOrganizationListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: External organizations
+          items:
+            $ref: '#/components/schemas/ExternalOrganization'
+      description: List of organizations external to the institution. Can contain a subset of all items along with the full count
+    OrderingsList:
+      type: object
+      properties:
+        orderings:
+          type: array
+          description: IDs of ways content can be ordered
+          items:
+            type: string
+            description: IDs of ways content can be ordered
+      description: List of available orderings
+    ClassificationSchemeRef:
       required:
-      - uri
+      - uuid
       type:
       - object
       - 'null'
-      properties:
-        uri:
-          type: string
-          description: Classification URI of the referred classification
-        term:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: A reference to a classification value
-    LocalesList:
+      description: A reference to a classification scheme
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    RemoteFile:
+      required:
+      - fileId
+      - fileState
+      - sourceId
+      - storeName
       type: object
       properties:
-        locales:
-          pattern: /^[a-z]{2}_[A-Z]{2}$/
+        sourceId:
+          type: string
+          description: The remote source ID
+        storeName:
+          type: string
+          description: The name of the remote store
+        timeStamp:
+          type: string
+          description: The timestamp at which the file was stored
+          format: date-time
+        fileId:
+          type: string
+          description: The remote file ID
+        fileState:
+          type: string
+          description: The remote file state
+          enum:
+          - AWAITING_CREATION
+          - CREATION_IN_PROGRESS
+          - CREATION_FAILED
+          - STORED
+          - AWAITING_DELETE
+          - DELETE_IN_PROGRESS
+          - DELETE_FAILED
+          - DELETED
+        metadataUpdateRequired:
+          type: boolean
+          description: Whether the file's metadata should be updated
+          default: false
+      description: Information about a remote file (Elsevier only)
+    ExternalOrganizationList:
+      type: object
+      properties:
+        items:
           type: array
-          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+          description: External organizations
           items:
-            pattern: /^[a-z]{2}_[A-Z]{2}$/
-            type: string
-            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
-      description: List of available locales
+            $ref: '#/components/schemas/ExternalOrganization'
+      description: List of organizations external to the institution.
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
     DisciplinesDisciplineScheme:
       required:
       - disciplineScheme
@@ -982,15 +1467,357 @@ components:
           type: string
           description: The discipline title
       description: A discipline scheme
-    ExternalOrganizationList:
+    ContentRef:
+      required:
+      - systemName
+      - uuid
+      type:
+      - object
+      - 'null'
+      properties:
+        uuid:
+          type: string
+          description: UUID of the referred content
+          format: uuid
+        systemName:
+          type: string
+      discriminator:
+        propertyName: systemName
+        mapping:
+          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
+          Activity: '#/components/schemas/ActivityRef'
+          Application: '#/components/schemas/ApplicationRef'
+          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
+          Award: '#/components/schemas/AwardRef'
+          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
+          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
+          DataSet: '#/components/schemas/DataSetRef'
+          Equipment: '#/components/schemas/EquipmentRef'
+          Event: '#/components/schemas/EventRef'
+          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
+          ExternalPerson: '#/components/schemas/ExternalPersonRef'
+          Impact: '#/components/schemas/ImpactRef'
+          Journal: '#/components/schemas/JournalRef'
+          Organization: '#/components/schemas/OrganizationRef'
+          Person: '#/components/schemas/PersonRef'
+          Publisher: '#/components/schemas/PublisherRef'
+          PressMedia: '#/components/schemas/PressMediaRef'
+          Prize: '#/components/schemas/PrizeRef'
+          Project: '#/components/schemas/ProjectRef'
+          ResearchOutput: '#/components/schemas/ResearchOutputRef'
+          StudentThesis: '#/components/schemas/StudentThesisRef'
+          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
+          EthicalReview: '#/components/schemas/EthicalReviewRef'
+          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
+          AwardCluster: '#/components/schemas/AwardClusterRef'
+          User: '#/components/schemas/UserRef'
+          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
+          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
+          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
+          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
+          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
+          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
+          Semester: '#/components/schemas/SemesterRef'
+          Education: '#/components/schemas/EducationRef'
+          Course: '#/components/schemas/CourseRef'
+          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
+          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
+          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
+          Review: '#/components/schemas/ReviewRef'
+          GenericContentRef: '#/components/schemas/GenericContentRef'
+          UserProfile: '#/components/schemas/UserProfileRef'
+          Thesaurus: '#/components/schemas/ThesaurusRef'
+          Concept: '#/components/schemas/ConceptRef'
+          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
+          Contract: '#/components/schemas/ContractRef'
+          Milestone: '#/components/schemas/MilestoneRef'
+          Fingerprint: '#/components/schemas/FingerprintRef'
+          Specialization: '#/components/schemas/SpecializationRef'
+          StudentProject: '#/components/schemas/StudentProjectRef'
+    KeywordGroup:
+      required:
+      - logicalName
+      - typeDiscriminator
       type: object
       properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        logicalName:
+          type: string
+          description: Unique name of the configuration that specifies this keyword group
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
+          FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
+          FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
+    ExternalOrganizationsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+        orderings:
+          type: array
+          items:
+            type: string
+        searchString:
+          type: string
+          description: String used to perform search
+        orderBy:
+          type: string
+          writeOnly: true
+      description: Create a query for external organizations
+    OrganizationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an organization in the institution
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    OrganizationOrExternalOrganizationRef:
+      type:
+      - object
+      - 'null'
+      properties:
+        organizationRef:
+          $ref: '#/components/schemas/OrganizationRef'
+        externalOrganizationRef:
+          $ref: '#/components/schemas/ExternalOrganizationRef'
+      description: A reference to an organization in the institution or an external organization
+    Link:
+      required:
+      - url
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        url:
+          type: string
+          description: The URL (Uniform Resource Locator) of the link
+        alias:
+          type:
+          - string
+          - 'null'
+          description: A user-friendly text to show instead of the URL
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        linkType:
+          $ref: '#/components/schemas/ClassificationRef'
+      description: A hyperlink describing a location on the web.
+    ExternalOrganizationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an organization external to the institution
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    ClassificationRefList:
+      type: object
+      properties:
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassificationRef'
+      description: List of classification references
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+      description: RFC7807 Error details
+      discriminator:
+        propertyName: type
+        mapping:
+          /error: '#/components/schemas/GenericProblemDetails'
+          /validation-error: '#/components/schemas/ValidationProblemDetails'
+          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
+    DisciplinesDisciplineSchemeListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The amount of discipline schemes
+          format: int32
         items:
           type: array
-          description: External organizations
+          description: Discipline schemes
           items:
-            $ref: '#/components/schemas/ExternalOrganization'
-      description: List of organizations external to the institution.
+            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
+      description: List of discipline schemes
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type:
+          - string
+          - 'null'
+          description: Start date
+          format: date
+        endDate:
+          type:
+          - string
+          - 'null'
+          description: End date
+          format: date
+      description: A date range
+    ConflictProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+        modified:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+      description: Problem details for state conflict failures
+    DisciplinesAssociationsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+      description: Create a query for discipline associations
+    Note:
+      required:
+      - text
+      type: object
+      properties:
+        date:
+          type:
+          - string
+          - 'null'
+          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
+          format: date-time
+        username:
+          type:
+          - string
+          - 'null'
+          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
+        text:
+          type: string
+          description: Note text
+      description: A note
+    GeoLocation:
+      type:
+      - object
+      - 'null'
+      properties:
+        point:
+          type:
+          - string
+          - 'null'
+          description: Location expressed as a point
+        polygon:
+          type:
+          - string
+          - 'null'
+          description: Location expressed as a polygon
+        calculatedPoint:
+          type: string
+          description: Used to determine whether or not we may update the point. An end-user has not entered a point manually if the value of the calculated point is the same as point
+          readOnly: true
+      description: Geographical location
+    PageInformation:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: Offset that returned items start at
+          format: int32
+        size:
+          type: integer
+          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
+          format: int32
+      description: Information about pages
+    DisciplinesDiscipline:
+      type: object
+      properties:
+        disciplineId:
+          type: string
+          description: The discipline identifier
+          readOnly: true
+        title:
+          type: string
+          description: The discipline title
+          readOnly: true
+        description:
+          type: string
+          description: The discipline description
+          readOnly: true
+      description: A discipline within a specific discipline scheme
+    SystemLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized string values each for a specific UI locale.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized string values each for a specific UI locale.
+      example:
+        en_GB: Some text
     ExternalOrganization:
       required:
       - name
@@ -1161,775 +1988,6 @@ components:
           description: The content system name
           readOnly: true
       description: An organization external to the institution
-    ConflictProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-        modified:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-      description: Problem details for state conflict failures
-    ExternalOrganizationRefList:
-      type: object
-      properties:
-        items:
-          type: array
-          description: External organization references
-          items:
-            $ref: '#/components/schemas/ExternalOrganizationRef'
-      description: List of references to organizations external to the institution.
-    CERIFAddress:
-      type:
-      - object
-      - 'null'
-      properties:
-        address1:
-          type:
-          - string
-          - 'null'
-          description: Address line 1
-        address2:
-          type:
-          - string
-          - 'null'
-          description: Address line 2
-        address3:
-          type:
-          - string
-          - 'null'
-          description: Address line 3
-        address4:
-          type:
-          - string
-          - 'null'
-          description: Address line 4
-        address5:
-          type:
-          - string
-          - 'null'
-          description: Address line 5
-        postalCode:
-          type:
-          - string
-          - 'null'
-          description: Postal code of city
-        city:
-          type:
-          - string
-          - 'null'
-          description: City
-        country:
-          $ref: '#/components/schemas/ClassificationRef'
-        subdivision:
-          $ref: '#/components/schemas/ClassificationRef'
-        state:
-          type:
-          - string
-          - 'null'
-          description: State. Mutually exclusive with state
-        geoLocation:
-          $ref: '#/components/schemas/GeoLocation'
-      description: A physical address
-    DisciplinesDisciplineSchemeListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The amount of discipline schemes
-          format: int32
-        items:
-          type: array
-          description: Discipline schemes
-          items:
-            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
-      description: List of discipline schemes
-    Link:
-      required:
-      - url
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        url:
-          type: string
-          description: The URL (Uniform Resource Locator) of the link
-        alias:
-          type:
-          - string
-          - 'null'
-          description: A user-friendly text to show instead of the URL
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        linkType:
-          $ref: '#/components/schemas/ClassificationRef'
-      description: A hyperlink describing a location on the web.
-    Document:
-      required:
-      - fileName
-      - mimeType
-      - type
-      - visibility
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        fileId:
-          type: string
-          description: The id of the file
-          readOnly: true
-        fileName:
-          type: string
-          description: The documents file name
-        mimeType:
-          type: string
-          description: The documents mime type
-        size:
-          type: integer
-          description: The documents size in bytes
-          format: int64
-        url:
-          type: string
-          description: Download url for the binary file
-          readOnly: true
-        fileStoreLocations:
-          type: object
-          additionalProperties:
-            type: string
-            description: Locations of the binary file in file stores.
-            readOnly: true
-          description: Locations of the binary file in file stores.
-          readOnly: true
-        uploadedFile:
-          $ref: '#/components/schemas/UploadedFile'
-        remoteFile:
-          $ref: '#/components/schemas/RemoteFile'
-        fileData:
-          type: string
-          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
-          format: byte
-          writeOnly: true
-        title:
-          type:
-          - string
-          - 'null'
-          description: Document title
-        type:
-          $ref: '#/components/schemas/ClassificationRef'
-        license:
-          $ref: '#/components/schemas/ClassificationRef'
-        visibleOnPortalDate:
-          type: string
-          description: The date the document will be available on the portal
-          format: date
-          readOnly: true
-        visibility:
-          $ref: '#/components/schemas/Visibility'
-        creator:
-          type: string
-          description: The user that created the document
-          readOnly: true
-        created:
-          type: string
-          description: Create date for the document
-          format: date-time
-          readOnly: true
-      description: Document
-    WorkflowListResult:
-      type: object
-      properties:
-        workflows:
-          type: array
-          description: Allowed workflow steps.
-          items:
-            $ref: '#/components/schemas/Workflow'
-      description: List of workflow steps.
-    FormattedLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-      example:
-        en_GB: Some text
-    SystemLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized string values each for a specific UI locale.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized string values each for a specific UI locale.
-      example:
-        en_GB: Some text
-    Visibility:
-      required:
-      - key
-      type: object
-      properties:
-        key:
-          type: string
-          description: Visibility value
-          enum:
-          - FREE
-          - CAMPUS
-          - BACKEND
-          - CONFIDENTIAL
-        description:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: Visibility of an object
-    Note:
-      required:
-      - text
-      type: object
-      properties:
-        date:
-          type:
-          - string
-          - 'null'
-          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
-          format: date-time
-        username:
-          type:
-          - string
-          - 'null'
-          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
-        text:
-          type: string
-          description: Note text
-      description: A note
-    ExternalOrganizationsQuery:
-      type: object
-      properties:
-        uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        size:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-        orderings:
-          type: array
-          items:
-            type: string
-        searchString:
-          type: string
-          description: String used to perform search
-        orderBy:
-          type: string
-          writeOnly: true
-      description: Create a query for external organizations
-    Workflow:
-      required:
-      - step
-      type: object
-      properties:
-        step:
-          type: string
-          description: Current workflow step
-        description:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: Information about workflow
-    GeoLocation:
-      type:
-      - object
-      - 'null'
-      properties:
-        point:
-          type:
-          - string
-          - 'null'
-          description: Location expressed as a point
-        polygon:
-          type:
-          - string
-          - 'null'
-          description: Location expressed as a polygon
-        calculatedPoint:
-          type: string
-          description: Used to determine whether or not we may update the point. An end-user has not entered a point manually if the value of the calculated point is the same as point
-          readOnly: true
-      description: Geographical location
-    DateRange:
-      type: object
-      properties:
-        startDate:
-          type:
-          - string
-          - 'null'
-          description: Start date
-          format: date
-        endDate:
-          type:
-          - string
-          - 'null'
-          description: End date
-          format: date
-      description: A date range
-    OrganizationOrExternalOrganizationRef:
-      type:
-      - object
-      - 'null'
-      properties:
-        organizationRef:
-          $ref: '#/components/schemas/OrganizationRef'
-        externalOrganizationRef:
-          $ref: '#/components/schemas/ExternalOrganizationRef'
-      description: A reference to an organization in the institution or an external organization
-    NoteListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Notes
-          items:
-            $ref: '#/components/schemas/Note'
-      description: List of notes
-    UploadedFile:
-      required:
-      - key
-      type: object
-      properties:
-        digest:
-          type: string
-          description: The calculated digest for the file in Pure
-          readOnly: true
-        digestType:
-          type: string
-          description: The digest type
-          readOnly: true
-        size:
-          type: integer
-          description: The file size of the file in Pure
-          format: int64
-          readOnly: true
-        mimeType:
-          type: string
-          description: The mime type detected for the file
-          readOnly: true
-        timeStamp:
-          type: string
-          description: The timestamp Pure received the file
-          format: date-time
-          readOnly: true
-        expires:
-          type: string
-          description: The timestamp where Pure deletes the uploaded file if it has not been attached to any content
-          format: date-time
-          readOnly: true
-        key:
-          type: string
-          description: Pure key identifer for the file upload
-          readOnly: true
-      description: Information about the uploaded file
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-      description: RFC7807 Error details
-      discriminator:
-        propertyName: type
-        mapping:
-          /error: '#/components/schemas/GenericProblemDetails'
-          /validation-error: '#/components/schemas/ValidationProblemDetails'
-          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
-    OrganizationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an organization in the institution
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    ContentRefListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentRef'
-      description: List of Content Refs
-    Identifier:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
-    ExternalOrganizationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an organization external to the institution
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    PageInformation:
-      type: object
-      properties:
-        offset:
-          type: integer
-          description: Offset that returned items start at
-          format: int32
-        size:
-          type: integer
-          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
-          format: int32
-      description: Information about pages
-    DisciplinesDiscipline:
-      type: object
-      properties:
-        disciplineId:
-          type: string
-          description: The discipline identifier
-          readOnly: true
-        title:
-          type: string
-          description: The discipline title
-          readOnly: true
-        description:
-          type: string
-          description: The discipline description
-          readOnly: true
-      description: A discipline within a specific discipline scheme
-    OrderingsList:
-      type: object
-      properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
-    RemoteFile:
-      required:
-      - fileId
-      - fileState
-      - sourceId
-      - storeName
-      type: object
-      properties:
-        sourceId:
-          type: string
-          description: The remote source ID
-        storeName:
-          type: string
-          description: The name of the remote store
-        timeStamp:
-          type: string
-          description: The timestamp at which the file was stored
-          format: date-time
-        fileId:
-          type: string
-          description: The remote file ID
-        fileState:
-          type: string
-          description: The remote file state
-          enum:
-          - AWAITING_CREATION
-          - CREATION_IN_PROGRESS
-          - CREATION_FAILED
-          - STORED
-          - AWAITING_DELETE
-          - DELETE_IN_PROGRESS
-          - DELETE_FAILED
-          - DELETED
-        metadataUpdateRequired:
-          type: boolean
-          description: Whether the file's metadata should be updated
-          default: false
-      description: Information about a remote file (Elsevier only)
-    ImageFile:
-      required:
-      - fileName
-      - mimeType
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        fileId:
-          type: string
-          description: The id of the file
-          readOnly: true
-        fileName:
-          type: string
-          description: The documents file name
-        mimeType:
-          type: string
-          description: The documents mime type
-        size:
-          type: integer
-          description: The documents size in bytes
-          format: int64
-        url:
-          type: string
-          description: Download url for the binary file
-          readOnly: true
-        fileStoreLocations:
-          type: object
-          additionalProperties:
-            type: string
-            description: Locations of the binary file in file stores.
-            readOnly: true
-          description: Locations of the binary file in file stores.
-          readOnly: true
-        uploadedFile:
-          $ref: '#/components/schemas/UploadedFile'
-        remoteFile:
-          $ref: '#/components/schemas/RemoteFile'
-        fileData:
-          type: string
-          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
-          format: byte
-          writeOnly: true
-        type:
-          $ref: '#/components/schemas/ClassificationRef'
-        copyrightConfirmation:
-          type:
-          - boolean
-          - 'null'
-          description: Indicates whether this file has been confirmed to adhere to the appropriate copyrights
-        caption:
-          $ref: '#/components/schemas/LocalizedString'
-        altText:
-          $ref: '#/components/schemas/LocalizedString'
-        copyrightStatement:
-          $ref: '#/components/schemas/LocalizedString'
-      description: An image file
-    ContentRef:
-      required:
-      - systemName
-      - uuid
-      type:
-      - object
-      - 'null'
-      properties:
-        uuid:
-          type: string
-          description: UUID of the referred content
-          format: uuid
-        systemName:
-          type: string
-      discriminator:
-        propertyName: systemName
-        mapping:
-          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
-          Activity: '#/components/schemas/ActivityRef'
-          Application: '#/components/schemas/ApplicationRef'
-          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
-          Award: '#/components/schemas/AwardRef'
-          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
-          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
-          DataSet: '#/components/schemas/DataSetRef'
-          Equipment: '#/components/schemas/EquipmentRef'
-          Event: '#/components/schemas/EventRef'
-          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
-          ExternalPerson: '#/components/schemas/ExternalPersonRef'
-          Impact: '#/components/schemas/ImpactRef'
-          Journal: '#/components/schemas/JournalRef'
-          Organization: '#/components/schemas/OrganizationRef'
-          Person: '#/components/schemas/PersonRef'
-          Publisher: '#/components/schemas/PublisherRef'
-          PressMedia: '#/components/schemas/PressMediaRef'
-          Prize: '#/components/schemas/PrizeRef'
-          Project: '#/components/schemas/ProjectRef'
-          ResearchOutput: '#/components/schemas/ResearchOutputRef'
-          StudentThesis: '#/components/schemas/StudentThesisRef'
-          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
-          EthicalReview: '#/components/schemas/EthicalReviewRef'
-          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
-          AwardCluster: '#/components/schemas/AwardClusterRef'
-          User: '#/components/schemas/UserRef'
-          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
-          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
-          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
-          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
-          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
-          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
-          Semester: '#/components/schemas/SemesterRef'
-          Education: '#/components/schemas/EducationRef'
-          Course: '#/components/schemas/CourseRef'
-          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
-          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
-          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
-          Review: '#/components/schemas/ReviewRef'
-          GenericContentRef: '#/components/schemas/GenericContentRef'
-          UserProfile: '#/components/schemas/UserProfileRef'
-          Thesaurus: '#/components/schemas/ThesaurusRef'
-          Concept: '#/components/schemas/ConceptRef'
-          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
-          Contract: '#/components/schemas/ContractRef'
-          Milestone: '#/components/schemas/MilestoneRef'
-          Fingerprint: '#/components/schemas/FingerprintRef'
-          Specialization: '#/components/schemas/SpecializationRef'
-          StudentProject: '#/components/schemas/StudentProjectRef'
-    AllowedKeywordGroupConfigurationList:
-      type: object
-      properties:
-        configurations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
-      description: List of allowed keyword group configurations
-    KeywordGroup:
-      required:
-      - logicalName
-      - typeDiscriminator
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        logicalName:
-          type: string
-          description: Unique name of the configuration that specifies this keyword group
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
-          FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
-          FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
-    DisciplinesAssociationListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Discipline associations
-          items:
-            $ref: '#/components/schemas/DisciplinesAssociation'
-      description: List of discipline associations. Can contain a subset of all items along with the full count
-    DisciplinesAssociation:
-      required:
-      - disciplineAssignments
-      type: object
-      properties:
-        content:
-          $ref: '#/components/schemas/ContentRef'
-        disciplineScheme:
-          type: string
-          description: The discipline scheme these disciplines are assigned from
-          readOnly: true
-        disciplineAssignments:
-          type: array
-          description: A collection of assigned disciplines
-          items:
-            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
-      description: An association between a content and a number of discipline assignments
-    AllowedKeywordGroupConfiguration:
-      required:
-      - targetSystemName
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        targetSystemName:
-          type: string
-          description: The content system name this configuration applies to
-        keywordGroupType:
-          type: string
-          description: The OpenAPI schema type of this keyword configuration
-          readOnly: true
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/FormattedLocalizedString'
-        classificationScheme:
-          $ref: '#/components/schemas/ClassificationSchemeRef'
-        allowUserdefinedKeywords:
-          type: boolean
-          description: Defines if user defined keywords are allowed
-        limitToLeafSelection:
-          type: boolean
-        logicalName:
-          type: string
-        relationType:
-          type:
-          - string
-          - 'null'
-          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
-      description: A specification of the allowed behavior of a specified keyword group
     DisciplinesDisciplineAssignment:
       required:
       - disciplineId
@@ -1950,3 +2008,6 @@ components:
       description: Security mechanism for the API
       name: api-key
       in: header
+x-refined-from:
+- university-of-manchester-pure-rest.yaml
+- university-of-manchester-pure-rest.yaml

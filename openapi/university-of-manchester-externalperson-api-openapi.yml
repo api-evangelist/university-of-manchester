@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pure External Person API
-  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
-  termsOfService: ''
+  title: University Of Manchester External Person API
+  version: 5.35.2-2
   contact:
     name: ''
     url: ''
@@ -10,7 +9,8 @@ info:
   license:
     name: ''
     url: ''
-  version: 5.35.2-2
+  termsOfService: ''
+  description: 'Operations tagged externalPerson across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /ws/api
 security:
@@ -78,6 +78,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-classified-identifier-types:
     get:
       tags:
@@ -92,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-countries:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-image-types:
     get:
       tags:
@@ -120,6 +126,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-keyword-group-configurations:
     get:
       tags:
@@ -134,6 +142,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllowedKeywordGroupConfigurationList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-keyword-group-configurations/{id}/classifications:
     get:
       tags:
@@ -156,6 +166,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-locales:
     get:
       tags:
@@ -170,6 +182,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LocalesList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-types:
     get:
       tags:
@@ -184,6 +198,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /external-persons/allowed-workflow-steps:
     get:
       tags:
@@ -198,6 +214,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkflowListResult'
+    servers:
+    - url: /ws/api
   /external-persons/disciplines/allowed-discipline-schemes:
     get:
       tags:
@@ -212,6 +230,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineSchemeListResult'
+    servers:
+    - url: /ws/api
   /external-persons/disciplines/{discipline-scheme}/allowed-disciplines:
     get:
       tags:
@@ -248,6 +268,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineListResult'
+    servers:
+    - url: /ws/api
   /external-persons/disciplines/{discipline-scheme}/search:
     post:
       tags:
@@ -282,6 +304,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/file-uploads:
     put:
       tags:
@@ -312,6 +336,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/UploadedFile'
+    servers:
+    - url: /ws/api
   /external-persons/orderings:
     get:
       tags:
@@ -326,6 +352,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderingsList'
+    servers:
+    - url: /ws/api
   /external-persons/search:
     post:
       tags:
@@ -353,6 +381,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}:
     get:
       tags:
@@ -461,6 +491,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}/actions/lock:
     post:
       tags:
@@ -492,6 +524,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}/actions/unlock:
     post:
       tags:
@@ -523,6 +557,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}/dependents:
     get:
       tags:
@@ -552,6 +588,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentRefListResult'
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}/disciplines/{discipline-scheme}:
     get:
       tags:
@@ -634,6 +672,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}/files/{fileId}:
     get:
       tags:
@@ -664,6 +704,8 @@ paths:
               schema:
                 type: string
                 format: binary
+    servers:
+    - url: /ws/api
   /external-persons/{uuid}/notes:
     get:
       tags:
@@ -743,81 +785,68 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
 components:
   schemas:
-    ClassificationRefList:
+    AllowedKeywordGroupConfigurationList:
       type: object
       properties:
-        classifications:
+        configurations:
           type: array
           items:
-            $ref: '#/components/schemas/ClassificationRef'
-      description: List of classification references
-    ClassificationSchemeRef:
+            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
+      description: List of allowed keyword group configurations
+    AllowedKeywordGroupConfiguration:
       required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a classification scheme
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    DisciplinesAssociationsQuery:
+      - targetSystemName
       type: object
       properties:
-        uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        size:
+        pureId:
           type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-      description: Create a query for discipline associations
-    LocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
-        example: '{"en_GB":"Some text"}'
-      description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
-      example:
-        en_GB: Some text
-    DisciplinesDisciplineListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Disciplines
-          items:
-            $ref: '#/components/schemas/DisciplinesDiscipline'
-      description: List of disciplines for a specific discipline scheme
-    ClassificationRef:
-      required:
-      - uri
-      type:
-      - object
-      - 'null'
-      properties:
-        uri:
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        targetSystemName:
           type: string
-          description: Classification URI of the referred classification
-        term:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: A reference to a classification value
+          description: The content system name this configuration applies to
+        keywordGroupType:
+          type: string
+          description: The OpenAPI schema type of this keyword configuration
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/FormattedLocalizedString'
+        classificationScheme:
+          $ref: '#/components/schemas/ClassificationSchemeRef'
+        allowUserdefinedKeywords:
+          type: boolean
+          description: Defines if user defined keywords are allowed
+        limitToLeafSelection:
+          type: boolean
+        logicalName:
+          type: string
+        relationType:
+          type:
+          - string
+          - 'null'
+          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
+      description: A specification of the allowed behavior of a specified keyword group
+    Gender:
+      type:
+      - object
+      - 'null'
+      properties:
+        key:
+          type: string
+          enum:
+          - MALE
+          - FEMALE
+          - UNKNOWN
+        value:
+          $ref: '#/components/schemas/LocalizedString'
+      description: A list of possible genders
     LocalesList:
       type: object
       properties:
@@ -830,44 +859,6 @@ components:
             type: string
             description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
       description: List of available locales
-    DisciplinesDisciplineScheme:
-      required:
-      - disciplineScheme
-      - title
-      type: object
-      properties:
-        disciplineScheme:
-          type: string
-          description: The discipline scheme identifier
-        title:
-          type: string
-          description: The discipline title
-      description: A discipline scheme
-    ConflictProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-        modified:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-      description: Problem details for state conflict failures
     ExternalPerson:
       type: object
       properties:
@@ -975,89 +966,6 @@ components:
           description: The content system name
           readOnly: true
       description: A person not known to the institution
-    DisciplinesDisciplineSchemeListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The amount of discipline schemes
-          format: int32
-        items:
-          type: array
-          description: Discipline schemes
-          items:
-            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
-      description: List of discipline schemes
-    ExternalPersonListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: External Persons
-          items:
-            $ref: '#/components/schemas/ExternalPerson'
-      description: List of external persons. Can contain a subset of all items along with the full count
-    WorkflowListResult:
-      type: object
-      properties:
-        workflows:
-          type: array
-          description: Allowed workflow steps.
-          items:
-            $ref: '#/components/schemas/Workflow'
-      description: List of workflow steps.
-    FormattedLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-      example:
-        en_GB: Some text
-    SystemLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized string values each for a specific UI locale.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized string values each for a specific UI locale.
-      example:
-        en_GB: Some text
-    Note:
-      required:
-      - text
-      type: object
-      properties:
-        date:
-          type:
-          - string
-          - 'null'
-          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
-          format: date-time
-        username:
-          type:
-          - string
-          - 'null'
-          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
-        text:
-          type: string
-          description: Note text
-      description: A note
     Workflow:
       required:
       - step
@@ -1069,6 +977,28 @@ components:
         description:
           $ref: '#/components/schemas/SystemLocalizedString'
       description: Information about workflow
+    WorkflowListResult:
+      type: object
+      properties:
+        workflows:
+          type: array
+          description: Allowed workflow steps.
+          items:
+            $ref: '#/components/schemas/Workflow'
+      description: List of workflow steps.
+    LocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
+        example: '{"en_GB":"Some text"}'
+      description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
+      example:
+        en_GB: Some text
     NoteListResult:
       type: object
       properties:
@@ -1084,208 +1014,6 @@ components:
           items:
             $ref: '#/components/schemas/Note'
       description: List of notes
-    UploadedFile:
-      required:
-      - key
-      type: object
-      properties:
-        digest:
-          type: string
-          description: The calculated digest for the file in Pure
-          readOnly: true
-        digestType:
-          type: string
-          description: The digest type
-          readOnly: true
-        size:
-          type: integer
-          description: The file size of the file in Pure
-          format: int64
-          readOnly: true
-        mimeType:
-          type: string
-          description: The mime type detected for the file
-          readOnly: true
-        timeStamp:
-          type: string
-          description: The timestamp Pure received the file
-          format: date-time
-          readOnly: true
-        expires:
-          type: string
-          description: The timestamp where Pure deletes the uploaded file if it has not been attached to any content
-          format: date-time
-          readOnly: true
-        key:
-          type: string
-          description: Pure key identifer for the file upload
-          readOnly: true
-      description: Information about the uploaded file
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-      description: RFC7807 Error details
-      discriminator:
-        propertyName: type
-        mapping:
-          /error: '#/components/schemas/GenericProblemDetails'
-          /validation-error: '#/components/schemas/ValidationProblemDetails'
-          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
-    ContentRefListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentRef'
-      description: List of Content Refs
-    Identifier:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
-    ExternalOrganizationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an organization external to the institution
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    PageInformation:
-      type: object
-      properties:
-        offset:
-          type: integer
-          description: Offset that returned items start at
-          format: int32
-        size:
-          type: integer
-          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
-          format: int32
-      description: Information about pages
-    DisciplinesDiscipline:
-      type: object
-      properties:
-        disciplineId:
-          type: string
-          description: The discipline identifier
-          readOnly: true
-        title:
-          type: string
-          description: The discipline title
-          readOnly: true
-        description:
-          type: string
-          description: The discipline description
-          readOnly: true
-      description: A discipline within a specific discipline scheme
-    OrderingsList:
-      type: object
-      properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
-    RemoteFile:
-      required:
-      - fileId
-      - fileState
-      - sourceId
-      - storeName
-      type: object
-      properties:
-        sourceId:
-          type: string
-          description: The remote source ID
-        storeName:
-          type: string
-          description: The name of the remote store
-        timeStamp:
-          type: string
-          description: The timestamp at which the file was stored
-          format: date-time
-        fileId:
-          type: string
-          description: The remote file ID
-        fileState:
-          type: string
-          description: The remote file state
-          enum:
-          - AWAITING_CREATION
-          - CREATION_IN_PROGRESS
-          - CREATION_FAILED
-          - STORED
-          - AWAITING_DELETE
-          - DELETE_IN_PROGRESS
-          - DELETE_FAILED
-          - DELETED
-        metadataUpdateRequired:
-          type: boolean
-          description: Whether the file's metadata should be updated
-          default: false
-      description: Information about a remote file (Elsevier only)
-    ExternalPersonsQuery:
-      type: object
-      properties:
-        uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        size:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-        orderings:
-          type: array
-          items:
-            type: string
-        searchString:
-          type: string
-          description: String used to perform search
-        orderBy:
-          type: string
-          writeOnly: true
-      description: Create a query for external persons
-    Name:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-      description: A name describing a person, made up of given- and family name
     ImageFile:
       required:
       - fileName
@@ -1346,6 +1074,207 @@ components:
         copyrightStatement:
           $ref: '#/components/schemas/LocalizedString'
       description: An image file
+    FormattedLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+      example:
+        en_GB: Some text
+    ContentRefListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: List of Content Refs
+    ClassificationRef:
+      required:
+      - uri
+      type:
+      - object
+      - 'null'
+      properties:
+        uri:
+          type: string
+          description: Classification URI of the referred classification
+        term:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: A reference to a classification value
+    DisciplinesAssociation:
+      required:
+      - disciplineAssignments
+      type: object
+      properties:
+        content:
+          $ref: '#/components/schemas/ContentRef'
+        disciplineScheme:
+          type: string
+          description: The discipline scheme these disciplines are assigned from
+          readOnly: true
+        disciplineAssignments:
+          type: array
+          description: A collection of assigned disciplines
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
+      description: An association between a content and a number of discipline assignments
+    DisciplinesAssociationListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Discipline associations
+          items:
+            $ref: '#/components/schemas/DisciplinesAssociation'
+      description: List of discipline associations. Can contain a subset of all items along with the full count
+    UploadedFile:
+      required:
+      - key
+      type: object
+      properties:
+        digest:
+          type: string
+          description: The calculated digest for the file in Pure
+          readOnly: true
+        digestType:
+          type: string
+          description: The digest type
+          readOnly: true
+        size:
+          type: integer
+          description: The file size of the file in Pure
+          format: int64
+          readOnly: true
+        mimeType:
+          type: string
+          description: The mime type detected for the file
+          readOnly: true
+        timeStamp:
+          type: string
+          description: The timestamp Pure received the file
+          format: date-time
+          readOnly: true
+        expires:
+          type: string
+          description: The timestamp where Pure deletes the uploaded file if it has not been attached to any content
+          format: date-time
+          readOnly: true
+        key:
+          type: string
+          description: Pure key identifer for the file upload
+          readOnly: true
+      description: Information about the uploaded file
+    DisciplinesDisciplineListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Disciplines
+          items:
+            $ref: '#/components/schemas/DisciplinesDiscipline'
+      description: List of disciplines for a specific discipline scheme
+    OrderingsList:
+      type: object
+      properties:
+        orderings:
+          type: array
+          description: IDs of ways content can be ordered
+          items:
+            type: string
+            description: IDs of ways content can be ordered
+      description: List of available orderings
+    ClassificationSchemeRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a classification scheme
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    RemoteFile:
+      required:
+      - fileId
+      - fileState
+      - sourceId
+      - storeName
+      type: object
+      properties:
+        sourceId:
+          type: string
+          description: The remote source ID
+        storeName:
+          type: string
+          description: The name of the remote store
+        timeStamp:
+          type: string
+          description: The timestamp at which the file was stored
+          format: date-time
+        fileId:
+          type: string
+          description: The remote file ID
+        fileState:
+          type: string
+          description: The remote file state
+          enum:
+          - AWAITING_CREATION
+          - CREATION_IN_PROGRESS
+          - CREATION_FAILED
+          - STORED
+          - AWAITING_DELETE
+          - DELETE_IN_PROGRESS
+          - DELETE_FAILED
+          - DELETED
+        metadataUpdateRequired:
+          type: boolean
+          description: Whether the file's metadata should be updated
+          default: false
+      description: Information about a remote file (Elsevier only)
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
+    DisciplinesDisciplineScheme:
+      required:
+      - disciplineScheme
+      - title
+      type: object
+      properties:
+        disciplineScheme:
+          type: string
+          description: The discipline scheme identifier
+        title:
+          type: string
+          description: The discipline title
+      description: A discipline scheme
     ContentRef:
       required:
       - systemName
@@ -1413,14 +1342,6 @@ components:
           Fingerprint: '#/components/schemas/FingerprintRef'
           Specialization: '#/components/schemas/SpecializationRef'
           StudentProject: '#/components/schemas/StudentProjectRef'
-    AllowedKeywordGroupConfigurationList:
-      type: object
-      properties:
-        configurations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
-      description: List of allowed keyword group configurations
     KeywordGroup:
       required:
       - logicalName
@@ -1445,7 +1366,24 @@ components:
           ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
           FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
           FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
-    DisciplinesAssociationListResult:
+    ExternalOrganizationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an organization external to the institution
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    ClassificationRefList:
+      type: object
+      properties:
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassificationRef'
+      description: List of classification references
+    ExternalPersonListResult:
       type: object
       properties:
         count:
@@ -1456,77 +1394,183 @@ components:
           $ref: '#/components/schemas/PageInformation'
         items:
           type: array
-          description: Discipline associations
+          description: External Persons
           items:
-            $ref: '#/components/schemas/DisciplinesAssociation'
-      description: List of discipline associations. Can contain a subset of all items along with the full count
-    Gender:
-      type:
-      - object
-      - 'null'
-      properties:
-        key:
-          type: string
-          enum:
-          - MALE
-          - FEMALE
-          - UNKNOWN
-        value:
-          $ref: '#/components/schemas/LocalizedString'
-      description: A list of possible genders
-    DisciplinesAssociation:
-      required:
-      - disciplineAssignments
+            $ref: '#/components/schemas/ExternalPerson'
+      description: List of external persons. Can contain a subset of all items along with the full count
+    ProblemDetails:
       type: object
       properties:
-        content:
-          $ref: '#/components/schemas/ContentRef'
-        disciplineScheme:
+        type:
           type: string
-          description: The discipline scheme these disciplines are assigned from
-          readOnly: true
-        disciplineAssignments:
-          type: array
-          description: A collection of assigned disciplines
-          items:
-            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
-      description: An association between a content and a number of discipline assignments
-    AllowedKeywordGroupConfiguration:
-      required:
-      - targetSystemName
-      type: object
-      properties:
-        pureId:
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
           type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        targetSystemName:
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
           type: string
-          description: The content system name this configuration applies to
-        keywordGroupType:
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
           type: string
-          description: The OpenAPI schema type of this keyword configuration
-          readOnly: true
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/FormattedLocalizedString'
-        classificationScheme:
-          $ref: '#/components/schemas/ClassificationSchemeRef'
-        allowUserdefinedKeywords:
-          type: boolean
-          description: Defines if user defined keywords are allowed
-        limitToLeafSelection:
-          type: boolean
-        logicalName:
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+      description: RFC7807 Error details
+      discriminator:
+        propertyName: type
+        mapping:
+          /error: '#/components/schemas/GenericProblemDetails'
+          /validation-error: '#/components/schemas/ValidationProblemDetails'
+          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
+    ConflictProblemDetails:
+      type: object
+      properties:
+        type:
           type: string
-        relationType:
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+        modified:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+      description: Problem details for state conflict failures
+    DisciplinesDisciplineSchemeListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The amount of discipline schemes
+          format: int32
+        items:
+          type: array
+          description: Discipline schemes
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
+      description: List of discipline schemes
+    DisciplinesAssociationsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+      description: Create a query for discipline associations
+    Note:
+      required:
+      - text
+      type: object
+      properties:
+        date:
           type:
           - string
           - 'null'
-          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
-      description: A specification of the allowed behavior of a specified keyword group
+          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
+          format: date-time
+        username:
+          type:
+          - string
+          - 'null'
+          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
+        text:
+          type: string
+          description: Note text
+      description: A note
+    PageInformation:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: Offset that returned items start at
+          format: int32
+        size:
+          type: integer
+          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
+          format: int32
+      description: Information about pages
+    DisciplinesDiscipline:
+      type: object
+      properties:
+        disciplineId:
+          type: string
+          description: The discipline identifier
+          readOnly: true
+        title:
+          type: string
+          description: The discipline title
+          readOnly: true
+        description:
+          type: string
+          description: The discipline description
+          readOnly: true
+      description: A discipline within a specific discipline scheme
+    SystemLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized string values each for a specific UI locale.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized string values each for a specific UI locale.
+      example:
+        en_GB: Some text
+    Name:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+      description: A name describing a person, made up of given- and family name
+    ExternalPersonsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+        orderings:
+          type: array
+          items:
+            type: string
+        searchString:
+          type: string
+          description: String used to perform search
+        orderBy:
+          type: string
+          writeOnly: true
+      description: Create a query for external persons
     DisciplinesDisciplineAssignment:
       required:
       - disciplineId
@@ -1547,3 +1591,6 @@ components:
       description: Security mechanism for the API
       name: api-key
       in: header
+x-refined-from:
+- university-of-manchester-pure-rest.yaml
+- university-of-manchester-pure-rest.yaml

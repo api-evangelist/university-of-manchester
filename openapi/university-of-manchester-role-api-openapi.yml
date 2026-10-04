@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pure Role API
-  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
-  termsOfService: ''
+  title: University Of Manchester Role API
+  version: 5.35.2-2
   contact:
     name: ''
     url: ''
@@ -10,7 +9,8 @@ info:
   license:
     name: ''
     url: ''
-  version: 5.35.2-2
+  termsOfService: ''
+  description: 'Operations tagged role across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /ws/api
 security:
@@ -34,6 +34,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/AssignableRole'
+    servers:
+    - url: /ws/api
   /roles/{assignableRoleName}:
     get:
       tags:
@@ -56,6 +58,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssignableRole'
+    servers:
+    - url: /ws/api
 components:
   schemas:
     LocalizedString:
@@ -93,3 +97,6 @@ components:
       description: Security mechanism for the API
       name: api-key
       in: header
+x-refined-from:
+- university-of-manchester-pure-rest.yaml
+- university-of-manchester-pure-rest.yaml

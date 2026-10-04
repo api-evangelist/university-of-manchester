@@ -103,16 +103,6 @@ paths:
         '404':
           description: No such image identifier.
 components:
-  parameters:
-    identifier:
-      name: identifier
-      in: path
-      required: true
-      description: Image identifier. On this deployment it is the source filename, formed as <documentId>-<sequence>-<page>.jp2, e.g. MS-LATIN-00006-000-00001.jp2. Identifiers are discovered from the Presentation API manifest rather than enumerated.
-      schema:
-        type: string
-        examples:
-        - MS-LATIN-00006-000-00001.jp2
   schemas:
     ImageInformation:
       type: object
@@ -187,3 +177,13 @@ components:
                   type: integer
                 maxHeight:
                   type: integer
+  parameters:
+    identifier:
+      name: identifier
+      in: path
+      required: true
+      description: Image identifier. On this deployment it is the source filename, formed as <documentId>-<sequence>-<page>.jp2, e.g. MS-LATIN-00006-000-00001.jp2. Identifiers are discovered from the Presentation API manifest rather than enumerated.
+      schema:
+        type: string
+        examples:
+        - MS-LATIN-00006-000-00001.jp2

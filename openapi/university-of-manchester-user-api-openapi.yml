@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pure User API
-  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
-  termsOfService: ''
+  title: University Of Manchester User API
+  version: 5.35.2-2
   contact:
     name: ''
     url: ''
@@ -10,7 +9,8 @@ info:
   license:
     name: ''
     url: ''
-  version: 5.35.2-2
+  termsOfService: ''
+  description: 'Operations tagged user across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /ws/api
 security:
@@ -78,6 +78,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /users/orderings:
     get:
       tags:
@@ -92,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderingsList'
+    servers:
+    - url: /ws/api
   /users/{uuid}:
     get:
       tags:
@@ -200,6 +204,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /users/{uuid}/actions/lock:
     post:
       tags:
@@ -231,6 +237,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /users/{uuid}/actions/reset-password:
     post:
       tags:
@@ -262,6 +270,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /users/{uuid}/actions/unlock:
     post:
       tags:
@@ -293,6 +303,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /users/{uuid}/roles:
     get:
       tags:
@@ -368,63 +380,10 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
 components:
   schemas:
-    AssignableRoleRef:
-      required:
-      - assignableRoleName
-      type: object
-      properties:
-        assignableRoleName:
-          type: string
-          description: Name of an assignable role
-      description: A reference to an assignable role that can be either local or global
-    Identifier:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
-    PageInformation:
-      type: object
-      properties:
-        offset:
-          type: integer
-          description: Offset that returned items start at
-          format: int32
-        size:
-          type: integer
-          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
-          format: int32
-      description: Information about pages
-    UserRoles:
-      required:
-      - globalRoleAssignments
-      - localRoleAssignments
-      - version
-      type: object
-      properties:
-        version:
-          type: string
-          description: Used to guard against conflicting updates. The property should never be modified explicitly by a client
-        globalRoleAssignments:
-          type: array
-          description: Current/requested global role assignments
-          items:
-            $ref: '#/components/schemas/GlobalRoleAssignment'
-        localRoleAssignments:
-          type: array
-          description: Current/requested local role assignments
-          items:
-            $ref: '#/components/schemas/LocalRoleAssignment'
-      description: The complete picture of a users roles
     GlobalRoleAssignment:
       required:
       - roleDefinition
@@ -523,21 +482,66 @@ components:
           description: The content system name
           readOnly: true
       description: A user that can be attached to a person in Pure
-    LocalRoleAssignment:
-      required:
-      - roleDefinition
+    PageInformation:
       type: object
       properties:
-        roleDefinition:
-          $ref: '#/components/schemas/AssignableRoleRef'
-        assignments:
-          type:
-          - array
-          - 'null'
-          description: Where the local role is (to be) assigned
+        offset:
+          type: integer
+          description: Offset that returned items start at
+          format: int32
+        size:
+          type: integer
+          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
+          format: int32
+      description: Information about pages
+    UserRoles:
+      required:
+      - globalRoleAssignments
+      - localRoleAssignments
+      - version
+      type: object
+      properties:
+        version:
+          type: string
+          description: Used to guard against conflicting updates. The property should never be modified explicitly by a client
+        globalRoleAssignments:
+          type: array
+          description: Current/requested global role assignments
           items:
-            $ref: '#/components/schemas/ContentRef'
-      description: The complete picture of where a local role is to be assigned
+            $ref: '#/components/schemas/GlobalRoleAssignment'
+        localRoleAssignments:
+          type: array
+          description: Current/requested local role assignments
+          items:
+            $ref: '#/components/schemas/LocalRoleAssignment'
+      description: The complete picture of a users roles
+    AssignableRoleRef:
+      required:
+      - assignableRoleName
+      type: object
+      properties:
+        assignableRoleName:
+          type: string
+          description: Name of an assignable role
+      description: A reference to an assignable role that can be either local or global
+    Name:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+      description: A name describing a person, made up of given- and family name
+    OrderingsList:
+      type: object
+      properties:
+        orderings:
+          type: array
+          description: IDs of ways content can be ordered
+          items:
+            type: string
+            description: IDs of ways content can be ordered
+      description: List of available orderings
     UserListResult:
       type: object
       properties:
@@ -553,7 +557,20 @@ components:
           items:
             $ref: '#/components/schemas/User'
       description: List of users. Can contain a subset of all items along with the full count
-    ConflictProblemDetails:
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
+    ProblemDetails:
       type: object
       properties:
         type:
@@ -572,22 +589,13 @@ components:
         instance:
           type: string
           description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-        modified:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-      description: Problem details for state conflict failures
-    OrderingsList:
-      type: object
-      properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
+      description: RFC7807 Error details
+      discriminator:
+        propertyName: type
+        mapping:
+          /error: '#/components/schemas/GenericProblemDetails'
+          /validation-error: '#/components/schemas/ValidationProblemDetails'
+          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
     ContentRef:
       required:
       - systemName
@@ -655,15 +663,22 @@ components:
           Fingerprint: '#/components/schemas/FingerprintRef'
           Specialization: '#/components/schemas/SpecializationRef'
           StudentProject: '#/components/schemas/StudentProjectRef'
-    Name:
+    LocalRoleAssignment:
+      required:
+      - roleDefinition
       type: object
       properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-      description: A name describing a person, made up of given- and family name
-    ProblemDetails:
+        roleDefinition:
+          $ref: '#/components/schemas/AssignableRoleRef'
+        assignments:
+          type:
+          - array
+          - 'null'
+          description: Where the local role is (to be) assigned
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: The complete picture of where a local role is to be assigned
+    ConflictProblemDetails:
       type: object
       properties:
         type:
@@ -682,16 +697,18 @@ components:
         instance:
           type: string
           description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-      description: RFC7807 Error details
-      discriminator:
-        propertyName: type
-        mapping:
-          /error: '#/components/schemas/GenericProblemDetails'
-          /validation-error: '#/components/schemas/ValidationProblemDetails'
-          /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
+        modified:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+      description: Problem details for state conflict failures
   securitySchemes:
     api-key:
       type: apiKey
       description: Security mechanism for the API
       name: api-key
       in: header
+x-refined-from:
+- university-of-manchester-pure-rest.yaml
+- university-of-manchester-pure-rest.yaml

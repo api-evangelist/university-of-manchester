@@ -1,8 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Pure Award API
-  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
-  termsOfService: ''
+  title: University Of Manchester Award API
+  version: 5.35.2-2
   contact:
     name: ''
     url: ''
@@ -10,7 +9,8 @@ info:
   license:
     name: ''
     url: ''
-  version: 5.35.2-2
+  termsOfService: ''
+  description: 'Operations tagged award across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: /ws/api
 security:
@@ -78,6 +78,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/allowed-awardholder-roles:
     get:
       tags:
@@ -92,6 +94,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-budget-account-classifications:
     get:
       tags:
@@ -106,6 +110,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-classified-identifier-types:
     get:
       tags:
@@ -120,6 +126,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-collaborator-types:
     get:
       tags:
@@ -134,6 +142,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-custom-defined-field-values/{propertyName}/classifications:
     get:
       tags:
@@ -167,6 +177,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/allowed-description-types:
     get:
       tags:
@@ -181,6 +193,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-document-licenses:
     get:
       tags:
@@ -195,6 +209,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-document-types:
     get:
       tags:
@@ -209,6 +225,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-document-version-types:
     get:
       tags:
@@ -223,6 +241,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-funding-classifications:
     get:
       tags:
@@ -237,6 +257,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-keyword-group-configurations:
     get:
       tags:
@@ -251,6 +273,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllowedKeywordGroupConfigurationList'
+    servers:
+    - url: /ws/api
   /awards/allowed-keyword-group-configurations/{id}/classifications:
     get:
       tags:
@@ -273,6 +297,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-link-types:
     get:
       tags:
@@ -287,6 +313,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-locales:
     get:
       tags:
@@ -301,6 +329,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LocalesList'
+    servers:
+    - url: /ws/api
   /awards/allowed-nature-types:
     get:
       tags:
@@ -315,6 +345,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-templates:
     get:
       tags:
@@ -329,6 +361,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllowedTemplateListResult'
+    servers:
+    - url: /ws/api
   /awards/allowed-types:
     get:
       tags:
@@ -343,6 +377,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassificationRefList'
+    servers:
+    - url: /ws/api
   /awards/allowed-workflow-steps:
     get:
       tags:
@@ -357,6 +393,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkflowListResult'
+    servers:
+    - url: /ws/api
   /awards/disciplines/allowed-discipline-schemes:
     get:
       tags:
@@ -371,6 +409,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineSchemeListResult'
+    servers:
+    - url: /ws/api
   /awards/disciplines/{discipline-scheme}/allowed-disciplines:
     get:
       tags:
@@ -407,6 +447,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisciplinesDisciplineListResult'
+    servers:
+    - url: /ws/api
   /awards/disciplines/{discipline-scheme}/search:
     post:
       tags:
@@ -441,6 +483,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/file-uploads:
     put:
       tags:
@@ -471,6 +515,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/UploadedFile'
+    servers:
+    - url: /ws/api
   /awards/orderings:
     get:
       tags:
@@ -485,6 +531,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderingsList'
+    servers:
+    - url: /ws/api
   /awards/search:
     post:
       tags:
@@ -512,6 +560,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}:
     get:
       tags:
@@ -620,6 +670,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/actions/lock:
     post:
       tags:
@@ -651,6 +703,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/actions/unlock:
     post:
       tags:
@@ -682,6 +736,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/budgets:
     get:
       tags:
@@ -711,6 +767,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/budgets/{id}:
     get:
       tags:
@@ -801,6 +859,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/cluster:
     get:
       tags:
@@ -830,6 +890,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/dependents:
     get:
       tags:
@@ -859,6 +921,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentRefListResult'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/disciplines/{discipline-scheme}:
     get:
       tags:
@@ -941,6 +1005,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/files/{fileId}:
     get:
       tags:
@@ -971,6 +1037,8 @@ paths:
               schema:
                 type: string
                 format: binary
+    servers:
+    - url: /ws/api
   /awards/{uuid}/fingerprints:
     get:
       tags:
@@ -1006,6 +1074,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/milestones:
     get:
       tags:
@@ -1041,6 +1111,8 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
   /awards/{uuid}/notes:
     get:
       tags:
@@ -1120,9 +1192,229 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
+    servers:
+    - url: /ws/api
 components:
   schemas:
-    AwardListResult:
+    DeprecatedDateRange:
+      type: object
+      properties:
+        startDate:
+          type:
+          - string
+          - 'null'
+          description: Start date
+          format: date
+        endDate:
+          type:
+          - string
+          - 'null'
+          description: End date
+          format: date
+      description: Deprecated version of DateRange
+      deprecated: true
+    CustomDefinedFields:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        $ref: '#/components/schemas/CustomDefinedField'
+      description: Map of CustomDefinedField values, where the key is the field identifier
+      example: '{ "fieldName1": "typeDiscriminator": "Integer", "value" : 1}'
+    SystemCurrencyAmount:
+      required:
+      - value
+      type: object
+      properties:
+        currency:
+          type: string
+          description: 'An ISO-4217 3-letter alphabetic code representing the Pure installation''s system currency as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-currency'
+          readOnly: true
+        value:
+          type: string
+          description: 'A valid decimal monetary value as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-value'
+          format: ^-?[0-9]+(\.[0-9]+)?$
+      description: 'A monetary value in the Pure installation''s system currency as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#paymentcurrencyamount-dictionary'
+    AllowedKeywordGroupConfigurationList:
+      type: object
+      properties:
+        configurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
+      description: List of allowed keyword group configurations
+    MilestoneDocument:
+      required:
+      - fileName
+      - mimeType
+      - type
+      - visibility
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        fileId:
+          type: string
+          description: The id of the file
+          readOnly: true
+        fileName:
+          type: string
+          description: The documents file name
+        mimeType:
+          type: string
+          description: The documents mime type
+        size:
+          type: integer
+          description: The documents size in bytes
+          format: int64
+        url:
+          type: string
+          description: Download url for the binary file
+          readOnly: true
+        fileStoreLocations:
+          type: object
+          additionalProperties:
+            type: string
+            description: Locations of the binary file in file stores.
+            readOnly: true
+          description: Locations of the binary file in file stores.
+          readOnly: true
+        uploadedFile:
+          $ref: '#/components/schemas/UploadedFile'
+        remoteFile:
+          $ref: '#/components/schemas/RemoteFile'
+        fileData:
+          type: string
+          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
+          format: byte
+          writeOnly: true
+        title:
+          type:
+          - string
+          - 'null'
+          description: Document title
+        type:
+          $ref: '#/components/schemas/ClassificationRef'
+        visibility:
+          $ref: '#/components/schemas/Visibility'
+        creator:
+          type: string
+          description: The user that created the document
+          readOnly: true
+        created:
+          type: string
+          description: Create date for the document
+          format: date-time
+          readOnly: true
+      description: A milestone document
+    AllowedKeywordGroupConfiguration:
+      required:
+      - targetSystemName
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        targetSystemName:
+          type: string
+          description: The content system name this configuration applies to
+        keywordGroupType:
+          type: string
+          description: The OpenAPI schema type of this keyword configuration
+          readOnly: true
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        description:
+          $ref: '#/components/schemas/FormattedLocalizedString'
+        classificationScheme:
+          $ref: '#/components/schemas/ClassificationSchemeRef'
+        allowUserdefinedKeywords:
+          type: boolean
+          description: Defines if user defined keywords are allowed
+        limitToLeafSelection:
+          type: boolean
+        logicalName:
+          type: string
+        relationType:
+          type:
+          - string
+          - 'null'
+          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
+      description: A specification of the allowed behavior of a specified keyword group
+    LocalesList:
+      type: object
+      properties:
+        locales:
+          pattern: /^[a-z]{2}_[A-Z]{2}$/
+          type: array
+          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+          items:
+            pattern: /^[a-z]{2}_[A-Z]{2}$/
+            type: string
+            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
+      description: List of available locales
+    CollaboratorAssociation:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        type:
+          $ref: '#/components/schemas/ClassificationRef'
+        leadCollaborator:
+          type:
+          - boolean
+          - 'null'
+          description: Whether this collaborator is lead collaborator or not.
+        typeDiscriminator:
+          type: string
+      description: A collaborator associated with the content.
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          InternalCollaboratorAssociation: '#/components/schemas/InternalCollaboratorAssociation'
+          ExternalCollaboratorAssociation: '#/components/schemas/ExternalCollaboratorAssociation'
+    Workflow:
+      required:
+      - step
+      type: object
+      properties:
+        step:
+          type: string
+          description: Current workflow step
+        description:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: Information about workflow
+    AwardBudget:
+      required:
+      - visibility
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        budgets:
+          type:
+          - array
+          - 'null'
+          description: Individual entries of the budget.
+          items:
+            $ref: '#/components/schemas/AwardFundingBudgetAssociation'
+        visibility:
+          $ref: '#/components/schemas/Visibility'
+      description: A budget for an award.
+    FingerprintListResult:
       type: object
       properties:
         count:
@@ -1133,42 +1425,19 @@ components:
           $ref: '#/components/schemas/PageInformation'
         items:
           type: array
-          description: Applications
+          description: Fingerprints
           items:
-            $ref: '#/components/schemas/Award'
-      description: List of awards. Can contain a subset of all items along with the full count
-    ClassificationRefList:
+            $ref: '#/components/schemas/Fingerprint'
+      description: List of fingerprints. Can contain a subset of all items along with the full count
+    WorkflowListResult:
       type: object
       properties:
-        classifications:
+        workflows:
           type: array
+          description: Allowed workflow steps.
           items:
-            $ref: '#/components/schemas/ClassificationRef'
-      description: List of classification references
-    ClassificationSchemeRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a classification scheme
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    DisciplinesAssociationsQuery:
-      type: object
-      properties:
-        uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        size:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-      description: Create a query for discipline associations
+            $ref: '#/components/schemas/Workflow'
+      description: List of workflow steps.
     LocalizedString:
       type:
       - object
@@ -1182,60 +1451,10 @@ components:
       description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
       example:
         en_GB: Some text
-    DisciplinesDisciplineListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Disciplines
-          items:
-            $ref: '#/components/schemas/DisciplinesDiscipline'
-      description: List of disciplines for a specific discipline scheme
-    ClassificationRef:
+    Milestone:
       required:
-      - uri
-      type:
-      - object
-      - 'null'
-      properties:
-        uri:
-          type: string
-          description: Classification URI of the referred classification
-        term:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: A reference to a classification value
-    LocalesList:
-      type: object
-      properties:
-        locales:
-          pattern: /^[a-z]{2}_[A-Z]{2}$/
-          type: array
-          description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
-          items:
-            pattern: /^[a-z]{2}_[A-Z]{2}$/
-            type: string
-            description: Allowed locale values for use in localized string entities. The locale format consists of lower-case ISO 639 alpha-2 language code and upper-cased ISO 3166 alpha-2 country code.
-      description: List of available locales
-    DisciplinesDisciplineScheme:
-      required:
-      - disciplineScheme
+      - milestoneType
       - title
-      type: object
-      properties:
-        disciplineScheme:
-          type: string
-          description: The discipline scheme identifier
-        title:
-          type: string
-          description: The discipline title
-      description: A discipline scheme
-    AwardCluster:
       type: object
       properties:
         pureId:
@@ -1291,167 +1510,87 @@ components:
           - string
           - 'null'
           description: Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a "dirty write". A dirty write is performed by not including the property value or setting the property to null
-        title:
-          type: string
-          description: The title of the award cluster.
-          readOnly: true
-        containedAwards:
-          type: array
-          description: The awards grouped in the award cluster. Awards are automatically added when related to other awards in this cluster.
-          readOnly: true
-          items:
-            $ref: '#/components/schemas/AwardRef'
+        deadline:
+          type:
+          - string
+          - 'null'
+          description: The deadline date of the milestone.
+          format: date
+        completionState:
+          $ref: '#/components/schemas/ClassificationRef'
+        completedDate:
+          type:
+          - string
+          - 'null'
+          description: The date when the milestone was completed. This can only be set when 'completionState' property value is 'completed'
+          format: date
+        award:
+          $ref: '#/components/schemas/AwardRef'
+        application:
+          $ref: '#/components/schemas/ApplicationRef'
         project:
           $ref: '#/components/schemas/ProjectRef'
+        ethicalReview:
+          $ref: '#/components/schemas/EthicalReviewRef'
+        contract:
+          $ref: '#/components/schemas/ContractRef'
+        completedBy:
+          $ref: '#/components/schemas/UserRef'
+        title:
+          $ref: '#/components/schemas/LocalizedString'
+        reminders:
+          type: array
+          description: List of reminders
+          items:
+            $ref: '#/components/schemas/MilestoneReminder'
+        administrativeRole:
+          type:
+          - string
+          - 'null'
+          description: The user role for the milestone for administrative milestones
+        academicRole:
+          $ref: '#/components/schemas/ClassificationRef'
+        description:
+          $ref: '#/components/schemas/FormattedLocalizedString'
+        category:
+          $ref: '#/components/schemas/ClassificationRef'
+        milestoneType:
+          type: string
+          description: Selected milestone type. Based on the value used for 'milestoneType', it is mandatory to fill either 'academicRole' or 'administrativeRole' property as well.
+          enum:
+          - ACADEMIC
+          - ADMINISTRATIVE
+        documents:
+          type:
+          - array
+          - 'null'
+          description: A collection of documents related to the milestone.
+          items:
+            $ref: '#/components/schemas/MilestoneDocument'
+        responsibleUsers:
+          type: array
+          description: 'The specific users chosen to be responsible for the content.
+
+            When milestone type is ''Academic'', responsible user can be one of the associated academic, that have a role on the content, that matches the responsible role.
+
+            When the type is ''Administrative'', responsible user must have an administrator role, that matches the selected role.
+
+            When the milestone role is an editor role, the selected user must have an editorial role that matches the owner or related organizations of the milestone.'
+          items:
+            $ref: '#/components/schemas/UserRef'
+        identifiers:
+          type:
+          - array
+          - 'null'
+          description: Identifiers related to the milestone.
+          items:
+            $ref: '#/components/schemas/Identifier'
         systemName:
           type: string
           description: The content system name
           readOnly: true
-      description: An award cluster groups related awards from their individual relations.
-    ConceptRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a concept
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-      - type: object
-        properties:
-          conceptId:
-            type: string
-            description: The concept ID
-            readOnly: true
-    ConflictProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          description: A URI reference [RFC3986] that identifies the problem type.
-        title:
-          type: string
-          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
-        status:
-          type: integer
-          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
-          format: int32
-        detail:
-          type: string
-          description: A human-readable explanation specific to this occurrence of the problem.
-        instance:
-          type: string
-          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
-        modified:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-      description: Problem details for state conflict failures
-    SystemCurrencyAmount:
-      required:
-      - value
-      type: object
-      properties:
-        currency:
-          type: string
-          description: 'An ISO-4217 3-letter alphabetic code representing the Pure installation''s system currency as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-currency'
-          readOnly: true
-        value:
-          type: string
-          description: 'A valid decimal monetary value as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-value'
-          format: ^-?[0-9]+(\.[0-9]+)?$
-      description: 'A monetary value in the Pure installation''s system currency as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#paymentcurrencyamount-dictionary'
-    AllowedTemplate:
-      type: object
-      properties:
-        name:
-          type: string
-          description: The name of the template.
-          readOnly: true
-        description:
-          type: string
-          description: The description of the template.
-          readOnly: true
-      description: An allowed template, such as 'ContributionToJournal' or 'BookAnthology' for research outputs.
-    AwardDocument:
-      required:
-      - fileName
-      - mimeType
-      - type
-      - versionType
-      - visibility
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        fileId:
-          type: string
-          description: The id of the file
-          readOnly: true
-        fileName:
-          type: string
-          description: The documents file name
-        mimeType:
-          type: string
-          description: The documents mime type
-        size:
-          type: integer
-          description: The documents size in bytes
-          format: int64
-        url:
-          type: string
-          description: Download url for the binary file
-          readOnly: true
-        fileStoreLocations:
-          type: object
-          additionalProperties:
-            type: string
-            description: Locations of the binary file in file stores.
-            readOnly: true
-          description: Locations of the binary file in file stores.
-          readOnly: true
-        uploadedFile:
-          $ref: '#/components/schemas/UploadedFile'
-        remoteFile:
-          $ref: '#/components/schemas/RemoteFile'
-        fileData:
-          type: string
-          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
-          format: byte
-          writeOnly: true
-        title:
-          type:
-          - string
-          - 'null'
-          description: Document title
-        type:
-          $ref: '#/components/schemas/ClassificationRef'
-        license:
-          $ref: '#/components/schemas/ClassificationRef'
-        visibleOnPortalDate:
-          type: string
-          description: The date the document will be available on the portal
-          format: date
-          readOnly: true
-        visibility:
-          $ref: '#/components/schemas/Visibility'
-        creator:
-          type: string
-          description: The user that created the document
-          readOnly: true
-        created:
-          type: string
-          description: Create date for the document
-          format: date-time
-          readOnly: true
-        versionType:
-          $ref: '#/components/schemas/ClassificationRef'
-      description: An award document.
-    MilestoneListResult:
+      description: A milestone.
+    NoteListResult:
       type: object
       properties:
         count:
@@ -1462,10 +1601,149 @@ components:
           $ref: '#/components/schemas/PageInformation'
         items:
           type: array
-          description: Milestones
+          description: Notes
           items:
-            $ref: '#/components/schemas/Milestone'
-      description: List of milestones. Can contain a subset of all items along with the full count
+            $ref: '#/components/schemas/Note'
+      description: List of notes
+    FormattedLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
+      example:
+        en_GB: Some text
+    AwardClusterRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an award cluster
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    ContentRefListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: List of Content Refs
+    ClassificationRef:
+      required:
+      - uri
+      type:
+      - object
+      - 'null'
+      properties:
+        uri:
+          type: string
+          description: Classification URI of the referred classification
+        term:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: A reference to a classification value
+    ApplicationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an application
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    YearMonth:
+      required:
+      - month
+      - year
+      type:
+      - object
+      - 'null'
+      properties:
+        year:
+          maximum: 4000
+          minimum: 0
+          type: integer
+          format: int32
+        month:
+          maximum: 12
+          minimum: 1
+          type: integer
+          format: int32
+      description: A date that can be defined by only year and month
+    DisciplinesAssociationListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Discipline associations
+          items:
+            $ref: '#/components/schemas/DisciplinesAssociation'
+      description: List of discipline associations. Can contain a subset of all items along with the full count
+    Visibility:
+      required:
+      - key
+      type: object
+      properties:
+        key:
+          type: string
+          description: Visibility value
+          enum:
+          - FREE
+          - CAMPUS
+          - BACKEND
+          - CONFIDENTIAL
+        description:
+          $ref: '#/components/schemas/SystemLocalizedString'
+      description: Visibility of an object
+    UploadedFile:
+      required:
+      - key
+      type: object
+      properties:
+        digest:
+          type: string
+          description: The calculated digest for the file in Pure
+          readOnly: true
+        digestType:
+          type: string
+          description: The digest type
+          readOnly: true
+        size:
+          type: integer
+          description: The file size of the file in Pure
+          format: int64
+          readOnly: true
+        mimeType:
+          type: string
+          description: The mime type detected for the file
+          readOnly: true
+        timeStamp:
+          type: string
+          description: The timestamp Pure received the file
+          format: date-time
+          readOnly: true
+        expires:
+          type: string
+          description: The timestamp where Pure deletes the uploaded file if it has not been attached to any content
+          format: date-time
+          readOnly: true
+        key:
+          type: string
+          description: Pure key identifer for the file upload
+          readOnly: true
+      description: Information about the uploaded file
     Award:
       required:
       - awardDate
@@ -1677,52 +1955,538 @@ components:
         mapping:
           BasicAward: '#/components/schemas/BasicAward'
           AwardManagementAward: '#/components/schemas/AwardManagementAward'
-    DisciplinesDisciplineAssignment:
+    DisciplinesAssociation:
       required:
-      - disciplineId
-      - splitPercentage
+      - disciplineAssignments
       type: object
       properties:
-        disciplineId:
+        content:
+          $ref: '#/components/schemas/ContentRef'
+        disciplineScheme:
           type: string
-          description: The assigned discipline
-        splitPercentage:
-          type: number
-          description: The split percentages within an assigned discipline scheme must sum up to 100%
-          format: double
-      description: The assigned discipline and its split percentage
-    DisciplinesDisciplineSchemeListResult:
+          description: The discipline scheme these disciplines are assigned from
+          readOnly: true
+        disciplineAssignments:
+          type: array
+          description: A collection of assigned disciplines
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
+      description: An association between a content and a number of discipline assignments
+    AwardsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+        orderings:
+          type: array
+          items:
+            type: string
+        searchString:
+          type: string
+          description: String used to perform search
+        orderBy:
+          type: string
+          writeOnly: true
+      description: Create a query for awards
+    DisciplinesDisciplineListResult:
       type: object
       properties:
         count:
           type: integer
-          description: The amount of discipline schemes
+          description: The full count, ignoring paging
           format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
         items:
           type: array
-          description: Discipline schemes
+          description: Disciplines
           items:
-            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
-      description: List of discipline schemes
-    YearMonth:
+            $ref: '#/components/schemas/DisciplinesDiscipline'
+      description: List of disciplines for a specific discipline scheme
+    OrderingsList:
+      type: object
+      properties:
+        orderings:
+          type: array
+          description: IDs of ways content can be ordered
+          items:
+            type: string
+            description: IDs of ways content can be ordered
+      description: List of available orderings
+    AllowedTemplateListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          description: Allowed templates.
+          items:
+            $ref: '#/components/schemas/AllowedTemplate'
+      description: List of allowed templates.
+    RemoteFile:
       required:
-      - month
-      - year
+      - fileId
+      - fileState
+      - sourceId
+      - storeName
+      type: object
+      properties:
+        sourceId:
+          type: string
+          description: The remote source ID
+        storeName:
+          type: string
+          description: The name of the remote store
+        timeStamp:
+          type: string
+          description: The timestamp at which the file was stored
+          format: date-time
+        fileId:
+          type: string
+          description: The remote file ID
+        fileState:
+          type: string
+          description: The remote file state
+          enum:
+          - AWAITING_CREATION
+          - CREATION_IN_PROGRESS
+          - CREATION_FAILED
+          - STORED
+          - AWAITING_DELETE
+          - DELETE_IN_PROGRESS
+          - DELETE_FAILED
+          - DELETED
+        metadataUpdateRequired:
+          type: boolean
+          description: Whether the file's metadata should be updated
+          default: false
+      description: Information about a remote file (Elsevier only)
+    ClassificationSchemeRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a classification scheme
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
+    DisciplinesDisciplineScheme:
+      required:
+      - disciplineScheme
+      - title
+      type: object
+      properties:
+        disciplineScheme:
+          type: string
+          description: The discipline scheme identifier
+        title:
+          type: string
+          description: The discipline title
+      description: A discipline scheme
+    AwardRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an award
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    ContentRef:
+      required:
+      - systemName
+      - uuid
       type:
       - object
       - 'null'
       properties:
-        year:
-          maximum: 4000
+        uuid:
+          type: string
+          description: UUID of the referred content
+          format: uuid
+        systemName:
+          type: string
+      discriminator:
+        propertyName: systemName
+        mapping:
+          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
+          Activity: '#/components/schemas/ActivityRef'
+          Application: '#/components/schemas/ApplicationRef'
+          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
+          Award: '#/components/schemas/AwardRef'
+          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
+          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
+          DataSet: '#/components/schemas/DataSetRef'
+          Equipment: '#/components/schemas/EquipmentRef'
+          Event: '#/components/schemas/EventRef'
+          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
+          ExternalPerson: '#/components/schemas/ExternalPersonRef'
+          Impact: '#/components/schemas/ImpactRef'
+          Journal: '#/components/schemas/JournalRef'
+          Organization: '#/components/schemas/OrganizationRef'
+          Person: '#/components/schemas/PersonRef'
+          Publisher: '#/components/schemas/PublisherRef'
+          PressMedia: '#/components/schemas/PressMediaRef'
+          Prize: '#/components/schemas/PrizeRef'
+          Project: '#/components/schemas/ProjectRef'
+          ResearchOutput: '#/components/schemas/ResearchOutputRef'
+          StudentThesis: '#/components/schemas/StudentThesisRef'
+          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
+          EthicalReview: '#/components/schemas/EthicalReviewRef'
+          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
+          AwardCluster: '#/components/schemas/AwardClusterRef'
+          User: '#/components/schemas/UserRef'
+          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
+          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
+          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
+          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
+          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
+          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
+          Semester: '#/components/schemas/SemesterRef'
+          Education: '#/components/schemas/EducationRef'
+          Course: '#/components/schemas/CourseRef'
+          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
+          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
+          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
+          Review: '#/components/schemas/ReviewRef'
+          GenericContentRef: '#/components/schemas/GenericContentRef'
+          UserProfile: '#/components/schemas/UserProfileRef'
+          Thesaurus: '#/components/schemas/ThesaurusRef'
+          Concept: '#/components/schemas/ConceptRef'
+          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
+          Contract: '#/components/schemas/ContractRef'
+          Milestone: '#/components/schemas/MilestoneRef'
+          Fingerprint: '#/components/schemas/FingerprintRef'
+          Specialization: '#/components/schemas/SpecializationRef'
+          StudentProject: '#/components/schemas/StudentProjectRef'
+    AllowedTemplate:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the template.
+          readOnly: true
+        description:
+          type: string
+          description: The description of the template.
+          readOnly: true
+      description: An allowed template, such as 'ContributionToJournal' or 'BookAnthology' for research outputs.
+    CustomDefinedField:
+      required:
+      - typeDiscriminator
+      type:
+      - object
+      - 'null'
+      properties:
+        typeDiscriminator:
+          type: string
+      description: Map of CustomDefinedField values, where the key is the field identifier
+      example: '{ "fieldName1": "typeDiscriminator": "Integer", "value" : 1}'
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          Integer: '#/components/schemas/CustomDefinedFieldInteger'
+          String: '#/components/schemas/CustomDefinedFieldString'
+          Date: '#/components/schemas/CustomDefinedFieldDate'
+          Classification: '#/components/schemas/CustomDefinedFieldClassification'
+          Boolean: '#/components/schemas/CustomDefinedFieldBoolean'
+          Decimal: '#/components/schemas/CustomDefinedFieldDecimal'
+    KeywordGroup:
+      required:
+      - logicalName
+      - typeDiscriminator
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        logicalName:
+          type: string
+          description: Unique name of the configuration that specifies this keyword group
+        name:
+          $ref: '#/components/schemas/LocalizedString'
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
+          FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
+          FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
+    ProjectRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to project
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    MilestoneReminder:
+      required:
+      - timeUnit
+      - value
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        value:
+          type: integer
+          description: Number of units in reminder period.
+          format: int32
+        timeUnit:
+          type: string
+          description: The time unit of the reminder.
+          enum:
+          - MONTH
+          - WEEK
+          - DAY
+      description: A milestone reminder.
+    OrganizationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an organization in the institution
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    Link:
+      required:
+      - url
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        url:
+          type: string
+          description: The URL (Uniform Resource Locator) of the link
+        alias:
+          type:
+          - string
+          - 'null'
+          description: A user-friendly text to show instead of the URL
+        description:
+          $ref: '#/components/schemas/LocalizedString'
+        linkType:
+          $ref: '#/components/schemas/ClassificationRef'
+      description: A hyperlink describing a location on the web.
+    ExternalOrganizationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an organization external to the institution
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    AbstractAwardHolderAssociation:
+      required:
+      - role
+      - typeDiscriminator
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        externalOrganizations:
+          type:
+          - array
+          - 'null'
+          description: A collection of external organization affiliations.
+          items:
+            $ref: '#/components/schemas/ExternalOrganizationRef'
+        academicOwnershipPercentage:
+          maximum: 1
           minimum: 0
+          type:
+          - number
+          - 'null'
+          description: Academic ownership of the applicant.
+          format: double
+        plannedResearcherCommitmentPercentage:
+          maximum: 1
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: Planned researcher commitment of the applicant.
+          format: double
+        researcherCommitments:
+          type:
+          - array
+          - 'null'
+          description: Planned and actual research commitment for the applicant.
+          items:
+            $ref: '#/components/schemas/ResearcherCommitment'
+        period:
+          $ref: '#/components/schemas/DateRange'
+        name:
+          $ref: '#/components/schemas/Name'
+        role:
+          $ref: '#/components/schemas/ClassificationRef'
+        typeDiscriminator:
+          type: string
+      description: An association between an award and a person that was awarded it.
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          InternalAwardHolderAssociation: '#/components/schemas/InternalAwardHolderAssociation'
+          ExternalAwardHolderAssociation: '#/components/schemas/ExternalAwardHolderAssociation'
+    ResearcherCommitment:
+      required:
+      - yearMonth
+      type: object
+      properties:
+        pureId:
           type: integer
-          format: int32
-        month:
-          maximum: 12
-          minimum: 1
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        actualResearcherCommitment:
+          maximum: 1
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: The actual researcher commitment.
+          format: double
+        plannedResearcherCommitment:
+          maximum: 1
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          description: The planned researcher commitment.
+          format: double
+        yearMonth:
+          $ref: '#/components/schemas/YearMonth'
+      description: Planned and actual research commitment.
+    ClassificationRefList:
+      type: object
+      properties:
+        classifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassificationRef'
+      description: List of classification references
+    Account:
+      type: object
+      properties:
+        pureId:
           type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        budget:
+          $ref: '#/components/schemas/SystemCurrencyAmount'
+        classification:
+          $ref: '#/components/schemas/ClassificationRef'
+        costCenter:
+          $ref: '#/components/schemas/ClassificationRef'
+        entries:
+          type:
+          - array
+          - 'null'
+          description: Associated account entries of the account.
+          items:
+            $ref: '#/components/schemas/AccountEntry'
+        funderContribution:
+          $ref: '#/components/schemas/SystemCurrencyAmount'
+        recoveryPercentage:
+          type:
+          - number
+          - 'null'
+          description: The recovery percentage of the budget.
+          format: double
+        specification:
+          type:
+          - string
+          - 'null'
+          description: The specification of the budget.
+        yearlyBudgets:
+          type:
+          - array
+          - 'null'
+          description: Yearly budgets of the account.
+          items:
+            $ref: '#/components/schemas/YearlyBudget'
+      description: An account of a budget.
+    MilestoneListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
           format: int32
-      description: A date that can be defined by only year and month
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Milestones
+          items:
+            $ref: '#/components/schemas/Milestone'
+      description: List of milestones. Can contain a subset of all items along with the full count
+    AwardFundingBudgetAssociation:
+      required:
+      - visibility
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        accounts:
+          type:
+          - array
+          - 'null'
+          description: Associated accounts of the budget.
+          items:
+            $ref: '#/components/schemas/Account'
+        costCenter:
+          $ref: '#/components/schemas/ClassificationRef'
+        costCode:
+          type:
+          - string
+          - 'null'
+          description: The cost code of the budget.
+        organization:
+          $ref: '#/components/schemas/OrganizationRef'
+        visibility:
+          $ref: '#/components/schemas/Visibility'
+      description: A budget for a financial funding of an award.
     Fingerprint:
       required:
       - relatedContent
@@ -1795,406 +2559,6 @@ components:
           description: The content system name
           readOnly: true
       description: A fingerprint
-    AbstractAwardHolderAssociation:
-      required:
-      - role
-      - typeDiscriminator
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        externalOrganizations:
-          type:
-          - array
-          - 'null'
-          description: A collection of external organization affiliations.
-          items:
-            $ref: '#/components/schemas/ExternalOrganizationRef'
-        academicOwnershipPercentage:
-          maximum: 1
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          description: Academic ownership of the applicant.
-          format: double
-        plannedResearcherCommitmentPercentage:
-          maximum: 1
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          description: Planned researcher commitment of the applicant.
-          format: double
-        researcherCommitments:
-          type:
-          - array
-          - 'null'
-          description: Planned and actual research commitment for the applicant.
-          items:
-            $ref: '#/components/schemas/ResearcherCommitment'
-        period:
-          $ref: '#/components/schemas/DateRange'
-        name:
-          $ref: '#/components/schemas/Name'
-        role:
-          $ref: '#/components/schemas/ClassificationRef'
-        typeDiscriminator:
-          type: string
-      description: An association between an award and a person that was awarded it.
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          InternalAwardHolderAssociation: '#/components/schemas/InternalAwardHolderAssociation'
-          ExternalAwardHolderAssociation: '#/components/schemas/ExternalAwardHolderAssociation'
-    Link:
-      required:
-      - url
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        url:
-          type: string
-          description: The URL (Uniform Resource Locator) of the link
-        alias:
-          type:
-          - string
-          - 'null'
-          description: A user-friendly text to show instead of the URL
-        description:
-          $ref: '#/components/schemas/LocalizedString'
-        linkType:
-          $ref: '#/components/schemas/ClassificationRef'
-      description: A hyperlink describing a location on the web.
-    ResearcherCommitment:
-      required:
-      - yearMonth
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        actualResearcherCommitment:
-          maximum: 1
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          description: The actual researcher commitment.
-          format: double
-        plannedResearcherCommitment:
-          maximum: 1
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          description: The planned researcher commitment.
-          format: double
-        yearMonth:
-          $ref: '#/components/schemas/YearMonth'
-      description: Planned and actual research commitment.
-    SystemLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized string values each for a specific UI locale.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized string values each for a specific UI locale.
-      example:
-        en_GB: Some text
-    Visibility:
-      required:
-      - key
-      type: object
-      properties:
-        key:
-          type: string
-          description: Visibility value
-          enum:
-          - FREE
-          - CAMPUS
-          - BACKEND
-          - CONFIDENTIAL
-        description:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: Visibility of an object
-    YearlyBudget:
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        budget:
-          $ref: '#/components/schemas/SystemCurrencyAmount'
-        year:
-          type:
-          - integer
-          - 'null'
-          description: The year of the yearly budget.
-          format: int32
-      description: A yearly budget of an account.
-    FormattedLocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-        example: '{"en_GB":"Some text"}'
-      description: A set of localized strings that support formatting. Invalid locale values will be ignored.
-      example:
-        en_GB: Some text
-    Note:
-      required:
-      - text
-      type: object
-      properties:
-        date:
-          type:
-          - string
-          - 'null'
-          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
-          format: date-time
-        username:
-          type:
-          - string
-          - 'null'
-          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
-        text:
-          type: string
-          description: Note text
-      description: A note
-    WorkflowListResult:
-      type: object
-      properties:
-        workflows:
-          type: array
-          description: Allowed workflow steps.
-          items:
-            $ref: '#/components/schemas/Workflow'
-      description: List of workflow steps.
-    Workflow:
-      required:
-      - step
-      type: object
-      properties:
-        step:
-          type: string
-          description: Current workflow step
-        description:
-          $ref: '#/components/schemas/SystemLocalizedString'
-      description: Information about workflow
-    DateRange:
-      type: object
-      properties:
-        startDate:
-          type:
-          - string
-          - 'null'
-          description: Start date
-          format: date
-        endDate:
-          type:
-          - string
-          - 'null'
-          description: End date
-          format: date
-      description: A date range
-    RankedConcept:
-      required:
-      - concept
-      - rank
-      type: object
-      properties:
-        concept:
-          $ref: '#/components/schemas/ConceptRef'
-        rank:
-          type: number
-          description: The rank of the ranked concept. If this is not set on creation, the ranked concept will have a default rank value of 0
-          format: double
-        weightedRank:
-          type:
-          - number
-          - 'null'
-          description: WeightedRank
-          format: double
-        frequency:
-          type:
-          - integer
-          - 'null'
-          description: Frequency
-          format: int32
-      description: A ranked concept
-    DeprecatedSystemCurrencyAmount:
-      required:
-      - value
-      type: object
-      properties:
-        currency:
-          type: string
-          description: 'An ISO-4217 3-letter alphabetic code representing the Pure installation''s system currency as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-currency'
-          readOnly: true
-        value:
-          type: string
-          description: 'A valid decimal monetary value as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-value'
-          format: ^-?[0-9]+(\.[0-9]+)?$
-      description: Deprecated version of SystemCurrencyAmount
-      deprecated: true
-    NoteListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Notes
-          items:
-            $ref: '#/components/schemas/Note'
-      description: List of notes
-    CustomDefinedFields:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        $ref: '#/components/schemas/CustomDefinedField'
-      description: Map of CustomDefinedField values, where the key is the field identifier
-      example: '{ "fieldName1": "typeDiscriminator": "Integer", "value" : 1}'
-    AwardBudget:
-      required:
-      - visibility
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        budgets:
-          type:
-          - array
-          - 'null'
-          description: Individual entries of the budget.
-          items:
-            $ref: '#/components/schemas/AwardFundingBudgetAssociation'
-        visibility:
-          $ref: '#/components/schemas/Visibility'
-      description: A budget for an award.
-    UploadedFile:
-      required:
-      - key
-      type: object
-      properties:
-        digest:
-          type: string
-          description: The calculated digest for the file in Pure
-          readOnly: true
-        digestType:
-          type: string
-          description: The digest type
-          readOnly: true
-        size:
-          type: integer
-          description: The file size of the file in Pure
-          format: int64
-          readOnly: true
-        mimeType:
-          type: string
-          description: The mime type detected for the file
-          readOnly: true
-        timeStamp:
-          type: string
-          description: The timestamp Pure received the file
-          format: date-time
-          readOnly: true
-        expires:
-          type: string
-          description: The timestamp where Pure deletes the uploaded file if it has not been attached to any content
-          format: date-time
-          readOnly: true
-        key:
-          type: string
-          description: Pure key identifer for the file upload
-          readOnly: true
-      description: Information about the uploaded file
-    CustomDefinedField:
-      required:
-      - typeDiscriminator
-      type:
-      - object
-      - 'null'
-      properties:
-        typeDiscriminator:
-          type: string
-      description: Map of CustomDefinedField values, where the key is the field identifier
-      example: '{ "fieldName1": "typeDiscriminator": "Integer", "value" : 1}'
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          Integer: '#/components/schemas/CustomDefinedFieldInteger'
-          String: '#/components/schemas/CustomDefinedFieldString'
-          Date: '#/components/schemas/CustomDefinedFieldDate'
-          Classification: '#/components/schemas/CustomDefinedFieldClassification'
-          Boolean: '#/components/schemas/CustomDefinedFieldBoolean'
-          Decimal: '#/components/schemas/CustomDefinedFieldDecimal'
-    UserRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an user
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    AwardFundingBudgetAssociation:
-      required:
-      - visibility
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        accounts:
-          type:
-          - array
-          - 'null'
-          description: Associated accounts of the budget.
-          items:
-            $ref: '#/components/schemas/Account'
-        costCenter:
-          $ref: '#/components/schemas/ClassificationRef'
-        costCode:
-          type:
-          - string
-          - 'null'
-          description: The cost code of the budget.
-        organization:
-          $ref: '#/components/schemas/OrganizationRef'
-        visibility:
-          $ref: '#/components/schemas/Visibility'
-      description: A budget for a financial funding of an award.
     ProblemDetails:
       type: object
       properties:
@@ -2221,586 +2585,7 @@ components:
           /error: '#/components/schemas/GenericProblemDetails'
           /validation-error: '#/components/schemas/ValidationProblemDetails'
           /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
-    OrganizationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an organization in the institution
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    ContentRefListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentRef'
-      description: List of Content Refs
-    Identifier:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
-    FingerprintListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Fingerprints
-          items:
-            $ref: '#/components/schemas/Fingerprint'
-      description: List of fingerprints. Can contain a subset of all items along with the full count
-    ExternalOrganizationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an organization external to the institution
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    PageInformation:
-      type: object
-      properties:
-        offset:
-          type: integer
-          description: Offset that returned items start at
-          format: int32
-        size:
-          type: integer
-          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
-          format: int32
-      description: Information about pages
-    AwardRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an award
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    DisciplinesDiscipline:
-      type: object
-      properties:
-        disciplineId:
-          type: string
-          description: The discipline identifier
-          readOnly: true
-        title:
-          type: string
-          description: The discipline title
-          readOnly: true
-        description:
-          type: string
-          description: The discipline description
-          readOnly: true
-      description: A discipline within a specific discipline scheme
-    AllowedTemplateListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          description: Allowed templates.
-          items:
-            $ref: '#/components/schemas/AllowedTemplate'
-      description: List of allowed templates.
-    OrderingsList:
-      type: object
-      properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
-    RemoteFile:
-      required:
-      - fileId
-      - fileState
-      - sourceId
-      - storeName
-      type: object
-      properties:
-        sourceId:
-          type: string
-          description: The remote source ID
-        storeName:
-          type: string
-          description: The name of the remote store
-        timeStamp:
-          type: string
-          description: The timestamp at which the file was stored
-          format: date-time
-        fileId:
-          type: string
-          description: The remote file ID
-        fileState:
-          type: string
-          description: The remote file state
-          enum:
-          - AWAITING_CREATION
-          - CREATION_IN_PROGRESS
-          - CREATION_FAILED
-          - STORED
-          - AWAITING_DELETE
-          - DELETE_IN_PROGRESS
-          - DELETE_FAILED
-          - DELETED
-        metadataUpdateRequired:
-          type: boolean
-          description: Whether the file's metadata should be updated
-          default: false
-      description: Information about a remote file (Elsevier only)
-    Account:
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        budget:
-          $ref: '#/components/schemas/SystemCurrencyAmount'
-        classification:
-          $ref: '#/components/schemas/ClassificationRef'
-        costCenter:
-          $ref: '#/components/schemas/ClassificationRef'
-        entries:
-          type:
-          - array
-          - 'null'
-          description: Associated account entries of the account.
-          items:
-            $ref: '#/components/schemas/AccountEntry'
-        funderContribution:
-          $ref: '#/components/schemas/SystemCurrencyAmount'
-        recoveryPercentage:
-          type:
-          - number
-          - 'null'
-          description: The recovery percentage of the budget.
-          format: double
-        specification:
-          type:
-          - string
-          - 'null'
-          description: The specification of the budget.
-        yearlyBudgets:
-          type:
-          - array
-          - 'null'
-          description: Yearly budgets of the account.
-          items:
-            $ref: '#/components/schemas/YearlyBudget'
-      description: An account of a budget.
-    ApplicationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an application
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    ContractRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to a contract
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    AwardFundingAssociation:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        costCode:
-          type:
-          - string
-          - 'null'
-          description: The cost code of the funding.
-        funder:
-          $ref: '#/components/schemas/ExternalOrganizationRef'
-        internalFunder:
-          $ref: '#/components/schemas/OrganizationRef'
-        classifications:
-          type:
-          - array
-          - 'null'
-          description: Related classifications of the funding.
-          items:
-            $ref: '#/components/schemas/ClassificationRef'
-        fundingProjectScheme:
-          type:
-          - string
-          - 'null'
-          description: The funding project scheme of the funding, also known as research program.
-        visibility:
-          $ref: '#/components/schemas/Visibility'
-        typeDiscriminator:
-          type: string
-      description: Funding associations exists in two variants, financial or non-financial.
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          AwardFinancialFundingAssociation: '#/components/schemas/AwardFinancialFundingAssociation'
-          AwardNonFinancialFundingAssociation: '#/components/schemas/AwardNonFinancialFundingAssociation'
-    MilestoneDocument:
-      required:
-      - fileName
-      - mimeType
-      - type
-      - visibility
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        fileId:
-          type: string
-          description: The id of the file
-          readOnly: true
-        fileName:
-          type: string
-          description: The documents file name
-        mimeType:
-          type: string
-          description: The documents mime type
-        size:
-          type: integer
-          description: The documents size in bytes
-          format: int64
-        url:
-          type: string
-          description: Download url for the binary file
-          readOnly: true
-        fileStoreLocations:
-          type: object
-          additionalProperties:
-            type: string
-            description: Locations of the binary file in file stores.
-            readOnly: true
-          description: Locations of the binary file in file stores.
-          readOnly: true
-        uploadedFile:
-          $ref: '#/components/schemas/UploadedFile'
-        remoteFile:
-          $ref: '#/components/schemas/RemoteFile'
-        fileData:
-          type: string
-          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
-          format: byte
-          writeOnly: true
-        title:
-          type:
-          - string
-          - 'null'
-          description: Document title
-        type:
-          $ref: '#/components/schemas/ClassificationRef'
-        visibility:
-          $ref: '#/components/schemas/Visibility'
-        creator:
-          type: string
-          description: The user that created the document
-          readOnly: true
-        created:
-          type: string
-          description: Create date for the document
-          format: date-time
-          readOnly: true
-      description: A milestone document
-    Name:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-      description: A name describing a person, made up of given- and family name
-    MilestoneReminder:
-      required:
-      - timeUnit
-      - value
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        value:
-          type: integer
-          description: Number of units in reminder period.
-          format: int32
-        timeUnit:
-          type: string
-          description: The time unit of the reminder.
-          enum:
-          - MONTH
-          - WEEK
-          - DAY
-      description: A milestone reminder.
-    ClassifiedFormattedLocalizedValue:
-      required:
-      - type
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        value:
-          $ref: '#/components/schemas/FormattedLocalizedString'
-        type:
-          $ref: '#/components/schemas/ClassificationRef'
-      description: A classified formatted localized value
-    AwardClusterRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to an award cluster
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    ContentRef:
-      required:
-      - systemName
-      - uuid
-      type:
-      - object
-      - 'null'
-      properties:
-        uuid:
-          type: string
-          description: UUID of the referred content
-          format: uuid
-        systemName:
-          type: string
-      discriminator:
-        propertyName: systemName
-        mapping:
-          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
-          Activity: '#/components/schemas/ActivityRef'
-          Application: '#/components/schemas/ApplicationRef'
-          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
-          Award: '#/components/schemas/AwardRef'
-          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
-          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
-          DataSet: '#/components/schemas/DataSetRef'
-          Equipment: '#/components/schemas/EquipmentRef'
-          Event: '#/components/schemas/EventRef'
-          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
-          ExternalPerson: '#/components/schemas/ExternalPersonRef'
-          Impact: '#/components/schemas/ImpactRef'
-          Journal: '#/components/schemas/JournalRef'
-          Organization: '#/components/schemas/OrganizationRef'
-          Person: '#/components/schemas/PersonRef'
-          Publisher: '#/components/schemas/PublisherRef'
-          PressMedia: '#/components/schemas/PressMediaRef'
-          Prize: '#/components/schemas/PrizeRef'
-          Project: '#/components/schemas/ProjectRef'
-          ResearchOutput: '#/components/schemas/ResearchOutputRef'
-          StudentThesis: '#/components/schemas/StudentThesisRef'
-          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
-          EthicalReview: '#/components/schemas/EthicalReviewRef'
-          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
-          AwardCluster: '#/components/schemas/AwardClusterRef'
-          User: '#/components/schemas/UserRef'
-          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
-          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
-          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
-          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
-          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
-          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
-          Semester: '#/components/schemas/SemesterRef'
-          Education: '#/components/schemas/EducationRef'
-          Course: '#/components/schemas/CourseRef'
-          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
-          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
-          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
-          Review: '#/components/schemas/ReviewRef'
-          GenericContentRef: '#/components/schemas/GenericContentRef'
-          UserProfile: '#/components/schemas/UserProfileRef'
-          Thesaurus: '#/components/schemas/ThesaurusRef'
-          Concept: '#/components/schemas/ConceptRef'
-          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
-          Contract: '#/components/schemas/ContractRef'
-          Milestone: '#/components/schemas/MilestoneRef'
-          Fingerprint: '#/components/schemas/FingerprintRef'
-          Specialization: '#/components/schemas/SpecializationRef'
-          StudentProject: '#/components/schemas/StudentProjectRef'
-    AllowedKeywordGroupConfigurationList:
-      type: object
-      properties:
-        configurations:
-          type: array
-          items:
-            $ref: '#/components/schemas/AllowedKeywordGroupConfiguration'
-      description: List of allowed keyword group configurations
-    AwardsQuery:
-      type: object
-      properties:
-        uuids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        size:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int32
-        orderings:
-          type: array
-          items:
-            type: string
-        searchString:
-          type: string
-          description: String used to perform search
-        orderBy:
-          type: string
-          writeOnly: true
-      description: Create a query for awards
-    DeprecatedDateRange:
-      type: object
-      properties:
-        startDate:
-          type:
-          - string
-          - 'null'
-          description: Start date
-          format: date
-        endDate:
-          type:
-          - string
-          - 'null'
-          description: End date
-          format: date
-      description: Deprecated version of DateRange
-      deprecated: true
-    CollaboratorAssociation:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        type:
-          $ref: '#/components/schemas/ClassificationRef'
-        leadCollaborator:
-          type:
-          - boolean
-          - 'null'
-          description: Whether this collaborator is lead collaborator or not.
-        typeDiscriminator:
-          type: string
-      description: A collaborator associated with the content.
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          InternalCollaboratorAssociation: '#/components/schemas/InternalCollaboratorAssociation'
-          ExternalCollaboratorAssociation: '#/components/schemas/ExternalCollaboratorAssociation'
-    KeywordGroup:
-      required:
-      - logicalName
-      - typeDiscriminator
-      type: object
-      properties:
-        pureId:
-          type: integer
-          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
-          format: int64
-          readOnly: true
-        logicalName:
-          type: string
-          description: Unique name of the configuration that specifies this keyword group
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassificationsKeywordGroup: '#/components/schemas/ClassificationsKeywordGroup'
-          FreeKeywordsKeywordGroup: '#/components/schemas/FreeKeywordsKeywordGroup'
-          FullKeywordGroup: '#/components/schemas/FullKeywordGroup'
-    ProjectRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to project
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    AwardBudgetResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: AwardBudgets
-          items:
-            $ref: '#/components/schemas/AwardBudget'
-      description: List of award budgets. Can contain a subset of all items along with the full count
-    DisciplinesAssociationListResult:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: The full count, ignoring paging
-          format: int32
-        pageInformation:
-          $ref: '#/components/schemas/PageInformation'
-        items:
-          type: array
-          description: Discipline associations
-          items:
-            $ref: '#/components/schemas/DisciplinesAssociation'
-      description: List of discipline associations. Can contain a subset of all items along with the full count
-    Milestone:
-      required:
-      - milestoneType
-      - title
+    AwardCluster:
       type: object
       properties:
         pureId:
@@ -2856,115 +2641,79 @@ components:
           - string
           - 'null'
           description: Used to guard against conflicting updates. For new content this is null, and for existing content the current value. The property should never be modified by a client, except in the rare case where the client wants to perform an update irrespective of if other clients have made updates in the meantime, also known as a "dirty write". A dirty write is performed by not including the property value or setting the property to null
-        deadline:
-          type:
-          - string
-          - 'null'
-          description: The deadline date of the milestone.
-          format: date
-        completionState:
-          $ref: '#/components/schemas/ClassificationRef'
-        completedDate:
-          type:
-          - string
-          - 'null'
-          description: The date when the milestone was completed. This can only be set when 'completionState' property value is 'completed'
-          format: date
-        award:
-          $ref: '#/components/schemas/AwardRef'
-        application:
-          $ref: '#/components/schemas/ApplicationRef'
+        title:
+          type: string
+          description: The title of the award cluster.
+          readOnly: true
+        containedAwards:
+          type: array
+          description: The awards grouped in the award cluster. Awards are automatically added when related to other awards in this cluster.
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/AwardRef'
         project:
           $ref: '#/components/schemas/ProjectRef'
-        ethicalReview:
-          $ref: '#/components/schemas/EthicalReviewRef'
-        contract:
-          $ref: '#/components/schemas/ContractRef'
-        completedBy:
-          $ref: '#/components/schemas/UserRef'
-        title:
-          $ref: '#/components/schemas/LocalizedString'
-        reminders:
-          type: array
-          description: List of reminders
-          items:
-            $ref: '#/components/schemas/MilestoneReminder'
-        administrativeRole:
-          type:
-          - string
-          - 'null'
-          description: The user role for the milestone for administrative milestones
-        academicRole:
-          $ref: '#/components/schemas/ClassificationRef'
-        description:
-          $ref: '#/components/schemas/FormattedLocalizedString'
-        category:
-          $ref: '#/components/schemas/ClassificationRef'
-        milestoneType:
-          type: string
-          description: Selected milestone type. Based on the value used for 'milestoneType', it is mandatory to fill either 'academicRole' or 'administrativeRole' property as well.
-          enum:
-          - ACADEMIC
-          - ADMINISTRATIVE
-        documents:
-          type:
-          - array
-          - 'null'
-          description: A collection of documents related to the milestone.
-          items:
-            $ref: '#/components/schemas/MilestoneDocument'
-        responsibleUsers:
-          type: array
-          description: 'The specific users chosen to be responsible for the content.
-
-            When milestone type is ''Academic'', responsible user can be one of the associated academic, that have a role on the content, that matches the responsible role.
-
-            When the type is ''Administrative'', responsible user must have an administrator role, that matches the selected role.
-
-            When the milestone role is an editor role, the selected user must have an editorial role that matches the owner or related organizations of the milestone.'
-          items:
-            $ref: '#/components/schemas/UserRef'
-        identifiers:
-          type:
-          - array
-          - 'null'
-          description: Identifiers related to the milestone.
-          items:
-            $ref: '#/components/schemas/Identifier'
         systemName:
           type: string
           description: The content system name
           readOnly: true
-      description: A milestone.
-    EthicalReviewRef:
+      description: An award cluster groups related awards from their individual relations.
+    UserRef:
       required:
       - uuid
       type:
       - object
       - 'null'
-      description: A reference to an ethical review
+      description: A reference to an user
       allOf:
       - $ref: '#/components/schemas/ContentRef'
-    DisciplinesAssociation:
-      required:
-      - disciplineAssignments
+    AwardBudgetResult:
       type: object
       properties:
-        content:
-          $ref: '#/components/schemas/ContentRef'
-        disciplineScheme:
-          type: string
-          description: The discipline scheme these disciplines are assigned from
-          readOnly: true
-        disciplineAssignments:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
           type: array
-          description: A collection of assigned disciplines
+          description: AwardBudgets
           items:
-            $ref: '#/components/schemas/DisciplinesDisciplineAssignment'
-      description: An association between a content and a number of discipline assignments
-    AllowedKeywordGroupConfiguration:
+            $ref: '#/components/schemas/AwardBudget'
+      description: List of award budgets. Can contain a subset of all items along with the full count
+    DisciplinesDisciplineSchemeListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The amount of discipline schemes
+          format: int32
+        items:
+          type: array
+          description: Discipline schemes
+          items:
+            $ref: '#/components/schemas/DisciplinesDisciplineScheme'
+      description: List of discipline schemes
+    DateRange:
+      type: object
+      properties:
+        startDate:
+          type:
+          - string
+          - 'null'
+          description: Start date
+          format: date
+        endDate:
+          type:
+          - string
+          - 'null'
+          description: End date
+          format: date
+      description: A date range
+    AwardFundingAssociation:
       required:
-      - targetSystemName
+      - typeDiscriminator
       type: object
       properties:
         pureId:
@@ -2972,32 +2721,201 @@ components:
           description: Pure database ID of the object, prefer using the UUID if it is present on the entity
           format: int64
           readOnly: true
-        targetSystemName:
-          type: string
-          description: The content system name this configuration applies to
-        keywordGroupType:
-          type: string
-          description: The OpenAPI schema type of this keyword configuration
-          readOnly: true
-        name:
-          $ref: '#/components/schemas/LocalizedString'
-        description:
-          $ref: '#/components/schemas/FormattedLocalizedString'
-        classificationScheme:
-          $ref: '#/components/schemas/ClassificationSchemeRef'
-        allowUserdefinedKeywords:
-          type: boolean
-          description: Defines if user defined keywords are allowed
-        limitToLeafSelection:
-          type: boolean
-        logicalName:
-          type: string
-        relationType:
+        costCode:
           type:
           - string
           - 'null'
-          description: The schema name of the type (with the ability to associate keywords) on which the keyword group configuration is related to, e.g. StaffOrganizationAssociation. It can also be set to null (default value), which means the keyword group configuration is related to the main type (the target system name) and not a relation of the main type.
-      description: A specification of the allowed behavior of a specified keyword group
+          description: The cost code of the funding.
+        funder:
+          $ref: '#/components/schemas/ExternalOrganizationRef'
+        internalFunder:
+          $ref: '#/components/schemas/OrganizationRef'
+        classifications:
+          type:
+          - array
+          - 'null'
+          description: Related classifications of the funding.
+          items:
+            $ref: '#/components/schemas/ClassificationRef'
+        fundingProjectScheme:
+          type:
+          - string
+          - 'null'
+          description: The funding project scheme of the funding, also known as research program.
+        visibility:
+          $ref: '#/components/schemas/Visibility'
+        typeDiscriminator:
+          type: string
+      description: Funding associations exists in two variants, financial or non-financial.
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          AwardFinancialFundingAssociation: '#/components/schemas/AwardFinancialFundingAssociation'
+          AwardNonFinancialFundingAssociation: '#/components/schemas/AwardNonFinancialFundingAssociation'
+    DisciplinesAssociationsQuery:
+      type: object
+      properties:
+        uuids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        size:
+          type: integer
+          format: int32
+        offset:
+          type: integer
+          format: int32
+      description: Create a query for discipline associations
+    AwardDocument:
+      required:
+      - fileName
+      - mimeType
+      - type
+      - versionType
+      - visibility
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        fileId:
+          type: string
+          description: The id of the file
+          readOnly: true
+        fileName:
+          type: string
+          description: The documents file name
+        mimeType:
+          type: string
+          description: The documents mime type
+        size:
+          type: integer
+          description: The documents size in bytes
+          format: int64
+        url:
+          type: string
+          description: Download url for the binary file
+          readOnly: true
+        fileStoreLocations:
+          type: object
+          additionalProperties:
+            type: string
+            description: Locations of the binary file in file stores.
+            readOnly: true
+          description: Locations of the binary file in file stores.
+          readOnly: true
+        uploadedFile:
+          $ref: '#/components/schemas/UploadedFile'
+        remoteFile:
+          $ref: '#/components/schemas/RemoteFile'
+        fileData:
+          type: string
+          description: Base64 encoded file data for new files. This property can be used instead of uploadedFile for small files
+          format: byte
+          writeOnly: true
+        title:
+          type:
+          - string
+          - 'null'
+          description: Document title
+        type:
+          $ref: '#/components/schemas/ClassificationRef'
+        license:
+          $ref: '#/components/schemas/ClassificationRef'
+        visibleOnPortalDate:
+          type: string
+          description: The date the document will be available on the portal
+          format: date
+          readOnly: true
+        visibility:
+          $ref: '#/components/schemas/Visibility'
+        creator:
+          type: string
+          description: The user that created the document
+          readOnly: true
+        created:
+          type: string
+          description: Create date for the document
+          format: date-time
+          readOnly: true
+        versionType:
+          $ref: '#/components/schemas/ClassificationRef'
+      description: An award document.
+    ClassifiedFormattedLocalizedValue:
+      required:
+      - type
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        value:
+          $ref: '#/components/schemas/FormattedLocalizedString'
+        type:
+          $ref: '#/components/schemas/ClassificationRef'
+      description: A classified formatted localized value
+    Note:
+      required:
+      - text
+      type: object
+      properties:
+        date:
+          type:
+          - string
+          - 'null'
+          description: Date and time of when the note was created, an event occurred or similar. Can be any point in time, but <now> is normally preferred
+          format: date-time
+        username:
+          type:
+          - string
+          - 'null'
+          description: Username related to the note. Usually a username of the user creating the note. Does not have to be a username of a Pure user
+        text:
+          type: string
+          description: Note text
+      description: A note
+    ConflictProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          description: A URI reference [RFC3986] that identifies the problem type.
+        title:
+          type: string
+          description: A short, human-readable summary of the problem type. It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localization (e.g., using proactive content negotiation; see [RFC7231], Section 3.4).
+        status:
+          type: integer
+          description: The HTTP status code ([RFC7231], Section 6) generated by the origin server for this occurrence of the problem.
+          format: int32
+        detail:
+          type: string
+          description: A human-readable explanation specific to this occurrence of the problem.
+        instance:
+          type: string
+          description: A URI reference that identifies the specific occurrence of the problem.  It may or may not yield further information if dereferenced.
+        modified:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+      description: Problem details for state conflict failures
+    PageInformation:
+      type: object
+      properties:
+        offset:
+          type: integer
+          description: Offset that returned items start at
+          format: int32
+        size:
+          type: integer
+          description: The requested number of items. May be higher than the actual number of items in the result if there are fewer items in the store than requested
+          format: int32
+      description: Information about pages
     AccountEntry:
       type: object
       properties:
@@ -3014,9 +2932,168 @@ components:
           type: boolean
           description: Is the entry only a commitment?
       description: An account entry of an account.
+    EthicalReviewRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to an ethical review
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    SystemLocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: A set of localized string values each for a specific UI locale.
+        example: '{"en_GB":"Some text"}'
+      description: A set of localized string values each for a specific UI locale.
+      example:
+        en_GB: Some text
+    DeprecatedSystemCurrencyAmount:
+      required:
+      - value
+      type: object
+      properties:
+        currency:
+          type: string
+          description: 'An ISO-4217 3-letter alphabetic code representing the Pure installation''s system currency as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-currency'
+          readOnly: true
+        value:
+          type: string
+          description: 'A valid decimal monetary value as defined by the W3C''s Payment Request standard: https://www.w3.org/TR/payment-request/#dom-paymentcurrencyamount-value'
+          format: ^-?[0-9]+(\.[0-9]+)?$
+      description: Deprecated version of SystemCurrencyAmount
+      deprecated: true
+    DisciplinesDiscipline:
+      type: object
+      properties:
+        disciplineId:
+          type: string
+          description: The discipline identifier
+          readOnly: true
+        title:
+          type: string
+          description: The discipline title
+          readOnly: true
+        description:
+          type: string
+          description: The discipline description
+          readOnly: true
+      description: A discipline within a specific discipline scheme
+    ConceptRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a concept
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+      - type: object
+        properties:
+          conceptId:
+            type: string
+            description: The concept ID
+            readOnly: true
+    Name:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+      description: A name describing a person, made up of given- and family name
+    RankedConcept:
+      required:
+      - concept
+      - rank
+      type: object
+      properties:
+        concept:
+          $ref: '#/components/schemas/ConceptRef'
+        rank:
+          type: number
+          description: The rank of the ranked concept. If this is not set on creation, the ranked concept will have a default rank value of 0
+          format: double
+        weightedRank:
+          type:
+          - number
+          - 'null'
+          description: WeightedRank
+          format: double
+        frequency:
+          type:
+          - integer
+          - 'null'
+          description: Frequency
+          format: int32
+      description: A ranked concept
+    AwardListResult:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: The full count, ignoring paging
+          format: int32
+        pageInformation:
+          $ref: '#/components/schemas/PageInformation'
+        items:
+          type: array
+          description: Applications
+          items:
+            $ref: '#/components/schemas/Award'
+      description: List of awards. Can contain a subset of all items along with the full count
+    ContractRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to a contract
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    YearlyBudget:
+      type: object
+      properties:
+        pureId:
+          type: integer
+          description: Pure database ID of the object, prefer using the UUID if it is present on the entity
+          format: int64
+          readOnly: true
+        budget:
+          $ref: '#/components/schemas/SystemCurrencyAmount'
+        year:
+          type:
+          - integer
+          - 'null'
+          description: The year of the yearly budget.
+          format: int32
+      description: A yearly budget of an account.
+    DisciplinesDisciplineAssignment:
+      required:
+      - disciplineId
+      - splitPercentage
+      type: object
+      properties:
+        disciplineId:
+          type: string
+          description: The assigned discipline
+        splitPercentage:
+          type: number
+          description: The split percentages within an assigned discipline scheme must sum up to 100%
+          format: double
+      description: The assigned discipline and its split percentage
   securitySchemes:
     api-key:
       type: apiKey
       description: Security mechanism for the API
       name: api-key
       in: header
+x-refined-from:
+- university-of-manchester-pure-rest.yaml
+- university-of-manchester-pure-rest.yaml

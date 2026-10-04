@@ -84,61 +84,6 @@ paths:
                 type: string
 components:
   schemas:
-    ImageService:
-      type: object
-      description: Reference to the companion IIIF Image API 2 service, described in openapi/university-of-manchester-iiif-image-api-openapi.yml.
-      properties:
-        '@context':
-          type: string
-          const: http://iiif.io/api/image/2/context.json
-        '@id':
-          type: string
-          format: uri
-        profile:
-          type: string
-          const: http://iiif.io/api/image/2/level1.json
-    Annotation:
-      type: object
-      properties:
-        '@type':
-          type: string
-          const: oa:Annotation
-        motivation:
-          type: string
-          const: sc:painting
-        'on':
-          type: string
-          format: uri
-        resource:
-          type: object
-          properties:
-            '@id':
-              type: string
-              format: uri
-            '@type':
-              type: string
-              const: dctypes:Image
-            format:
-              type: string
-            width:
-              type: integer
-            height:
-              type: integer
-            service:
-              $ref: '#/components/schemas/ImageService'
-    Sequence:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          const: sc:Sequence
-        canvases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Canvas'
     Collection:
       type: object
       required:
@@ -230,3 +175,58 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Annotation'
+    ImageService:
+      type: object
+      description: Reference to the companion IIIF Image API 2 service, described in openapi/university-of-manchester-iiif-image-api-openapi.yml.
+      properties:
+        '@context':
+          type: string
+          const: http://iiif.io/api/image/2/context.json
+        '@id':
+          type: string
+          format: uri
+        profile:
+          type: string
+          const: http://iiif.io/api/image/2/level1.json
+    Annotation:
+      type: object
+      properties:
+        '@type':
+          type: string
+          const: oa:Annotation
+        motivation:
+          type: string
+          const: sc:painting
+        'on':
+          type: string
+          format: uri
+        resource:
+          type: object
+          properties:
+            '@id':
+              type: string
+              format: uri
+            '@type':
+              type: string
+              const: dctypes:Image
+            format:
+              type: string
+            width:
+              type: integer
+            height:
+              type: integer
+            service:
+              $ref: '#/components/schemas/ImageService'
+    Sequence:
+      type: object
+      properties:
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          const: sc:Sequence
+        canvases:
+          type: array
+          items:
+            $ref: '#/components/schemas/Canvas'
