@@ -1,7 +1,8 @@
 openapi: 3.2.0
 info:
-  title: University Of Manchester Semester API
-  version: 5.35.2-2
+  title: Pure Semester API
+  description: The Pure API provides a secure and complete web services API for using and managing research information data in Pure. The API enables a broad range of use-cases for interacting with research information, from anonymous Open Data scenarios to enabling the next generation Pure admin.
+  termsOfService: ''
   contact:
     name: ''
     url: ''
@@ -9,8 +10,7 @@ info:
   license:
     name: ''
     url: ''
-  termsOfService: ''
-  description: 'Operations tagged semester across 2 of this provider''s published API definitions: university-of-manchester-pure-rest.yaml, university-of-manchester-pure-rest.yaml. Each path carries the servers of the definition it was published in.'
+  version: 5.35.2-2
 servers:
 - url: /ws/api
 security:
@@ -84,8 +84,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
-    servers:
-    - url: /ws/api
   /semesters/allowed-locales:
     get:
       tags:
@@ -100,8 +98,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LocalesList'
-    servers:
-    - url: /ws/api
   /semesters/orderings:
     get:
       tags:
@@ -116,8 +112,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OrderingsList'
-    servers:
-    - url: /ws/api
   /semesters/search:
     post:
       tags:
@@ -145,8 +139,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-    servers:
-    - url: /ws/api
   /semesters/{uuid}:
     get:
       tags:
@@ -249,8 +241,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
-    servers:
-    - url: /ws/api
   /semesters/{uuid}/actions/lock:
     post:
       tags:
@@ -282,8 +272,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
-    servers:
-    - url: /ws/api
   /semesters/{uuid}/actions/unlock:
     post:
       tags:
@@ -315,8 +303,6 @@ paths:
             application/problem+json:
               schema:
                 $ref: '#/components/schemas/ConflictProblemDetails'
-    servers:
-    - url: /ws/api
   /semesters/{uuid}/dependents:
     get:
       tags:
@@ -346,18 +332,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContentRefListResult'
-    servers:
-    - url: /ws/api
 components:
   schemas:
-    ContentRefListResult:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentRef'
-      description: List of Content Refs
     PageInformation:
       type: object
       properties:
@@ -397,25 +373,6 @@ components:
           items:
             $ref: '#/components/schemas/Semester'
       description: List of semesters. Can contain a subset of all items along with the full count
-    EducationRef:
-      required:
-      - uuid
-      type:
-      - object
-      - 'null'
-      description: A reference to Education
-      allOf:
-      - $ref: '#/components/schemas/ContentRef'
-    OrderingsList:
-      type: object
-      properties:
-        orderings:
-          type: array
-          description: IDs of ways content can be ordered
-          items:
-            type: string
-            description: IDs of ways content can be ordered
-      description: List of available orderings
     SemesterQuery:
       type: object
       properties:
@@ -441,99 +398,6 @@ components:
           type: string
           writeOnly: true
       description: Create a query for semester
-    Identifier:
-      required:
-      - typeDiscriminator
-      type: object
-      properties:
-        typeDiscriminator:
-          type: string
-      discriminator:
-        propertyName: typeDiscriminator
-        mapping:
-          ClassifiedId: '#/components/schemas/ClassifiedId'
-          PrimaryId: '#/components/schemas/PrimaryId'
-          Id: '#/components/schemas/Id'
-    LocalizedString:
-      type:
-      - object
-      - 'null'
-      additionalProperties:
-        type:
-        - string
-        - 'null'
-        description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
-        example: '{"en_GB":"Some text"}'
-      description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
-      example:
-        en_GB: Some text
-    ContentRef:
-      required:
-      - systemName
-      - uuid
-      type:
-      - object
-      - 'null'
-      properties:
-        uuid:
-          type: string
-          description: UUID of the referred content
-          format: uuid
-        systemName:
-          type: string
-      discriminator:
-        propertyName: systemName
-        mapping:
-          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
-          Activity: '#/components/schemas/ActivityRef'
-          Application: '#/components/schemas/ApplicationRef'
-          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
-          Award: '#/components/schemas/AwardRef'
-          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
-          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
-          DataSet: '#/components/schemas/DataSetRef'
-          Equipment: '#/components/schemas/EquipmentRef'
-          Event: '#/components/schemas/EventRef'
-          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
-          ExternalPerson: '#/components/schemas/ExternalPersonRef'
-          Impact: '#/components/schemas/ImpactRef'
-          Journal: '#/components/schemas/JournalRef'
-          Organization: '#/components/schemas/OrganizationRef'
-          Person: '#/components/schemas/PersonRef'
-          Publisher: '#/components/schemas/PublisherRef'
-          PressMedia: '#/components/schemas/PressMediaRef'
-          Prize: '#/components/schemas/PrizeRef'
-          Project: '#/components/schemas/ProjectRef'
-          ResearchOutput: '#/components/schemas/ResearchOutputRef'
-          StudentThesis: '#/components/schemas/StudentThesisRef'
-          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
-          EthicalReview: '#/components/schemas/EthicalReviewRef'
-          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
-          AwardCluster: '#/components/schemas/AwardClusterRef'
-          User: '#/components/schemas/UserRef'
-          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
-          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
-          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
-          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
-          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
-          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
-          Semester: '#/components/schemas/SemesterRef'
-          Education: '#/components/schemas/EducationRef'
-          Course: '#/components/schemas/CourseRef'
-          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
-          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
-          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
-          Review: '#/components/schemas/ReviewRef'
-          GenericContentRef: '#/components/schemas/GenericContentRef'
-          UserProfile: '#/components/schemas/UserProfileRef'
-          Thesaurus: '#/components/schemas/ThesaurusRef'
-          Concept: '#/components/schemas/ConceptRef'
-          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
-          Contract: '#/components/schemas/ContractRef'
-          Milestone: '#/components/schemas/MilestoneRef'
-          Fingerprint: '#/components/schemas/FingerprintRef'
-          Specialization: '#/components/schemas/SpecializationRef'
-          StudentProject: '#/components/schemas/StudentProjectRef'
     Semester:
       required:
       - active
@@ -642,6 +506,103 @@ components:
         modifiedBy:
           type: string
       description: Problem details for state conflict failures
+    ContentRefListResult:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentRef'
+      description: List of Content Refs
+    LocalizedString:
+      type:
+      - object
+      - 'null'
+      additionalProperties:
+        type:
+        - string
+        - 'null'
+        description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
+        example: '{"en_GB":"Some text"}'
+      description: 'A set of string values, one for each submission locale. Note: invalid locale values will be ignored.'
+      example:
+        en_GB: Some text
+    EducationRef:
+      required:
+      - uuid
+      type:
+      - object
+      - 'null'
+      description: A reference to Education
+      allOf:
+      - $ref: '#/components/schemas/ContentRef'
+    ContentRef:
+      required:
+      - systemName
+      - uuid
+      type:
+      - object
+      - 'null'
+      properties:
+        uuid:
+          type: string
+          description: UUID of the referred content
+          format: uuid
+        systemName:
+          type: string
+      discriminator:
+        propertyName: systemName
+        mapping:
+          AccessDefinition: '#/components/schemas/AccessDefinitionRef'
+          Activity: '#/components/schemas/ActivityRef'
+          Application: '#/components/schemas/ApplicationRef'
+          AuthorCollaboration: '#/components/schemas/AuthorCollaborationRef'
+          Award: '#/components/schemas/AwardRef'
+          ClassificationScheme: '#/components/schemas/ClassificationSchemeRef'
+          ConferenceSeries: '#/components/schemas/ConferenceSeriesRef'
+          DataSet: '#/components/schemas/DataSetRef'
+          Equipment: '#/components/schemas/EquipmentRef'
+          Event: '#/components/schemas/EventRef'
+          ExternalOrganization: '#/components/schemas/ExternalOrganizationRef'
+          ExternalPerson: '#/components/schemas/ExternalPersonRef'
+          Impact: '#/components/schemas/ImpactRef'
+          Journal: '#/components/schemas/JournalRef'
+          Organization: '#/components/schemas/OrganizationRef'
+          Person: '#/components/schemas/PersonRef'
+          Publisher: '#/components/schemas/PublisherRef'
+          PressMedia: '#/components/schemas/PressMediaRef'
+          Prize: '#/components/schemas/PrizeRef'
+          Project: '#/components/schemas/ProjectRef'
+          ResearchOutput: '#/components/schemas/ResearchOutputRef'
+          StudentThesis: '#/components/schemas/StudentThesisRef'
+          FundingOpportunity: '#/components/schemas/FundingOpportunityRef'
+          EthicalReview: '#/components/schemas/EthicalReviewRef'
+          ApplicationCluster: '#/components/schemas/ApplicationClusterRef'
+          AwardCluster: '#/components/schemas/AwardClusterRef'
+          User: '#/components/schemas/UserRef'
+          ERA2018FieldOfResearch: '#/components/schemas/Anzsrc2008FieldOfResearchRef'
+          UnitOfAssessmentREF2014: '#/components/schemas/Ref2014UnitOfAssessmentRef'
+          UnitOfAssessmentREF2020: '#/components/schemas/Ref2020UnitOfAssessmentRef'
+          ANZSRCTypeOfActivity: '#/components/schemas/Anzsrc2020TypeOfActivityRef'
+          ANZSRCFieldOfResearch: '#/components/schemas/Anzsrc2020FieldOfResearchRef'
+          ANZSRCSocioEconomicObjective: '#/components/schemas/Anzsrc2020SocioEconomicObjectiveRef'
+          Semester: '#/components/schemas/SemesterRef'
+          Education: '#/components/schemas/EducationRef'
+          Course: '#/components/schemas/CourseRef'
+          CurriculumVitae: '#/components/schemas/CurriculumVitaeRef'
+          CustomDefinedFieldConfiguration: '#/components/schemas/CustomDefinedFieldConfigurationRef'
+          KeywordGroupConfiguration: '#/components/schemas/KeywordGroupConfigurationRef'
+          Review: '#/components/schemas/ReviewRef'
+          GenericContentRef: '#/components/schemas/GenericContentRef'
+          UserProfile: '#/components/schemas/UserProfileRef'
+          Thesaurus: '#/components/schemas/ThesaurusRef'
+          Concept: '#/components/schemas/ConceptRef'
+          PersonExpertise: '#/components/schemas/PersonExpertiseRef'
+          Contract: '#/components/schemas/ContractRef'
+          Milestone: '#/components/schemas/MilestoneRef'
+          Fingerprint: '#/components/schemas/FingerprintRef'
+          Specialization: '#/components/schemas/SpecializationRef'
+          StudentProject: '#/components/schemas/StudentProjectRef'
     ProblemDetails:
       type: object
       properties:
@@ -668,12 +629,32 @@ components:
           /error: '#/components/schemas/GenericProblemDetails'
           /validation-error: '#/components/schemas/ValidationProblemDetails'
           /dependency-violation-error: '#/components/schemas/DependencyViolationProblemDetails'
+    Identifier:
+      required:
+      - typeDiscriminator
+      type: object
+      properties:
+        typeDiscriminator:
+          type: string
+      discriminator:
+        propertyName: typeDiscriminator
+        mapping:
+          ClassifiedId: '#/components/schemas/ClassifiedId'
+          PrimaryId: '#/components/schemas/PrimaryId'
+          Id: '#/components/schemas/Id'
+    OrderingsList:
+      type: object
+      properties:
+        orderings:
+          type: array
+          description: IDs of ways content can be ordered
+          items:
+            type: string
+            description: IDs of ways content can be ordered
+      description: List of available orderings
   securitySchemes:
     api-key:
       type: apiKey
       description: Security mechanism for the API
       name: api-key
       in: header
-x-refined-from:
-- university-of-manchester-pure-rest.yaml
-- university-of-manchester-pure-rest.yaml

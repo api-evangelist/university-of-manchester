@@ -84,39 +84,32 @@ paths:
                 type: string
 components:
   schemas:
-    Collection:
+    ImageService:
       type: object
-      required:
-      - '@context'
-      - '@id'
-      - '@type'
+      description: Reference to the companion IIIF Image API 2 service, described in openapi/university-of-manchester-iiif-image-api-openapi.yml.
       properties:
         '@context':
           type: string
-          const: http://iiif.io/api/presentation/2/context.json
+          const: http://iiif.io/api/image/2/context.json
+        '@id':
+          type: string
+          format: uri
+        profile:
+          type: string
+          const: http://iiif.io/api/image/2/level1.json
+    Sequence:
+      type: object
+      properties:
         '@id':
           type: string
           format: uri
         '@type':
           type: string
-          const: sc:Collection
-        label:
-          type: string
-        description:
-          type: string
-        manifests:
+          const: sc:Sequence
+        canvases:
           type: array
           items:
-            type: object
-            properties:
-              '@id':
-                type: string
-                format: uri
-              '@type':
-                type: string
-                const: sc:Manifest
-              label:
-                type: string
+            $ref: '#/components/schemas/Canvas'
     Manifest:
       type: object
       description: IIIF Presentation API 2.1 sc:Manifest, as returned by this deployment.
@@ -156,6 +149,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Sequence'
+    Collection:
+      type: object
+      required:
+      - '@context'
+      - '@id'
+      - '@type'
+      properties:
+        '@context':
+          type: string
+          const: http://iiif.io/api/presentation/2/context.json
+        '@id':
+          type: string
+          format: uri
+        '@type':
+          type: string
+          const: sc:Collection
+        label:
+          type: string
+        description:
+          type: string
+        manifests:
+          type: array
+          items:
+            type: object
+            properties:
+              '@id':
+                type: string
+                format: uri
+              '@type':
+                type: string
+                const: sc:Manifest
+              label:
+                type: string
     Canvas:
       type: object
       properties:
@@ -175,19 +201,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Annotation'
-    ImageService:
-      type: object
-      description: Reference to the companion IIIF Image API 2 service, described in openapi/university-of-manchester-iiif-image-api-openapi.yml.
-      properties:
-        '@context':
-          type: string
-          const: http://iiif.io/api/image/2/context.json
-        '@id':
-          type: string
-          format: uri
-        profile:
-          type: string
-          const: http://iiif.io/api/image/2/level1.json
     Annotation:
       type: object
       properties:
@@ -217,16 +230,3 @@ components:
               type: integer
             service:
               $ref: '#/components/schemas/ImageService'
-    Sequence:
-      type: object
-      properties:
-        '@id':
-          type: string
-          format: uri
-        '@type':
-          type: string
-          const: sc:Sequence
-        canvases:
-          type: array
-          items:
-            $ref: '#/components/schemas/Canvas'
