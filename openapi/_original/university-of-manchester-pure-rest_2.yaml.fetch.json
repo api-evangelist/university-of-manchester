@@ -1,0 +1,12 @@
+{
+ "url": "https://pure.manchester.ac.uk/ws/api/openapi.yaml",
+ "requested_url": "https://pure.manchester.ac.uk/ws/api/openapi.yaml",
+ "status": 200,
+ "content_type": "application/yaml",
+ "bytes": 1313865,
+ "sha256": "9f7e3d11a72f3f006b5055c88097ffdcc50604649f9dfb478a2fc8e0f81c3005",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.98), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
