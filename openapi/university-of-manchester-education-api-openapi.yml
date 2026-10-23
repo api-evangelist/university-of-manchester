@@ -1113,3 +1113,9 @@ components:
       description: Security mechanism for the API
       name: api-key
       in: header
+x-provenance:
+  method: harvested
+  publisher: University of Manchester
+  source: https://pure.manchester.ac.uk/ws/api/openapi.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
